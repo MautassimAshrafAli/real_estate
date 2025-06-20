@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="real_estateModel_mysql.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="agent_info">
+    <Key>
+      <PropertyRef Name="agent_id" />
+    </Key>
+    <Property Name="agent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="agent" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="national_number" Type="int" Nullable="false" />
+    <Property Name="address" Type="longtext" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone_number" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="whatsapp_ink" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="char" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="company_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ceo_name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="company_name" Type="longtext" Nullable="false" />
+    <Property Name="comapny_location_link" Type="longtext" Nullable="false" />
+    <Property Name="address" Type="longtext" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone_number" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="facebook_link" Type="longtext" />
+    <Property Name="instagram_link" Type="longtext" />
+    <Property Name="twitter_link" Type="longtext" />
+    <Property Name="linkedin_link" Type="longtext" />
+    <Property Name="youtube_link" Type="longtext" />
+    <Property Name="comapny_video_link" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="portal_users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="properties">
+    <Key>
+      <PropertyRef Name="id_properties" />
+    </Key>
+    <Property Name="id_properties" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="title" Type="longtext" Nullable="false" />
+    <Property Name="image_path" Type="longtext" Nullable="false" />
+    <Property Name="properties_type" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="OrginatorID" Type="varchar" MaxLength="200" />
+    <Property Name="agent_id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="properties_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_properties" Type="int" Nullable="false" />
+    <Property Name="images" Type="longtext" />
+    <Property Name="city" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="longtext" Nullable="false" />
+    <Property Name="info_propertie" Type="longtext" Nullable="false" />
+    <Property Name="year_built" Type="int" Nullable="false" />
+    <Property Name="Bedrooms" Type="int" Nullable="false" />
+    <Property Name="Bathrooms" Type="int" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="currency" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Payment_method" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="long_address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="building_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furnishing" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="publich_date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="map_link" Type="longtext" Nullable="false" />
+    <Property Name="youtube_video_link" Type="longtext" Nullable="false" />
+  </EntityType>
+  <EntityType Name="users">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="user_name" Type="varchar" MaxLength="150" />
+    <Property Name="login" Type="longtext" />
+    <Property Name="password" Type="longtext" />
+    <Property Name="isHRAdmin" Type="bool" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'def.real_estate.v_allproperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="v_allproperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="properties_type" />
+      <PropertyRef Name="category_name" />
+      <PropertyRef Name="image_path" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="city" />
+      <PropertyRef Name="address" />
+      <PropertyRef Name="long_address" />
+      <PropertyRef Name="id_properties" />
+      <PropertyRef Name="year_built" />
+      <PropertyRef Name="Floor" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="Bedrooms" />
+      <PropertyRef Name="Bathrooms" />
+      <PropertyRef Name="Parking" />
+      <PropertyRef Name="Parking_Available" />
+      <PropertyRef Name="info_propertie" />
+      <PropertyRef Name="price" />
+      <PropertyRef Name="Payment_method" />
+      <PropertyRef Name="currency" />
+      <PropertyRef Name="building_type" />
+      <PropertyRef Name="Display_type" />
+      <PropertyRef Name="Furnishing" />
+      <PropertyRef Name="publich_date" />
+      <PropertyRef Name="map_link" />
+      <PropertyRef Name="youtube_video_link" />
+      <PropertyRef Name="agent" />
+      <PropertyRef Name="phone_number" />
+      <PropertyRef Name="whatsapp_ink" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="properties_type" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="category_name" Type="char" MaxLength="30" Nullable="false" />
+    <Property Name="image_path" Type="longtext" Nullable="false" />
+    <Property Name="title" Type="longtext" Nullable="false" />
+    <Property Name="city" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="longtext" Nullable="false" />
+    <Property Name="long_address" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="id_properties" Type="int" Nullable="false" />
+    <Property Name="year_built" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Bedrooms" Type="int" Nullable="false" />
+    <Property Name="Bathrooms" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="Parking_Available" Type="varchar" MaxLength="8" Nullable="false" />
+    <Property Name="info_propertie" Type="longtext" Nullable="false" />
+    <Property Name="images" Type="longtext" />
+    <Property Name="price" Type="varchar" MaxLength="13" Nullable="false" />
+    <Property Name="Payment_method" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="currency" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="building_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display_type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furnishing" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="publich_date" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="map_link" Type="longtext" Nullable="false" />
+    <Property Name="youtube_video_link" Type="longtext" Nullable="false" />
+    <Property Name="agent" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="phone_number" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="whatsapp_ink" Type="longtext" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__propertie__agent__075714DC">
+    <End Role="agent_info" Type="Self.agent_info" Multiplicity="1" />
+    <End Role="properties" Type="Self.properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="agent_info">
+        <PropertyRef Name="agent_id" />
+      </Principal>
+      <Dependent Role="properties">
+        <PropertyRef Name="agent_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__propertie__categ__55F4C372">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="properties" Type="Self.properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="properties">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__propertie__id_pr__5BAD9CC8">
+    <End Role="properties" Type="Self.properties" Multiplicity="1" />
+    <End Role="properties_info" Type="Self.properties_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="properties">
+        <PropertyRef Name="id_properties" />
+      </Principal>
+      <Dependent Role="properties_info">
+        <PropertyRef Name="id_properties" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_AllProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate">
+    <Parameter Name="currency" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Properties_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate">
+    <Parameter Name="Propertie_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate">
+    <Parameter Name="p_currency" Type="varchar" Mode="In" />
+    <Parameter Name="p_properties_type" Type="varchar" Mode="In" />
+    <Parameter Name="p_category_name" Type="varchar" Mode="In" />
+    <Parameter Name="p_city" Type="varchar" Mode="In" />
+    <Parameter Name="p_Bedrooms" Type="int" Mode="In" />
+    <Parameter Name="p_Bathrooms" Type="int" Mode="In" />
+    <Parameter Name="p_min_price" Type="decimal" Mode="In" />
+    <Parameter Name="p_max_price" Type="decimal" Mode="In" />
+    <Parameter Name="p_min_area" Type="int" Mode="In" />
+    <Parameter Name="p_max_area" Type="int" Mode="In" />
+    <Parameter Name="p_Display_type" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="SP_TopOneProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate">
+    <Parameter Name="p_currency" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="real_estateModel_mysqlStoreContainer">
+    <EntitySet Name="agent_info" EntityType="Self.agent_info" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="category" EntityType="Self.category" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="company_info" EntityType="Self.company_info" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="portal_users" EntityType="Self.portal_users" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="properties" EntityType="Self.properties" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="properties_info" EntityType="Self.properties_info" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="users" EntityType="Self.users" Schema="real_estate" store:Type="Tables" />
+    <EntitySet Name="v_allproperties" EntityType="Self.v_allproperties" store:Type="Views" store:Schema="real_estate">
+      <DefiningQuery>SELECT
+`v_allproperties`.`id`, 
+`v_allproperties`.`properties_type`, 
+`v_allproperties`.`category_name`, 
+`v_allproperties`.`image_path`, 
+`v_allproperties`.`title`, 
+`v_allproperties`.`city`, 
+`v_allproperties`.`address`, 
+`v_allproperties`.`long_address`, 
+`v_allproperties`.`id_properties`, 
+`v_allproperties`.`year_built`, 
+`v_allproperties`.`Floor`, 
+`v_allproperties`.`Area`, 
+`v_allproperties`.`Bedrooms`, 
+`v_allproperties`.`Bathrooms`, 
+`v_allproperties`.`Parking`, 
+`v_allproperties`.`Parking_Available`, 
+`v_allproperties`.`info_propertie`, 
+`v_allproperties`.`images`, 
+`v_allproperties`.`price`, 
+`v_allproperties`.`Payment_method`, 
+`v_allproperties`.`currency`, 
+`v_allproperties`.`building_type`, 
+`v_allproperties`.`Display_type`, 
+`v_allproperties`.`Furnishing`, 
+`v_allproperties`.`publich_date`, 
+`v_allproperties`.`map_link`, 
+`v_allproperties`.`youtube_video_link`, 
+`v_allproperties`.`agent`, 
+`v_allproperties`.`phone_number`, 
+`v_allproperties`.`whatsapp_ink`
+FROM `v_allproperties` AS `v_allproperties`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__propertie__agent__075714DC" Association="Self.FK__propertie__agent__075714DC">
+      <End Role="agent_info" EntitySet="agent_info" />
+      <End Role="properties" EntitySet="properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__propertie__categ__55F4C372" Association="Self.FK__propertie__categ__55F4C372">
+      <End Role="category" EntitySet="category" />
+      <End Role="properties" EntitySet="properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8" Association="Self.FK__propertie__id_pr__5BAD9CC8">
+      <End Role="properties" EntitySet="properties" />
+      <End Role="properties_info" EntitySet="properties_info" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

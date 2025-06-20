@@ -1,0 +1,169 @@
+﻿@model IEnumerable<admin.Models.category>
+
+@{
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/authentications/Login");
+    }
+    ViewBag.Title = "Category | Dashboard";
+    ViewBag.page_name = "Category | Dashboard";
+}
+
+
+@section menu{
+
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Home")" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+                Home
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","authentications")" class="nav-link">
+            <i class="nav-icon fas fa-unlock"></i>
+            <p>
+                Authentications
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Users")" class="nav-link">
+            <i class="nav-icon fas fa-user-plus"></i>
+            <p>
+                Users
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","categories")" class="nav-link active">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+                Categorys
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties_info")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","agent_info")" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+                Agent Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","company_info")" class="nav-link">
+            <i class="nav-icon fas fa-city"></i>
+            <p>
+                Company Info
+            </p>
+        </a>
+    </li>
+
+
+}
+
+
+@try
+{
+    if (@TempData["msg"].ToString() != string.Empty)
+    {
+        <div class="alert alert-success d-flex align-items-center" role="alert" style=" width: fit-content;gap: 10px;">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill" /></svg>
+            <div>
+                @TempData["msg"]
+            </div>
+        </div>
+    }
+
+}
+catch (Exception)
+{ }
+
+<a class="btn btn-primary btn-sm" style="margin-bottom:15px;" href="@Url.Action("Create","categories")">
+    <i class="fas fa-user-plus"></i>
+    Create New
+</a>
+
+
+<div class="card">
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table id="example1" class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category_name)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                @foreach (var item in Model)
+                {
+                    <tr>
+                       <td>
+                           @Html.DisplayFor(modelItem => item.category_name)
+                       </td>
+                        <td>
+                            <a class="btn btn-primary btn-sm" href="@Url.Action("Details", "categories", new { id = item.category_id })">
+                                <i class="fas fa-folder">
+                                </i>
+                                View
+                            </a>
+                            <a class="btn btn-info btn-sm" href="@Url.Action("Edit", "categories", new { id = item.category_id })">
+                                <i class="fas fa-pencil-alt">
+                                </i>
+                                Edit
+                            </a>
+                            <a class="btn btn-danger btn-sm" href="@Url.Action("Delete", "categories", new { id = item.category_id })">
+                                <i class="fas fa-trash">
+                                </i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.category_name)
+                    </th>
+                    <th></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.card-body -->
+</div>
+

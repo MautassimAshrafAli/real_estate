@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="real_estateModel_mysqlStoreContainer" CdmEntityContainer="real_estateEntities_mysql">
+    <EntitySetMapping Name="agent_info">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.agent_info">
+        <MappingFragment StoreEntitySet="agent_info">
+          <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+          <ScalarProperty Name="agent" ColumnName="agent" />
+          <ScalarProperty Name="national_number" ColumnName="national_number" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="categories">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="company_info">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.company_info">
+        <MappingFragment StoreEntitySet="company_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="ceo_name" ColumnName="ceo_name" />
+          <ScalarProperty Name="company_name" ColumnName="company_name" />
+          <ScalarProperty Name="comapny_location_link" ColumnName="comapny_location_link" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="facebook_link" ColumnName="facebook_link" />
+          <ScalarProperty Name="instagram_link" ColumnName="instagram_link" />
+          <ScalarProperty Name="twitter_link" ColumnName="twitter_link" />
+          <ScalarProperty Name="linkedin_link" ColumnName="linkedin_link" />
+          <ScalarProperty Name="youtube_link" ColumnName="youtube_link" />
+          <ScalarProperty Name="comapny_video_link" ColumnName="comapny_video_link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="portal_users">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.portal_users">
+        <MappingFragment StoreEntitySet="portal_users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="properties">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.property">
+        <MappingFragment StoreEntitySet="properties">
+          <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+          <ScalarProperty Name="category_id" ColumnName="category_id" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="image_path" ColumnName="image_path" />
+          <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+          <ScalarProperty Name="OrginatorID" ColumnName="OrginatorID" />
+          <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="properties_info">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.properties_info">
+        <MappingFragment StoreEntitySet="properties_info">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+          <ScalarProperty Name="year_built" ColumnName="year_built" />
+          <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+          <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+          <ScalarProperty Name="long_address" ColumnName="long_address" />
+          <ScalarProperty Name="building_type" ColumnName="building_type" />
+          <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+          <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+          <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+          <ScalarProperty Name="map_link" ColumnName="map_link" />
+          <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="user_name" ColumnName="user_name" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="isHRAdmin" ColumnName="isHRAdmin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_allproperties">
+      <EntityTypeMapping TypeName="real_estateModel_mysql.v_allproperties">
+        <MappingFragment StoreEntitySet="v_allproperties">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+          <ScalarProperty Name="category_name" ColumnName="category_name" />
+          <ScalarProperty Name="image_path" ColumnName="image_path" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="long_address" ColumnName="long_address" />
+          <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+          <ScalarProperty Name="year_built" ColumnName="year_built" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+          <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+          <ScalarProperty Name="Parking" ColumnName="Parking" />
+          <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+          <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+          <ScalarProperty Name="images" ColumnName="images" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+          <ScalarProperty Name="currency" ColumnName="currency" />
+          <ScalarProperty Name="building_type" ColumnName="building_type" />
+          <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+          <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+          <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+          <ScalarProperty Name="map_link" ColumnName="map_link" />
+          <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+          <ScalarProperty Name="agent" ColumnName="agent" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_AllProperties_by_currency" FunctionName="real_estateModel_mysql.Store.SP_AllProperties_by_currency">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="real_estateModel_mysql.SP_AllProperties_by_currency_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_Get_Properties_by_id" FunctionName="real_estateModel_mysql.Store.SP_Get_Properties_by_id">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="real_estateModel_mysql.SP_Get_Properties_by_id_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_search" FunctionName="real_estateModel_mysql.Store.SP_search">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="real_estateModel_mysql.SP_search_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_TopOneProperties_by_currency" FunctionName="real_estateModel_mysql.Store.SP_TopOneProperties_by_currency">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="real_estateModel_mysql.SP_TopOneProperties_by_currency_Result" />
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

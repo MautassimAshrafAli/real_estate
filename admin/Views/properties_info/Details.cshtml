@@ -1,0 +1,186 @@
+﻿@model admin.Models.properties_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>properties_info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.images)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.images)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.info_propertie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.info_propertie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.year_built)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.year_built)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bedrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bedrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bathrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bathrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Area)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Area)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Parking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Parking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.currency)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.currency)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Payment_method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Payment_method)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.long_address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.long_address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.building_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.building_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Display_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Display_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Furnishing)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Furnishing)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.publich_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.publich_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.map_link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.map_link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.youtube_video_link)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.youtube_video_link)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property.type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

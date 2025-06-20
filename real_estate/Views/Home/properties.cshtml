@@ -1,0 +1,1336 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string data = ViewBag.jsonData;
+}
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12" id="top">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-wrapper bg-img-1 p-t-200 p-b-120" style="background-image: url('../../content/assets/images/egyptheader.jpg'); ">
+    <div class="wrapper wrapper--w900">
+        <div class="card card-4">
+            <div class="card-body">
+                <ul class="tab-list">
+                    <li class="tab-list__item active">
+                        <a class="tab-list__link" href="#tab1" data-toggle="tab">@ViewBag.type1</a>
+                    </li>
+                    <li class="tab-list__item">
+                        <a class="tab-list__link" href="#tab2" data-toggle="tab">@ViewBag.type2</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                        <form method="POST" action="/Home/properties">
+                            <div class="input-group input-group-big">
+                                <input type="hidden" name="properties_type" value="@ViewBag.t1" />
+                                <i class="zmdi zmdi-search input-group-symbol"></i>
+                                <input class="input--style-1" id="search_fild" type="text" name="city" placeholder="@ViewBag.location" required="required" style="text-align: end; unicode-bidi: inherit;">
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category_name">
+                                                <option selected="selected">@ViewBag.g0</option>
+                                                <option>@ViewBag.g1</option>
+                                                <option>@ViewBag.g2</option>
+                                                <option>@ViewBag.g3</option>
+                                                <option>@ViewBag.g4</option>
+                                                <option>@ViewBag.g5</option>
+                                                <option>@ViewBag.g6</option>
+                                                <option>@ViewBag.g7</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="Display_type">
+                                                <option selected="selected">@ViewBag.pay1</option>
+                                                <option>@ViewBag.pay2</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="input-group-icon" id="js-select-special_Bedrooms_Bathrooms">
+                                            <input class="input--style-1 input--style-1-small" type="text" name="Bedrooms" value="@ViewBag.Bedrooms_Bathrooms" disabled="disabled" id="info_Bedrooms_Bathrooms">
+                                            <i class="zmdi zmdi-chevron-down input-icon"></i>
+                                        </div>
+                                        <div class="dropdown-select_Bedrooms_Bathrooms">
+                                            <ul class="list-room">
+                                                <li class="list-room__item">
+                                                    <ul class="list-room-sub">
+                                                        <li class="list-room-sub__item">
+                                                            <span class="name">@ViewBag.Bedrooms</span>
+                                                            <div class="quantity quantity1">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="Bedrooms" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-room-sub__item">
+                                                            <span class="name">@ViewBag.Bathrooms</span>
+                                                            <div class="quantity quantity2">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="Bathrooms" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="input-group-icon" id="js-select-special_area_min_max">
+                                            <input class="input--style-1 input--style-1-small" type="text" name="Area" value="@ViewBag.area_d" disabled="disabled" id="info_area_min_max">
+                                            <i class="zmdi zmdi-chevron-down input-icon"></i>
+                                        </div>
+                                        <div class="dropdown-select_area_min_max">
+                                            <ul class="list-area">
+                                                <li class="list-area__item">
+                                                    <ul class="list-area-sub">
+                                                        <li class="list-area-sub__item">
+                                                            <span class="name">@ViewBag.area_min</span>
+                                                            <div class="quantity quantity1">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="min_area" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-area-sub__item">
+                                                            <span class="name">@ViewBag.area_max</span>
+                                                            <div class="quantity quantity2">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="max_area" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="input-group-icon" id="js-select-special_price_min_max">
+                                            <input class="input--style-1 input--style-1-small" type="text" value="@ViewBag.price_d" disabled="disabled" id="info_price_min_max" style="text-align: right; ">
+                                            <i class="zmdi zmdi-chevron-down input-icon"></i>
+                                        </div>
+                                        <div class="dropdown-select_price_min_max">
+                                            <ul class="list-price">
+                                                <li class="list-price__item">
+                                                    <ul class="list-price-sub">
+                                                        <li class="list-price-sub__item">
+                                                            <span class="name">@ViewBag.price_min</span>
+                                                            <div class="quantity quantity1">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="min_price" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-price-sub__item">
+                                                            <span class="name">@ViewBag.price_max</span>
+                                                            <div class="quantity quantity2">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="max_price" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn-submit" type="submit">@ViewBag.search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane" id="tab2">
+                        <form method="POST" action="/Home/properties">
+                            <div class="input-group input-group-big">
+                                <i class="zmdi zmdi-search input-group-symbol"></i>
+                                <input type="hidden" name="properties_type" value="@ViewBag.t2" />
+                                <input class="input--style-1" id="search_fildt2" type="text" name="city" placeholder="@ViewBag.location" required="required" style="text-align: end; unicode-bidi: inherit;">
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="category_name">
+                                                <option selected="selected">@ViewBag.t2g0</option>
+                                                <option>@ViewBag.t2g1</option>
+                                                <option>@ViewBag.t2g2</option>
+                                                <option>@ViewBag.t2g3</option>
+                                                <option>@ViewBag.t2g4</option>
+                                                <option>@ViewBag.t2g5</option>
+                                                <option>@ViewBag.t2g6</option>
+                                                <option>@ViewBag.t2g7</option>
+                                                <option>@ViewBag.t2g8</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="rs-select2 js-select-simple select--no-search">
+                                            <select name="Display_type">
+                                                <option selected="selected">@ViewBag.pay1</option>
+                                                <option>@ViewBag.pay2</option>
+                                            </select>
+                                            <div class="select-dropdown"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row row-space">
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="input-group-icon" id="js-select-special_area_min_maxt2">
+                                            <input class="input--style-1 input--style-1-small" type="text" name="Area" value="@ViewBag.area_d" disabled="disabled" id="info_area_min_maxt2">
+                                            <i class="zmdi zmdi-chevron-down input-icon"></i>
+                                        </div>
+                                        <div class="dropdown-select_area_min_maxt2">
+                                            <ul class="list-areat2">
+                                                <li class="list-area__itemt2">
+                                                    <ul class="list-area-subt2">
+                                                        <li class="list-area-sub__itemt2">
+                                                            <span class="name">@ViewBag.area_min</span>
+                                                            <div class="quantity quantity1">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="min_area" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-area-sub__itemt2">
+                                                            <span class="name">@ViewBag.area_max</span>
+                                                            <div class="quantity quantity2">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="max_area" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <div class="input-group">
+                                        <div class="input-group-icon" id="js-select-special_price_min_maxt2">
+                                            <input class="input--style-1 input--style-1-small" type="text" value="@ViewBag.price_d" disabled="disabled" id="info_price_min_maxt2" style="text-align: right; ">
+                                            <i class="zmdi zmdi-chevron-down input-icon"></i>
+                                        </div>
+                                        <div class="dropdown-select_price_min_maxt2">
+                                            <ul class="list-pricet2">
+                                                <li class="list-price__itemt2">
+                                                    <ul class="list-price-subt2">
+                                                        <li class="list-price-sub__itemt2">
+                                                            <span class="name">@ViewBag.price_min</span>
+                                                            <div class="quantity quantity1">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="min_price" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                        <li class="list-price-sub__itemt2">
+                                                            <span class="name">@ViewBag.price_max</span>
+                                                            <div class="quantity quantity2">
+                                                                <span class="minus">-</span>
+                                                                <input class="inputQty" name="max_price" type="number" min="0" value="0">
+                                                                <span class="plus">+</span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-2">
+                                    <button class="btn-submit" type="submit">@ViewBag.search</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="section properties">
+    <div class="container">
+        <div class="row card-content" id="search" style="position: relative; height: fit-content !important; flex-direction: row-reverse; display: none;">
+        </div>
+
+        <div class="pagination"></div>
+
+    </div>
+</div>
+
+@section script{
+    <script>
+    $(document).ready(function () {
+
+
+        $('#search_fild').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/auto_search",
+                    type: "POST",
+                    dataType: "json",
+                    data: { search: $('#search_fild').val() },
+                    success: function (data) {
+                        var data_search = [];
+                        data_search = data;
+                        response($.map(data, function (item) {
+
+                            return { value: data_search };
+                        }));
+                    }
+                });
+            }
+
+        });
+
+        $('#search_fildt2').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    url: "/Home/auto_search",
+                    type: "POST",
+                    dataType: "json",
+                    data: { search: $('#search_fildt2').val() },
+                    success: function (data) {
+                        var data_search = [];
+                        data_search = data;
+                        response($.map(data, function (item) {
+
+                            return { value: data_search };
+                        }));
+                    }
+                });
+            }
+
+        });
+
+        $.ajax({
+            url: "/Home/search",
+            dataType: "json",
+            method: "GET",
+            success: function (data) {
+                //console.log(data);
+                //console.log(data[0].category_name);
+                jsonData = JSON.parse(data);
+                var script_data = ''
+                var count = 0;
+                for (var i = 0; i < jsonData.length; i++) {
+                    count += i;
+                    script_data +=
+                        '<div class="page-item col-lg-4 col-md-6 align-self-center mb-30 col-md-6 adv">' +
+                        '<div class="item">' +
+                        '<a><img src="' + jsonData[i].image_path + '" alt=""></a>' +
+                        '<span class="category">' + jsonData[i].category_name + '</span>' +
+                        '<h6>' + jsonData[i].price + " " + jsonData[i].currency + '</h6>' +
+                        '<h4>' + jsonData[i].title + '</h4>' +
+                        '<ul>' +
+                        '    <li> <i class="fa-solid fa-bed"></i> <span>' + jsonData[i].bedrooms + '</span></li>' +
+                        '    <li style = "margin-right: 8px;"><i class="fa-solid fa-sink"></i>  <span>' + jsonData[i].bathrooms + '</span></li>' +
+                        '    <li style="margin-right: 8px;"><i class="fa-solid fa-car"></i> <span>' + jsonData[i].parking + '</span></li>' +
+                        '    <li style="border-left:1px solid #b7b5b5;padding-left:8px;margin-right: 8px;"><i class="fa-solid fa-building"></i> <span>' + jsonData[i].floor + '</span></li>' +
+                        '    <li style="margin-right:8px;"><strong>@ViewBag.Area_card:</strong> <span>' + jsonData[i].area + ' @ViewBag.m' + '</span></li>' +
+                        '</ul>' +
+                        '<div class="main-button" style="display:flex;gap:15px;padding:49px;padding-top:0px;padding-bottom:0px;">' +
+                        ' <button data-bs-toggle="modal" data-bs-target="#myModel' + jsonData[i].id+'" >@ViewBag.book</button>' +
+                        '<form action="/Home/property_details" method="GET">' +
+                        '<input type="hidden" value = "' + jsonData[i].id + '" name = "id" />' +
+                        '<input type="hidden" value = "' + jsonData[i].title + '" name = "title" />' +
+                        '<button class="btn_view" type="submit"> @ViewBag.view </button>' +
+                        '</form>' +
+                        '</div>' +
+                        '</div>'+
+                        '</div>';
+                }
+                $("#search").html(script_data);
+
+               function getPageList(totalPages, page, maxLength) {
+                    function range(start, end) {
+                        return Array.from(Array(end - start + 1), (_, i) => i + start);
+                    }
+                    var sideWidth = maxLength < 9 ? 1 : 2;
+                    var leftWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+                    var rightWidth = (maxLength - sideWidth * 2 - 3) >> 1;
+                    if (totalPages <= maxLength) {
+                        return range(1, totalPages);
+                    }
+                    if (page <= maxLength - sideWidth - 1 - rightWidth) {
+                        return range(1, maxLength - sideWidth - 1).concat(0, range(totalPages - sideWidth + 1, totalPages));
+                    }
+                    if (page >= totalPages - sideWidth - 1 - rightWidth) {
+                        return range(1, sideWidth).concat(0, range(totalPages - sideWidth - 1 - rightWidth - leftWidth, totalPages));
+                    }
+                    return range(1, sideWidth).concat(0, range(page - leftWidth, page + rightWidth), 0, range(totalPages - sideWidth + 1, totalPages));
+                }
+                $(function () {
+                    var numberOfItems = $(".card-content .page-item").length;
+                    var limitPerPage = 10; //How many card items visible per a page
+                    var totalPages = Math.ceil(numberOfItems / limitPerPage);
+                    var paginationSize = 7; //How many page elements visible in the pagination
+                    var currentPage;
+                    function showPage(whichPage) {
+                        if (whichPage < 1 || whichPage > totalPages) return false;
+                        currentPage = whichPage;
+                        $(".card-content .page-item").hide().slice((currentPage - 1) * limitPerPage, currentPage * limitPerPage).show();
+                        $(".pagination li").slice(1, -1).remove();
+                        getPageList(totalPages, currentPage, paginationSize).forEach(item => {
+                            $("<li>").addClass("page-item").addClass(item ? "current-page" : "dots")
+                                .toggleClass("active", item === currentPage).append($("<a>").addClass("page-link")
+                                    .attr({ href: "javascript:void(0)" }).text(item || "...")).insertBefore(".next-page");
+                        });
+                        $(".previous-page").toggleClass("disable", currentPage === 1);
+                        $(".next-page").toggleClass("disable", currentPage === totalPages);
+                        return true;
+                    }
+                    $(".pagination").append(
+                        $("<li>").addClass("page-item").addClass("previous-page").append($("<a>").addClass("page-link").attr({ href: "javascript:void(0)" }).text("Prev")),
+                        $("<li>").addClass("page-item").addClass("next-page").append($("<a>").addClass("page-link").attr({ href: "javascript:void(0)" }).text("Next"))
+                    );
+                    $(".card-content").show();
+                    showPage(1);
+                    $(document).on("click", ".pagination li.current-page:not(.active)", function () {
+                        return showPage(+$(this).text());
+                    });
+                    $(".next-page").on("click", function () {
+                        return showPage(currentPage + 1);
+                    });
+                    $(".previous-page").on("click", function () {
+                        return showPage(currentPage - 1);
+                    });
+                });
+
+            }
+        });
+
+         $.ajax({
+            url: "/Home/search",
+            dataType: "json",
+            method: "GET",
+            success: function (data) {
+                //console.log(data);
+                //console.log(data[0].category_name);
+                jsonData = JSON.parse(data);
+                var script_data = '<span class="breadcrumb">@ViewBag.type @ViewBag.all / <a href="@Url.Action("Index", "Home")">@ViewBag.home</a> </span>'+
+                    '<h3>@ViewBag.type @ViewBag.all </h3>';
+                $("#top").html(script_data);
+            }
+        });
+    });
+
+
+      var selectSpecial = $('#js-select-special_Bedrooms_Bathrooms');
+        var info = selectSpecial.find('#info_Bedrooms_Bathrooms');
+        var dropdownSelect = selectSpecial.parent().find('.dropdown-select_Bedrooms_Bathrooms');
+        var listRoom = dropdownSelect.find('.list-room');
+        var btnAddRoom = $('#btn-add-room');
+
+        var selectSpecial_area_min_max = $('#js-select-special_area_min_max');
+        var info_area = selectSpecial_area_min_max.find('#info_area_min_max');
+        var dropdownSelect_area_min_max = selectSpecial_area_min_max.parent().find('.dropdown-select_area_min_max');
+        var list_area_min_max = dropdownSelect_area_min_max.find('.list-area');
+        var btnArea = $('#btn-add-room');
+
+        var selectSpecial_price_min_max = $('#js-select-special_price_min_max');
+        var info_price = selectSpecial_price_min_max.find('#info_price_min_max');
+        var dropdownSelect_price_min_max = selectSpecial_price_min_max.parent().find('.dropdown-select_price_min_max');
+        var list_price_min_max = dropdownSelect_price_min_max.find('.list-price');
+        var btnPrice = $('#btn-add-room');
+
+       // [ js-select-special_Bedrooms_Bathrooms ]
+
+        try {
+            var body = $('body,html');
+
+
+            selectSpecial.on('click', function (e) {
+                e.stopPropagation();
+                $(this).toggleClass("open");
+                dropdownSelect.toggleClass("show");
+
+                $('#js-select-special_area_min_max').removeClass('open')
+                $('#js-select-special_price_min_max').removeClass('open')
+                dropdownSelect_area_min_max.removeClass("show");
+                dropdownSelect_price_min_max.removeClass("show");
+
+
+            });
+
+            dropdownSelect.on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            body.on('click', function () {
+                selectSpecial.removeClass("open");
+                dropdownSelect.removeClass("show");
+            });
+
+
+            listRoom.on('click', '.plus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var oldValue = parseInt(qtyInput.val());
+                var newVal = oldValue + 1;
+                qtyInput.val(newVal);
+
+                updateRoom();
+            });
+
+            listRoom.on('click', '.minus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var min = qtyInput.attr('min');
+
+                var oldValue = parseInt(qtyInput.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                qtyInput.val(newVal);
+
+                updateRoom();
+            });
+
+
+
+            listRoom.on('change', '.inputQty', function () {
+                var that = $(this);
+                if (isNumber(that.val())) {
+                    var qtyVal = parseInt(that.val());
+                    if (that.val().length === 0) {
+                        qtyVal = 0;
+                    }
+
+                    if (qtyVal < 0) {
+                        qtyVal = 0;
+                    }
+                    that.val(qtyVal);
+
+                    updateRoom();
+                }
+            });
+
+            function isNumber(n) {
+                return typeof (n) != "boolean" && !isNaN(n);
+            }
+
+            btnAddRoom.on('click', function (e) {
+                e.preventDefault();
+
+                listRoom.append('<li class="list-room-sub__item">' +
+                    '                                        <ul class="list-person">' +
+                    '                                            <li class="list-room-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.Bedrooms' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity1">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                            <li class="list-room-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.Bathrooms' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity2">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                        </ul>');
+
+
+                updateRoom();
+            });
+
+
+            function countrooms() {
+                var listRoomItem = listRoom.find('.list-room__item');
+                var totalrooms = 0;
+
+                listRoomItem.each(function () {
+                    var that = $(this);
+                    var numberrooms = parseInt(that.find('.quantity1 > input').val());
+
+                    totalrooms = totalrooms + numberrooms;
+
+                });
+
+                return totalrooms;
+            }
+
+            function countBathrooms() {
+                var listRoomItem = listRoom.find('.list-room__item');
+                var totalBathrooms = 0;
+
+                listRoomItem.each(function () {
+                    var that = $(this);
+                    var numberBathrooms = parseInt(that.find('.quantity2 > input').val());
+
+                    totalBathrooms = totalBathrooms + numberBathrooms;
+                });
+
+                return totalBathrooms;
+            }
+
+            function updateRoom() {
+                var totalR = parseInt(countrooms());
+                var totalB = parseInt(countBathrooms());
+                var rooms = '@ViewBag.Bedrooms, ';
+
+                if (totalR > 1) {
+                    rooms = '@ViewBag.Bedrooms, ';
+                }
+                var infoText = totalR + ' ' + rooms + totalB + ' ' + '@ViewBag.Bathrooms';
+
+                info.val(infoText);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+          // [ js-select-special_area_min_max ]
+
+        try {
+            var body = $('body,html');
+            selectSpecial_area_min_max.on('click', function (e) {
+                e.stopPropagation();
+                $(this).toggleClass("open");
+                dropdownSelect_area_min_max.toggleClass("show");
+
+                $('#js-select-special_Bedrooms_Bathrooms').removeClass('open')
+                $('#js-select-special_price_min_max').removeClass('open')
+                dropdownSelect.removeClass("show");
+                dropdownSelect_price_min_max.removeClass("show");
+
+            });
+
+            dropdownSelect_area_min_max.on('click', function (e) {
+
+
+                e.stopPropagation();
+            });
+
+            body.on('click', function () {
+                selectSpecial_area_min_max.removeClass("open");
+                dropdownSelect_area_min_max.removeClass("show");
+            });
+
+
+            list_area_min_max.on('click', '.plus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var oldValue = parseInt(qtyInput.val());
+                var newVal = oldValue + 1;
+                qtyInput.val(newVal);
+
+                updateArea();
+            });
+
+            list_area_min_max.on('click', '.minus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var min = qtyInput.attr('min');
+
+                var oldValue = parseInt(qtyInput.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                qtyInput.val(newVal);
+
+                updateArea();
+            });
+
+
+
+            list_area_min_max.on('change', '.inputQty', function () {
+                var that = $(this);
+                if (isNumber(that.val())) {
+                    var qtyVal = parseInt(that.val());
+                    if (that.val().length === 0) {
+                        qtyVal = 0;
+                    }
+
+                    if (qtyVal < 0) {
+                        qtyVal = 0;
+                    }
+                    that.val(qtyVal);
+
+                    updateArea();
+                }
+            });
+
+            function isNumber(n) {
+                return typeof (n) != "boolean" && !isNaN(n);
+            }
+
+            btnArea.on('click', function (e) {
+                e.preventDefault();
+
+                list_area_min_max.append('<li class="list-area__item">' +
+                    '                                        <ul class="list-area-sub">' +
+                    '                                            <li class="list-area-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.area_min' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity1">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                            <li class="list-area-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.area_max' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity2">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                        </ul>');
+
+
+                updateArea();
+            });
+
+
+            function countMinArea() {
+                var listAreaItem = list_area_min_max.find('.list-area__item');
+                var totalMinArea = 0;
+
+                listAreaItem.each(function () {
+                    var that = $(this);
+                    var numberrooms = parseInt(that.find('.quantity1 > input').val());
+
+                    totalMinArea = totalMinArea + numberrooms;
+
+                });
+
+                return totalMinArea;
+            }
+
+            function countMaxArea() {
+                var listAreaItem = list_area_min_max.find('.list-area__item');
+                var totalMaxArea = 0;
+
+                listAreaItem.each(function () {
+                    var that = $(this);
+                    var numberBathrooms = parseInt(that.find('.quantity2 > input').val());
+
+                    totalMaxArea = totalMaxArea + numberBathrooms;
+                });
+
+                return totalMaxArea;
+            }
+
+            function updateArea() {
+                var totalMinArea = parseInt(countMinArea());
+                var totalMaxArea = parseInt(countMaxArea());
+                var min_area = '@ViewBag.area_min2 - ';
+
+                if (totalMinArea > 1) {
+                    min_area = '@ViewBag.area_min2 - ';
+                }
+                var infoText = totalMinArea + ' ' + min_area + totalMaxArea + ' ' + '@ViewBag.area_max2';
+
+                info_area.val(infoText);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+           // [ js-select-special_price_min_max ]
+
+        try {
+            var body = $('body,html');
+
+            selectSpecial_price_min_max.on('click', function (e) {
+                e.stopPropagation();
+                $(this).toggleClass("open");
+                dropdownSelect_price_min_max.toggleClass("show");
+
+                $('#js-select-special_Bedrooms_Bathrooms').removeClass('open')
+                $('#js-select-special_area_min_max').removeClass('open')
+                dropdownSelect.removeClass("show");
+                dropdownSelect_area_min_max.removeClass("show");
+            });
+
+            dropdownSelect_price_min_max.on('click', function (e) {
+
+
+
+                e.stopPropagation();
+            });
+
+            body.on('click', function () {
+                selectSpecial_price_min_max.removeClass("open");
+                dropdownSelect_price_min_max.removeClass("show");
+            });
+
+
+            list_price_min_max.on('click', '.plus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var oldValue = parseInt(qtyInput.val());
+                var newVal = oldValue + 1;
+                qtyInput.val(newVal);
+
+                updatePrice();
+            });
+
+            list_price_min_max.on('click', '.minus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var min = qtyInput.attr('min');
+
+                var oldValue = parseInt(qtyInput.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                qtyInput.val(newVal);
+
+                updatePrice();
+            });
+
+
+
+            list_price_min_max.on('change', '.inputQty', function () {
+                var that = $(this);
+                if (isNumber(that.val())) {
+                    var qtyVal = parseInt(that.val());
+                    if (that.val().length === 0) {
+                        qtyVal = 0;
+                    }
+
+                    if (qtyVal < 0) {
+                        qtyVal = 0;
+                    }
+                    that.val(qtyVal);
+
+                    updatePrice();
+                }
+            });
+
+            function isNumber(n) {
+                return typeof (n) != "boolean" && !isNaN(n);
+            }
+
+            btnPrice.on('click', function (e) {
+                e.preventDefault();
+
+                list_price_min_max.append('<li class="list-price__item">' +
+                    '                                        <ul class="list-price-sub">' +
+                    '                                            <li class="list-price-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.price_min' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity1">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                            <li class="list-price-sub__item">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.price_max' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity2">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                        </ul>');
+
+
+                updatePrice();
+            });
+
+
+            function countMinPrice() {
+                var listPriceItem = list_price_min_max.find('.list-price__item');
+                var totalMinPrice = 0;
+
+                listPriceItem.each(function () {
+                    var that = $(this);
+                    var numberminprice = parseInt(that.find('.quantity1 > input').val());
+
+                    totalMinPrice = totalMinPrice + numberminprice;
+
+                });
+
+                return totalMinPrice;
+            }
+
+            function countMaxPrice() {
+                var listPriceItem = list_price_min_max.find('.list-price__item');
+                var totalMaxPrice = 0;
+
+                listPriceItem.each(function () {
+                    var that = $(this);
+                    var numberMaxPrice = parseInt(that.find('.quantity2 > input').val());
+
+                    totalMaxPrice = totalMaxPrice + numberMaxPrice;
+                });
+
+                return totalMaxPrice;
+            }
+
+            function nFormatter(num, digits) {
+                const lookup = [
+                    { value: 1, symbol: "" },
+                    { value: 1e3, symbol: "k" },
+                    { value: 1e6, symbol: "M" },
+                    { value: 1e9, symbol: "G" },
+                    { value: 1e12, symbol: "T" },
+                    { value: 1e15, symbol: "P" },
+                    { value: 1e18, symbol: "E" }
+                ];
+                const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+                var item = lookup.slice().reverse().find(function (item) {
+                    return num >= item.value;
+                });
+                return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+            }
+
+
+            function updatePrice() {
+                var totalMinPrice = parseInt(countMinPrice());
+                var totalMaxPrice = parseInt(countMaxPrice());
+                var infoText = nFormatter(totalMinPrice, 0) + ' - ' + nFormatter(totalMaxPrice, 0);
+                info_price.val(infoText);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+
+        var selectSpecial_area_min_maxt2 = $('#js-select-special_area_min_maxt2');
+        var info_areat2 = selectSpecial_area_min_maxt2.find('#info_area_min_maxt2');
+        var dropdownSelect_area_min_maxt2 = selectSpecial_area_min_maxt2.parent().find('.dropdown-select_area_min_maxt2');
+        var list_area_min_maxt2 = dropdownSelect_area_min_maxt2.find('.list-areat2');
+        var btnAreat2 = $('#btn-add-room');
+
+        var selectSpecial_price_min_maxt2 = $('#js-select-special_price_min_maxt2');
+        var info_pricet2 = selectSpecial_price_min_maxt2.find('#info_price_min_maxt2');
+        var dropdownSelect_price_min_maxt2 = selectSpecial_price_min_maxt2.parent().find('.dropdown-select_price_min_maxt2');
+        var list_price_min_maxt2 = dropdownSelect_price_min_maxt2.find('.list-pricet2');
+        var btnPricet2 = $('#btn-add-room');
+          // [ js-select-special_area_min_max T2 ]
+
+        try {
+            var body = $('body,html');
+
+
+
+            selectSpecial_area_min_maxt2.on('click', function (e) {
+                e.stopPropagation();
+                $(this).toggleClass("open");
+                dropdownSelect_area_min_maxt2.toggleClass("show");
+
+                selectSpecial_price_min_maxt2.removeClass("open");
+                dropdownSelect_price_min_maxt2.removeClass("show");
+            });
+
+            dropdownSelect_area_min_maxt2.on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            body.on('click', function () {
+                selectSpecial_area_min_maxt2.removeClass("open");
+                dropdownSelect_area_min_maxt2.removeClass("show");
+            });
+
+
+            list_area_min_maxt2.on('click', '.plus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var oldValue = parseInt(qtyInput.val());
+                var newVal = oldValue + 1;
+                qtyInput.val(newVal);
+
+                updateAreat2();
+            });
+
+            list_area_min_maxt2.on('click', '.minus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var min = qtyInput.attr('min');
+
+                var oldValue = parseInt(qtyInput.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                qtyInput.val(newVal);
+
+                updateAreat2();
+            });
+
+
+
+            list_area_min_maxt2.on('change', '.inputQty', function () {
+                var that = $(this);
+                if (isNumber(that.val())) {
+                    var qtyVal = parseInt(that.val());
+                    if (that.val().length === 0) {
+                        qtyVal = 0;
+                    }
+
+                    if (qtyVal < 0) {
+                        qtyVal = 0;
+                    }
+                    that.val(qtyVal);
+
+                    updateAreat2();
+                }
+            });
+
+            function isNumber(n) {
+                return typeof (n) != "boolean" && !isNaN(n);
+            }
+
+            btnAreat2.on('click', function (e) {
+                e.preventDefault();
+
+                list_area_min_maxt2.append('<li class="list-area__itemt2">' +
+                    '                                        <ul class="list-area-subt2">' +
+                    '                                            <li class="list-area-sub__itemt2">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.area_min' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity1">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                            <li class="list-area-sub__itemt2">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.area_max' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity2">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                        </ul>');
+
+
+                updateAreat2();
+            });
+
+
+            function countMinAreat2() {
+                var listAreaItemt2 = list_area_min_maxt2.find('.list-area__itemt2');
+                var totalMinAreat2 = 0;
+
+                listAreaItemt2.each(function () {
+                    var that = $(this);
+                    var numberrooms = parseInt(that.find('.quantity1 > input').val());
+
+                    totalMinAreat2 = totalMinAreat2 + numberrooms;
+
+                });
+
+                return totalMinAreat2;
+            }
+
+            function countMaxAreat2() {
+                var listAreaItemt2 = list_area_min_maxt2.find('.list-area__itemt2');
+                var totalMaxAreat2 = 0;
+
+                listAreaItemt2.each(function () {
+                    var that = $(this);
+                    var numberBathrooms = parseInt(that.find('.quantity2 > input').val());
+
+                    totalMaxAreat2 = totalMaxAreat2 + numberBathrooms;
+                });
+
+                return totalMaxAreat2;
+            }
+
+            function updateAreat2() {
+                var totalMinAreat2 = parseInt(countMinAreat2());
+                var totalMaxAreat2 = parseInt(countMaxAreat2());
+                var min_areat2 = '@ViewBag.area_min2 - ';
+
+                if (totalMinAreat2 > 1) {
+                    min_areat2 = '@ViewBag.area_min2 - ';
+                }
+                var infoText = totalMinAreat2 + ' ' + min_areat2 + totalMaxAreat2 + ' ' + '@ViewBag.area_max2';
+
+                info_areat2.val(infoText);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+
+           // [ js-select-special_price_min_max T2 ]
+
+        try {
+            var body = $('body,html');
+
+            var selectSpecial_price_min_maxt2 = $('#js-select-special_price_min_maxt2');
+            var info_pricet2 = selectSpecial_price_min_maxt2.find('#info_price_min_maxt2');
+            var dropdownSelect_price_min_maxt2 = selectSpecial_price_min_maxt2.parent().find('.dropdown-select_price_min_maxt2');
+            var list_price_min_maxt2 = dropdownSelect_price_min_maxt2.find('.list-pricet2');
+            var btnPricet2 = $('#btn-add-room');
+
+            selectSpecial_price_min_maxt2.on('click', function (e) {
+                e.stopPropagation();
+                $(this).toggleClass("open");
+                dropdownSelect_price_min_maxt2.toggleClass("show");
+
+                selectSpecial_area_min_maxt2.removeClass("open");
+                dropdownSelect_area_min_maxt2.removeClass("show");
+            });
+
+            dropdownSelect_price_min_maxt2.on('click', function (e) {
+                e.stopPropagation();
+            });
+
+            body.on('click', function () {
+                selectSpecial_price_min_maxt2.removeClass("open");
+                dropdownSelect_price_min_maxt2.removeClass("show");
+            });
+
+
+            list_price_min_maxt2.on('click', '.plus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var oldValue = parseInt(qtyInput.val());
+                var newVal = oldValue + 1;
+                qtyInput.val(newVal);
+
+                updatePricet2();
+            });
+
+            list_price_min_maxt2.on('click', '.minus', function () {
+                var that = $(this);
+                var qtyContainer = that.parent();
+                var qtyInput = qtyContainer.find('input[type=number]');
+                var min = qtyInput.attr('min');
+
+                var oldValue = parseInt(qtyInput.val());
+                if (oldValue <= min) {
+                    var newVal = oldValue;
+                } else {
+                    var newVal = oldValue - 1;
+                }
+                qtyInput.val(newVal);
+
+                updatePricet2();
+            });
+
+
+
+            list_price_min_maxt2.on('change', '.inputQty', function () {
+                var that = $(this);
+                if (isNumber(that.val())) {
+                    var qtyVal = parseInt(that.val());
+                    if (that.val().length === 0) {
+                        qtyVal = 0;
+                    }
+
+                    if (qtyVal < 0) {
+                        qtyVal = 0;
+                    }
+                    that.val(qtyVal);
+
+                    updatePricet2();
+                }
+            });
+
+            function isNumber(n) {
+                return typeof (n) != "boolean" && !isNaN(n);
+            }
+
+            btnPricet2.on('click', function (e) {
+                e.preventDefault();
+
+                list_price_min_maxt2.append('<li class="list-price__itemt2">' +
+                    '                                        <ul class="list-price-subt2">' +
+                    '                                            <li class="list-price-sub__itemt2">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.price_min' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity1">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                            <li class="list-price-sub__itemt2">' +
+                    '                                                <span class="name">' +
+                    '                                                    @ViewBag.price_max' +
+                    '                                                </span>' +
+                    '                                                <div class="quantity quantity2">' +
+                    '                                                    <span class="minus">' +
+                    '                                                        -' +
+                    '                                                    </span>' +
+                    '                                                    <input type="number" min="0" value="0" class="inputQty">' +
+                    '                                                    <span class="plus">' +
+                    '                                                        +' +
+                    '                                                    </span>' +
+                    '                                                </div>' +
+                    '                                            </li>' +
+                    '                                        </ul>');
+
+
+                updatePricet2();
+            });
+
+
+            function countMinPricet2() {
+                var listPriceItemt2 = list_price_min_maxt2.find('.list-price__itemt2');
+                var totalMinPricet2 = 0;
+
+                listPriceItemt2.each(function () {
+                    var that = $(this);
+                    var numberminprice = parseInt(that.find('.quantity1 > input').val());
+
+                    totalMinPricet2 = totalMinPricet2 + numberminprice;
+
+                });
+
+                return totalMinPricet2;
+            }
+
+            function countMaxPricet2() {
+                var listPriceItemt2 = list_price_min_maxt2.find('.list-price__itemt2');
+                var totalMaxPricet2 = 0;
+
+                listPriceItemt2.each(function () {
+                    var that = $(this);
+                    var numberMaxPrice = parseInt(that.find('.quantity2 > input').val());
+
+                    totalMaxPricet2 = totalMaxPricet2 + numberMaxPrice;
+                });
+
+                return totalMaxPricet2;
+            }
+
+            function nFormatter(num, digits) {
+                const lookup = [
+                    { value: 1, symbol: "" },
+                    { value: 1e3, symbol: "k" },
+                    { value: 1e6, symbol: "M" },
+                    { value: 1e9, symbol: "G" },
+                    { value: 1e12, symbol: "T" },
+                    { value: 1e15, symbol: "P" },
+                    { value: 1e18, symbol: "E" }
+                ];
+                const rx = /\.0+$|(\.[0-9]*[1-9])0+$/;
+                var item = lookup.slice().reverse().find(function (item) {
+                    return num >= item.value;
+                });
+                return item ? (num / item.value).toFixed(digits).replace(rx, "$1") + item.symbol : "0";
+            }
+
+
+            function updatePricet2() {
+                var totalMinPricet2 = parseInt(countMinPricet2());
+                var totalMaxPricet2 = parseInt(countMaxPricet2());
+                var infoText = nFormatter(totalMinPricet2, 0) + ' - ' + nFormatter(totalMaxPricet2, 0);
+                info_pricet2.val(infoText);
+            }
+
+        } catch (e) {
+            console.log(e);
+        }
+    </script>
+
+}

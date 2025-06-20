@@ -1,0 +1,1422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="real_estateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="national_number" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="whatsapp_ink" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="company_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ceo_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="company_name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="comapny_location_link" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="facebook_link" Type="text" />
+          <Property Name="instagram_link" Type="text" />
+          <Property Name="twitter_link" Type="text" />
+          <Property Name="linkedin_link" Type="text" />
+          <Property Name="youtube_link" Type="text" />
+          <Property Name="comapny_video_link" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="portal_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="properties">
+          <Key>
+            <PropertyRef Name="id_properties" />
+          </Key>
+          <Property Name="id_properties" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="image_path" Type="text" Nullable="false" />
+          <Property Name="properties_type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OrginatorID" Type="nvarchar" MaxLength="200" />
+          <Property Name="agent_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="images" Type="text" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="info_propertie" Type="ntext" Nullable="false" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="map_link" Type="text" Nullable="false" />
+          <Property Name="youtube_video_link" Type="text" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="user_name" Type="nvarchar" MaxLength="150" />
+          <Property Name="login" Type="nvarchar(max)" />
+          <Property Name="password" Type="nvarchar(max)" />
+          <Property Name="isHRAdmin" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.V_AllProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_AllProperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Parking_Available" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="properties_type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="image_path" Type="text" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="Parking_Available" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="info_propertie" Type="ntext" Nullable="false" />
+          <Property Name="images" Type="text" />
+          <Property Name="price" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="map_link" Type="text" Nullable="false" />
+          <Property Name="youtube_video_link" Type="text" Nullable="false" />
+          <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="whatsapp_ink" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.V_TopOneProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_TopOneProperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Parking_Available" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="properties_type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+          <Property Name="image_path" Type="text" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="Parking_Available" Type="nvarchar" MaxLength="8" Nullable="false" />
+          <Property Name="info_propertie" Type="ntext" Nullable="false" />
+          <Property Name="images" Type="text" />
+          <Property Name="price" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="map_link" Type="text" Nullable="false" />
+          <Property Name="youtube_video_link" Type="text" Nullable="false" />
+          <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="whatsapp_ink" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.VT_agent_info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VT_agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="national_number" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="agent_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="national_number" Type="int" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="whatsapp_ink" Type="text" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.VT_Properties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VT_Properties">
+          <Key>
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="id_properties" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="image_path" Type="text" Nullable="false" />
+          <Property Name="properties_type" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="OrginatorID" Type="nvarchar" MaxLength="200" />
+          <Property Name="agent_id" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.VT_properties_info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VT_properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="images" Type="text" />
+          <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="info_propertie" Type="ntext" Nullable="false" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+          <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="map_link" Type="text" Nullable="false" />
+          <Property Name="youtube_video_link" Type="text" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__propertie__agent__075714DC">
+          <End Role="agent_info" Type="Self.agent_info" Multiplicity="1" />
+          <End Role="properties" Type="Self.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__categ__55F4C372">
+          <End Role="category" Type="Self.category" Multiplicity="1" />
+          <End Role="properties" Type="Self.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__id_pr__5BAD9CC8">
+          <End Role="properties" Type="Self.properties" Multiplicity="1" />
+          <End Role="properties_info" Type="Self.properties_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="properties">
+              <PropertyRef Name="id_properties" />
+            </Principal>
+            <Dependent Role="properties_info">
+              <PropertyRef Name="id_properties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_AllProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_Get_Properties_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="Propertie_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="SP_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="properties_type" Type="nvarchar" Mode="In" />
+          <Parameter Name="category_name" Type="nvarchar" Mode="In" />
+          <Parameter Name="city" Type="nvarchar" Mode="In" />
+          <Parameter Name="Bedrooms" Type="int" Mode="In" />
+          <Parameter Name="Bathrooms" Type="int" Mode="In" />
+          <Parameter Name="min_price" Type="decimal" Mode="In" />
+          <Parameter Name="max_price" Type="decimal" Mode="In" />
+          <Parameter Name="min_area" Type="int" Mode="In" />
+          <Parameter Name="max_area" Type="int" Mode="In" />
+          <Parameter Name="Display_type" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_search_by_category_name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="nvarchar" Mode="In" />
+          <Parameter Name="category_name" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="SP_TopOneProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="currency" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="real_estateModelStoreContainer">
+          <EntitySet Name="agent_info" EntityType="Self.agent_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="company_info" EntityType="Self.company_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="portal_users" EntityType="Self.portal_users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="properties" EntityType="Self.properties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="properties_info" EntityType="Self.properties_info" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_AllProperties" EntityType="Self.V_AllProperties" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_AllProperties].[id] AS [id], 
+    [V_AllProperties].[properties_type] AS [properties_type], 
+    [V_AllProperties].[category_name] AS [category_name], 
+    [V_AllProperties].[image_path] AS [image_path], 
+    [V_AllProperties].[title] AS [title], 
+    [V_AllProperties].[city] AS [city], 
+    [V_AllProperties].[address] AS [address], 
+    [V_AllProperties].[long_address] AS [long_address], 
+    [V_AllProperties].[id_properties] AS [id_properties], 
+    [V_AllProperties].[year_built] AS [year_built], 
+    [V_AllProperties].[Floor] AS [Floor], 
+    [V_AllProperties].[Area] AS [Area], 
+    [V_AllProperties].[Bedrooms] AS [Bedrooms], 
+    [V_AllProperties].[Bathrooms] AS [Bathrooms], 
+    [V_AllProperties].[Parking] AS [Parking], 
+    [V_AllProperties].[Parking_Available] AS [Parking_Available], 
+    [V_AllProperties].[info_propertie] AS [info_propertie], 
+    [V_AllProperties].[images] AS [images], 
+    [V_AllProperties].[price] AS [price], 
+    [V_AllProperties].[Payment_method] AS [Payment_method], 
+    [V_AllProperties].[currency] AS [currency], 
+    [V_AllProperties].[building_type] AS [building_type], 
+    [V_AllProperties].[Display_type] AS [Display_type], 
+    [V_AllProperties].[Furnishing] AS [Furnishing], 
+    [V_AllProperties].[publich_date] AS [publich_date], 
+    [V_AllProperties].[map_link] AS [map_link], 
+    [V_AllProperties].[youtube_video_link] AS [youtube_video_link], 
+    [V_AllProperties].[agent] AS [agent], 
+    [V_AllProperties].[phone_number] AS [phone_number], 
+    [V_AllProperties].[whatsapp_ink] AS [whatsapp_ink]
+    FROM [dbo].[V_AllProperties] AS [V_AllProperties]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="V_TopOneProperties" EntityType="Self.V_TopOneProperties" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [V_TopOneProperties].[id] AS [id], 
+    [V_TopOneProperties].[properties_type] AS [properties_type], 
+    [V_TopOneProperties].[category_name] AS [category_name], 
+    [V_TopOneProperties].[image_path] AS [image_path], 
+    [V_TopOneProperties].[title] AS [title], 
+    [V_TopOneProperties].[city] AS [city], 
+    [V_TopOneProperties].[address] AS [address], 
+    [V_TopOneProperties].[long_address] AS [long_address], 
+    [V_TopOneProperties].[id_properties] AS [id_properties], 
+    [V_TopOneProperties].[year_built] AS [year_built], 
+    [V_TopOneProperties].[Floor] AS [Floor], 
+    [V_TopOneProperties].[Area] AS [Area], 
+    [V_TopOneProperties].[Bedrooms] AS [Bedrooms], 
+    [V_TopOneProperties].[Bathrooms] AS [Bathrooms], 
+    [V_TopOneProperties].[Parking] AS [Parking], 
+    [V_TopOneProperties].[Parking_Available] AS [Parking_Available], 
+    [V_TopOneProperties].[info_propertie] AS [info_propertie], 
+    [V_TopOneProperties].[images] AS [images], 
+    [V_TopOneProperties].[price] AS [price], 
+    [V_TopOneProperties].[Payment_method] AS [Payment_method], 
+    [V_TopOneProperties].[currency] AS [currency], 
+    [V_TopOneProperties].[building_type] AS [building_type], 
+    [V_TopOneProperties].[Display_type] AS [Display_type], 
+    [V_TopOneProperties].[Furnishing] AS [Furnishing], 
+    [V_TopOneProperties].[publich_date] AS [publich_date], 
+    [V_TopOneProperties].[map_link] AS [map_link], 
+    [V_TopOneProperties].[youtube_video_link] AS [youtube_video_link], 
+    [V_TopOneProperties].[agent] AS [agent], 
+    [V_TopOneProperties].[phone_number] AS [phone_number], 
+    [V_TopOneProperties].[whatsapp_ink] AS [whatsapp_ink]
+    FROM [dbo].[V_TopOneProperties] AS [V_TopOneProperties]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VT_agent_info" EntityType="Self.VT_agent_info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VT_agent_info].[agent_id] AS [agent_id], 
+    [VT_agent_info].[agent] AS [agent], 
+    [VT_agent_info].[national_number] AS [national_number], 
+    [VT_agent_info].[address] AS [address], 
+    [VT_agent_info].[email] AS [email], 
+    [VT_agent_info].[phone_number] AS [phone_number], 
+    [VT_agent_info].[whatsapp_ink] AS [whatsapp_ink]
+    FROM [dbo].[VT_agent_info] AS [VT_agent_info]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VT_Properties" EntityType="Self.VT_Properties" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VT_Properties].[id_properties] AS [id_properties], 
+    [VT_Properties].[category_id] AS [category_id], 
+    [VT_Properties].[title] AS [title], 
+    [VT_Properties].[image_path] AS [image_path], 
+    [VT_Properties].[properties_type] AS [properties_type], 
+    [VT_Properties].[OrginatorID] AS [OrginatorID], 
+    [VT_Properties].[agent_id] AS [agent_id]
+    FROM [dbo].[VT_Properties] AS [VT_Properties]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VT_properties_info" EntityType="Self.VT_properties_info" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VT_properties_info].[id] AS [id], 
+    [VT_properties_info].[id_properties] AS [id_properties], 
+    [VT_properties_info].[images] AS [images], 
+    [VT_properties_info].[city] AS [city], 
+    [VT_properties_info].[address] AS [address], 
+    [VT_properties_info].[info_propertie] AS [info_propertie], 
+    [VT_properties_info].[year_built] AS [year_built], 
+    [VT_properties_info].[Bedrooms] AS [Bedrooms], 
+    [VT_properties_info].[Bathrooms] AS [Bathrooms], 
+    [VT_properties_info].[Area] AS [Area], 
+    [VT_properties_info].[Floor] AS [Floor], 
+    [VT_properties_info].[Parking] AS [Parking], 
+    [VT_properties_info].[price] AS [price], 
+    [VT_properties_info].[currency] AS [currency], 
+    [VT_properties_info].[Payment_method] AS [Payment_method], 
+    [VT_properties_info].[long_address] AS [long_address], 
+    [VT_properties_info].[building_type] AS [building_type], 
+    [VT_properties_info].[Display_type] AS [Display_type], 
+    [VT_properties_info].[Furnishing] AS [Furnishing], 
+    [VT_properties_info].[publich_date] AS [publich_date], 
+    [VT_properties_info].[map_link] AS [map_link], 
+    [VT_properties_info].[youtube_video_link] AS [youtube_video_link]
+    FROM [dbo].[VT_properties_info] AS [VT_properties_info]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__propertie__agent__075714DC" Association="Self.FK__propertie__agent__075714DC">
+            <End Role="agent_info" EntitySet="agent_info" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__categ__55F4C372" Association="Self.FK__propertie__categ__55F4C372">
+            <End Role="category" EntitySet="category" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8" Association="Self.FK__propertie__id_pr__5BAD9CC8">
+            <End Role="properties" EntitySet="properties" />
+            <End Role="properties_info" EntitySet="properties_info" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="real_estateModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="real_estateEntities1" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="SP_AllProperties_by_currency" ReturnType="Collection(real_estateModel.SP_AllProperties_by_currency_Result)">
+          <Parameter Name="currency" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_Get_Properties_by_id" ReturnType="Collection(real_estateModel.SP_Get_Properties_by_id_Result)">
+            <Parameter Name="currency" Mode="In" Type="String" />
+            <Parameter Name="Propertie_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="SP_search">
+            <Parameter Name="currency" Mode="In" Type="String" />
+            <Parameter Name="properties_type" Mode="In" Type="String" />
+            <Parameter Name="category_name" Mode="In" Type="String" />
+            <Parameter Name="city" Mode="In" Type="String" />
+            <Parameter Name="Bedrooms" Mode="In" Type="Int32" />
+            <Parameter Name="Bathrooms" Mode="In" Type="Int32" />
+            <Parameter Name="min_price" Mode="In" Type="Decimal" />
+            <Parameter Name="max_price" Mode="In" Type="Decimal" />
+            <Parameter Name="min_area" Mode="In" Type="Int32" />
+            <Parameter Name="max_area" Mode="In" Type="Int32" />
+            <Parameter Name="Display_type" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_search_by_category_name" ReturnType="Collection(real_estateModel.SP_search_by_category_name_Result)">
+            <Parameter Name="currency" Mode="In" Type="String" />
+            <Parameter Name="category_name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_TopOneProperties_by_currency" ReturnType="Collection(real_estateModel.SP_TopOneProperties_by_currency_Result)">
+          <Parameter Name="currency" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="agent_info" EntityType="real_estateModel.agent_info" />
+          <EntitySet Name="categories" EntityType="real_estateModel.category" />
+          <EntitySet Name="company_info" EntityType="real_estateModel.company_info" />
+          <EntitySet Name="portal_users" EntityType="real_estateModel.portal_users" />
+          <EntitySet Name="properties" EntityType="real_estateModel.property" />
+          <EntitySet Name="properties_info" EntityType="real_estateModel.properties_info" />
+          <EntitySet Name="users" EntityType="real_estateModel.user" />
+          <EntitySet Name="V_TopOneProperties" EntityType="real_estateModel.V_TopOneProperties" />
+          <EntitySet Name="VT_agent_info" EntityType="real_estateModel.VT_agent_info" />
+          <EntitySet Name="VT_Properties" EntityType="real_estateModel.VT_Properties" />
+          <EntitySet Name="VT_properties_info" EntityType="real_estateModel.VT_properties_info" />
+          <AssociationSet Name="FK__propertie__agent__075714DC" Association="real_estateModel.FK__propertie__agent__075714DC">
+            <End Role="agent_info" EntitySet="agent_info" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__categ__55F4C372" Association="real_estateModel.FK__propertie__categ__55F4C372">
+            <End Role="category" EntitySet="categories" />
+            <End Role="property" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8" Association="real_estateModel.FK__propertie__id_pr__5BAD9CC8">
+            <End Role="property" EntitySet="properties" />
+            <End Role="properties_info" EntitySet="properties_info" />
+          </AssociationSet>
+          <EntitySet Name="V_AllProperties" EntityType="real_estateModel.V_AllProperties" />
+          </EntityContainer>
+        <ComplexType Name="SP_AllProperties_by_currency_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category_name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="image_path" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="title" Nullable="false" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="address" Nullable="false" />
+          <Property Type="String" Name="long_address" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="id_properties" Nullable="false" />
+          <Property Type="Int32" Name="year_built" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="Bedrooms" Nullable="false" />
+          <Property Type="Int32" Name="Bathrooms" Nullable="false" />
+          <Property Type="Int32" Name="Parking" Nullable="false" />
+          <Property Type="String" Name="Parking_Available" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="info_propertie" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="images" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="price" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Payment_method" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="currency" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="building_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Display_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Furnishing" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="publich_date" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="map_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="youtube_video_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="agent" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_Get_Properties_by_id_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category_name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="image_path" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="title" Nullable="false" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="address" Nullable="false" />
+          <Property Type="String" Name="long_address" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="id_properties" Nullable="false" />
+          <Property Type="Int32" Name="year_built" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="Bedrooms" Nullable="false" />
+          <Property Type="Int32" Name="Bathrooms" Nullable="false" />
+          <Property Type="Int32" Name="Parking" Nullable="false" />
+          <Property Type="String" Name="Parking_Available" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="info_propertie" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="images" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="price" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Payment_method" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="currency" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="building_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Display_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Furnishing" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="publich_date" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="map_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="youtube_video_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="agent" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_search_by_category_name_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category_name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="image_path" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="title" Nullable="false" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="address" Nullable="false" />
+          <Property Type="String" Name="long_address" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="id_properties" Nullable="false" />
+          <Property Type="Int32" Name="year_built" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="Bedrooms" Nullable="false" />
+          <Property Type="Int32" Name="Bathrooms" Nullable="false" />
+          <Property Type="Int32" Name="Parking" Nullable="false" />
+          <Property Type="String" Name="Parking_Available" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="info_propertie" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="images" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="price" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Payment_method" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="currency" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="building_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Display_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Furnishing" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="publich_date" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="map_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="youtube_video_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="agent" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <ComplexType Name="SP_TopOneProperties_by_currency_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
+          <Property Type="String" Name="category_name" Nullable="false" MaxLength="30" />
+          <Property Type="String" Name="image_path" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="title" Nullable="false" />
+          <Property Type="String" Name="city" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="address" Nullable="false" />
+          <Property Type="String" Name="long_address" Nullable="false" MaxLength="200" />
+          <Property Type="Int32" Name="id_properties" Nullable="false" />
+          <Property Type="Int32" Name="year_built" Nullable="false" />
+          <Property Type="Int32" Name="Floor" Nullable="false" />
+          <Property Type="Int32" Name="Area" Nullable="false" />
+          <Property Type="Int32" Name="Bedrooms" Nullable="false" />
+          <Property Type="Int32" Name="Bathrooms" Nullable="false" />
+          <Property Type="Int32" Name="Parking" Nullable="false" />
+          <Property Type="String" Name="Parking_Available" Nullable="false" MaxLength="8" />
+          <Property Type="String" Name="info_propertie" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="images" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="price" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Payment_method" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="currency" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="building_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Display_type" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Furnishing" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="publich_date" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="map_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="youtube_video_link" Nullable="false" MaxLength="Max" />
+          <Property Type="String" Name="agent" Nullable="false" MaxLength="200" />
+        </ComplexType>
+        <EntityType Name="agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="national_number" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="whatsapp_ink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="properties" Relationship="real_estateModel.FK__propertie__agent__075714DC" FromRole="agent_info" ToRole="property" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="properties" Relationship="real_estateModel.FK__propertie__categ__55F4C372" FromRole="category" ToRole="property" />
+        </EntityType>
+        <EntityType Name="company_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ceo_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="company_name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="comapny_location_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="facebook_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="instagram_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="twitter_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="linkedin_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="youtube_link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="comapny_video_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="portal_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="property">
+          <Key>
+            <PropertyRef Name="id_properties" />
+          </Key>
+          <Property Name="id_properties" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="properties_type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OrginatorID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="agent_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="agent_info" Relationship="real_estateModel.FK__propertie__agent__075714DC" FromRole="property" ToRole="agent_info" />
+          <NavigationProperty Name="category" Relationship="real_estateModel.FK__propertie__categ__55F4C372" FromRole="property" ToRole="category" />
+          <NavigationProperty Name="properties_info" Relationship="real_estateModel.FK__propertie__id_pr__5BAD9CC8" FromRole="property" ToRole="properties_info" />
+        </EntityType>
+        <EntityType Name="properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_properties" Type="Int32" Nullable="false" />
+          <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="info_propertie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="year_built" Type="Int32" Nullable="false" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Parking" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Payment_method" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="long_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="building_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Display_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publich_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="map_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="youtube_video_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="property" Relationship="real_estateModel.FK__propertie__id_pr__5BAD9CC8" FromRole="properties_info" ToRole="property" />
+        </EntityType>
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="login" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isHRAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="V_TopOneProperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Parking_Available" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="properties_type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="long_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="id_properties" Type="Int32" Nullable="false" />
+          <Property Name="year_built" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Parking" Type="Int32" Nullable="false" />
+          <Property Name="Parking_Available" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="info_propertie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_method" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="building_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Display_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publich_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="map_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="youtube_video_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="agent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="whatsapp_ink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VT_agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="national_number" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="email" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="agent_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="agent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="national_number" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="whatsapp_ink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="VT_Properties">
+          <Key>
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="category_id" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="id_properties" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="Int32" Nullable="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="properties_type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="OrginatorID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="agent_id" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VT_properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_properties" Type="Int32" Nullable="false" />
+          <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="info_propertie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="year_built" Type="Int32" Nullable="false" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Parking" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="Payment_method" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="long_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="building_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Display_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publich_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="map_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="youtube_video_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__propertie__agent__075714DC">
+          <End Type="real_estateModel.agent_info" Role="agent_info" Multiplicity="1" />
+          <End Type="real_estateModel.property" Role="property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__categ__55F4C372">
+          <End Type="real_estateModel.category" Role="category" Multiplicity="1" />
+          <End Type="real_estateModel.property" Role="property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="property">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__id_pr__5BAD9CC8">
+          <End Type="real_estateModel.property" Role="property" Multiplicity="1" />
+          <End Type="real_estateModel.properties_info" Role="properties_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="property">
+              <PropertyRef Name="id_properties" />
+            </Principal>
+            <Dependent Role="properties_info">
+              <PropertyRef Name="id_properties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="V_AllProperties">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Parking_Available" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="properties_type" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="category_name" Type="String" Nullable="false" MaxLength="30" FixedLength="true" Unicode="true" />
+          <Property Name="image_path" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="title" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="long_address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="id_properties" Type="Int32" Nullable="false" />
+          <Property Name="year_built" Type="Int32" Nullable="false" />
+          <Property Name="Floor" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" />
+          <Property Name="Parking" Type="Int32" Nullable="false" />
+          <Property Name="Parking_Available" Type="String" Nullable="false" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="info_propertie" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="images" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Payment_method" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="currency" Type="String" Nullable="false" MaxLength="5" FixedLength="true" Unicode="true" />
+          <Property Name="building_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Display_type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="publich_date" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="map_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="youtube_video_link" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="agent" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="phone_number" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="whatsapp_ink" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="real_estateModelStoreContainer" CdmEntityContainer="real_estateEntities1">
+          <FunctionImportMapping FunctionImportName="SP_AllProperties_by_currency" FunctionName="real_estateModel.Store.SP_AllProperties_by_currency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="real_estateModel.SP_AllProperties_by_currency_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_Get_Properties_by_id" FunctionName="real_estateModel.Store.SP_Get_Properties_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="real_estateModel.SP_Get_Properties_by_id_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_search" FunctionName="real_estateModel.Store.SP_search" />
+          <FunctionImportMapping FunctionImportName="SP_search_by_category_name" FunctionName="real_estateModel.Store.SP_search_by_category_name">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="real_estateModel.SP_search_by_category_name_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SP_TopOneProperties_by_currency" FunctionName="real_estateModel.Store.SP_TopOneProperties_by_currency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="real_estateModel.SP_TopOneProperties_by_currency_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="agent_info">
+            <EntityTypeMapping TypeName="real_estateModel.agent_info">
+              <MappingFragment StoreEntitySet="agent_info">
+                <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="national_number" ColumnName="national_number" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="real_estateModel.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="company_info">
+            <EntityTypeMapping TypeName="real_estateModel.company_info">
+              <MappingFragment StoreEntitySet="company_info">
+                <ScalarProperty Name="comapny_video_link" ColumnName="comapny_video_link" />
+                <ScalarProperty Name="youtube_link" ColumnName="youtube_link" />
+                <ScalarProperty Name="linkedin_link" ColumnName="linkedin_link" />
+                <ScalarProperty Name="twitter_link" ColumnName="twitter_link" />
+                <ScalarProperty Name="instagram_link" ColumnName="instagram_link" />
+                <ScalarProperty Name="facebook_link" ColumnName="facebook_link" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="comapny_location_link" ColumnName="comapny_location_link" />
+                <ScalarProperty Name="company_name" ColumnName="company_name" />
+                <ScalarProperty Name="ceo_name" ColumnName="ceo_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="portal_users">
+            <EntityTypeMapping TypeName="real_estateModel.portal_users">
+              <MappingFragment StoreEntitySet="portal_users">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="properties">
+            <EntityTypeMapping TypeName="real_estateModel.property">
+              <MappingFragment StoreEntitySet="properties">
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="OrginatorID" ColumnName="OrginatorID" />
+                <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="properties_info">
+            <EntityTypeMapping TypeName="real_estateModel.properties_info">
+              <MappingFragment StoreEntitySet="properties_info">
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="real_estateModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="isHRAdmin" ColumnName="isHRAdmin" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="user_name" ColumnName="user_name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_TopOneProperties">
+            <EntityTypeMapping TypeName="real_estateModel.V_TopOneProperties">
+              <MappingFragment StoreEntitySet="V_TopOneProperties">
+                <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VT_agent_info">
+            <EntityTypeMapping TypeName="real_estateModel.VT_agent_info">
+              <MappingFragment StoreEntitySet="VT_agent_info">
+                <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="national_number" ColumnName="national_number" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VT_Properties">
+            <EntityTypeMapping TypeName="real_estateModel.VT_Properties">
+              <MappingFragment StoreEntitySet="VT_Properties">
+                <ScalarProperty Name="agent_id" ColumnName="agent_id" />
+                <ScalarProperty Name="OrginatorID" ColumnName="OrginatorID" />
+                <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="category_id" ColumnName="category_id" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VT_properties_info">
+            <EntityTypeMapping TypeName="real_estateModel.VT_properties_info">
+              <MappingFragment StoreEntitySet="VT_properties_info">
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_AllProperties">
+            <EntityTypeMapping TypeName="real_estateModel.V_AllProperties">
+              <MappingFragment StoreEntitySet="V_AllProperties">
+                <ScalarProperty Name="whatsapp_ink" ColumnName="whatsapp_ink" />
+                <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+                <ScalarProperty Name="agent" ColumnName="agent" />
+                <ScalarProperty Name="youtube_video_link" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="map_link" ColumnName="map_link" />
+                <ScalarProperty Name="publich_date" ColumnName="publich_date" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="Display_type" ColumnName="Display_type" />
+                <ScalarProperty Name="building_type" ColumnName="building_type" />
+                <ScalarProperty Name="currency" ColumnName="currency" />
+                <ScalarProperty Name="Payment_method" ColumnName="Payment_method" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="images" ColumnName="images" />
+                <ScalarProperty Name="info_propertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Parking_Available" ColumnName="Parking_Available" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="year_built" ColumnName="year_built" />
+                <ScalarProperty Name="id_properties" ColumnName="id_properties" />
+                <ScalarProperty Name="long_address" ColumnName="long_address" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image_path" ColumnName="image_path" />
+                <ScalarProperty Name="category_name" ColumnName="category_name" />
+                <ScalarProperty Name="properties_type" ColumnName="properties_type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

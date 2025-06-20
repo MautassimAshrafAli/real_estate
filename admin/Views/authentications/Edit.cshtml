@@ -1,0 +1,170 @@
+﻿@model admin.Models.portal_users
+
+@{
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/authentications/Login");
+    }
+    ViewBag.Title = "Edit | Authentication";
+    ViewBag.page_name = "Edit | Authentication";
+
+}
+
+@section menu{
+
+
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Home")" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+                Home
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","authentications")" class="nav-link active">
+            <i class="nav-icon fas fa-unlock"></i>
+            <p>
+                Authentications
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Users")" class="nav-link">
+            <i class="nav-icon fas fa-user-plus"></i>
+            <p>
+                Users
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","company")" class="nav-link">
+            <i class="nav-icon fas fa-archway"></i>
+            <p>
+                Company
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Departments")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Departments
+            </p>
+        </a>
+    </li>
+
+
+
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" value="@Session["email"]" id="Temail" />
+
+    <section class="content">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card card-primary">
+
+                    <div class="card-header">
+                        <h3 class="card-title">User info</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.id)
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.login, htmlAttributes: new { @class = "control-label col-md-2", style = "max-width: fit-content;" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control", onkeyup = "EmailCheck()", onchange = "EmailCheck()", id = "email", pattern = "[^ @]*@[^ @]*", title = "***@***.*** EX email@gmail.com" } })
+                                <p id="status" />
+                                @Html.ValidationMessageFor(model => model.login, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.password, htmlAttributes: new { @class = "control-label col-md-2", style = "max-width: fit-content;" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+    <div class="row" style="display: inline-block;margin-bottom: 11px;">
+        <div class="col-12">
+            <a href="@Url.Action("Index", "authentications")" class="btn btn-secondary">Back to List</a>
+            <input type="submit" id="submint" value="Save Changes" class="btn btn-success" style="margin-left: 18px;">
+        </div>
+    </div>
+
+
+}
+
+@section script{
+
+    <script>
+
+            function EmailCheck() {
+              $("#status").html("Checking...");
+              $.post("@Url.Action("checkEmailAvailability", "users")",
+                  {
+                      email: $("#email").val()
+                  },
+                  function (data) {
+                      if (data == 0) {
+                          if ($("#email").val() == '') {
+                              document.getElementById("submint").disabled = true;
+                              $("#status").html('<font color="Red">Please enter your email</font>');
+                              $("#email").css("border-color", "Red");
+                          } else {
+                              document.getElementById("submint").disabled = false;
+                              $("#status").html('<font color="Green">Email is available</font>');
+                              $("#email").css("border-color", "Green");
+                          }
+                      } else {
+                          if ($("#email").val() == $("#Temail").val()) {
+                              document.getElementById("submint").disabled = false;
+                              $("#status").html('<font color="Green">This is your curnt email</font>');
+                              $("#email").css("border-color", "Green");
+                          } else {
+                              document.getElementById("submint").disabled = true;
+                              $("#status").html('<font color="Red">That email is already exists. Try Another email</font>');
+                              $("#email").css("border-color", "Red");
+                          }
+
+                      }
+                  });
+          }
+
+
+    </script>
+
+}
+

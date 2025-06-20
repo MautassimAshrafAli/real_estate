@@ -1,0 +1,686 @@
+﻿<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="REALESTATEModel_ora.Store" Alias="Self" Provider="Devart.Data.Oracle" ProviderManifestToken="Oracle, 11.2.0.2" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="REALESTATEEntities_oraStoreContainer">
+          <EntitySet Name="agent_infos" EntityType="REALESTATEModel_ora.Store.agent_info" store:Type="Tables" Schema="REAL_ESTATE" Table="agent_info" />
+          <EntitySet Name="categories" EntityType="REALESTATEModel_ora.Store.category" store:Type="Tables" Schema="REAL_ESTATE" Table="category" />
+          <EntitySet Name="company_infos" EntityType="REALESTATEModel_ora.Store.company_info" store:Type="Tables" Schema="REAL_ESTATE" Table="company_info" />
+          <EntitySet Name="properties" EntityType="REALESTATEModel_ora.Store.properties" store:Type="Tables" Schema="REAL_ESTATE" Table="properties" />
+          <EntitySet Name="properties_infos" EntityType="REALESTATEModel_ora.Store.properties_info" store:Type="Tables" Schema="REAL_ESTATE" Table="properties_info" />
+          <EntitySet Name="V_ALLPROPERTIES" EntityType="REALESTATEModel_ora.Store.V_ALLPROPERTIES" store:Type="Views" Schema="REAL_ESTATE" Table="V_ALLPROPERTIES" />
+          <AssociationSet Name="SYS_C007816" Association="REALESTATEModel_ora.Store.SYS_C007816">
+            <End Role="category" EntitySet="categories" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007817" Association="REALESTATEModel_ora.Store.SYS_C007817">
+            <End Role="agent_info" EntitySet="agent_infos" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007818" Association="REALESTATEModel_ora.Store.SYS_C007818">
+            <End Role="properties" EntitySet="properties" />
+            <End Role="properties_info" EntitySet="properties_infos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="agent" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="national_number" Type="decimal" Scale="0" />
+          <Property Name="address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="email" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="phone_number" Type="decimal" Scale="0" />
+          <Property Name="whatsapp_ink" Type="NVARCHAR2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="category_name" Type="NVARCHAR2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="company_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="ceo_name" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="company_name" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="comapny_location_link" Type="NVARCHAR2" MaxLength="350" />
+          <Property Name="address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="email" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="phone_number" Type="decimal" Scale="0" />
+          <Property Name="facebook_link" Type="NVARCHAR2" MaxLength="100" />
+          <Property Name="instagram_link" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="twitter_link" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="linkedin_link" Type="NVARCHAR2" MaxLength="100" />
+          <Property Name="youtube_link" Type="NVARCHAR2" MaxLength="100" />
+          <Property Name="comapny_video_link" Type="NVARCHAR2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="properties">
+          <Key>
+            <PropertyRef Name="id_properties" />
+          </Key>
+          <Property Name="id_properties" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="category_id" Type="decimal" Scale="0" />
+          <Property Name="title" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="image_path" Type="NVARCHAR2" MaxLength="150" />
+          <Property Name="properties_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="OrginatorID" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="agent_id" Type="decimal" Scale="0" />
+        </EntityType>
+        <EntityType Name="properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="id_properties" Type="decimal" Scale="0" />
+          <Property Name="images" Type="NCLOB" />
+          <Property Name="city" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="info_propertie" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="year_built" Type="decimal" Scale="0" />
+          <Property Name="Bedrooms" Type="decimal" Scale="0" />
+          <Property Name="Bathrooms" Type="decimal" Scale="0" />
+          <Property Name="Area" Type="decimal" Scale="0" />
+          <Property Name="Floor" Type="decimal" Scale="0" />
+          <Property Name="Parking" Type="decimal" Scale="0" />
+          <Property Name="price" Type="decimal" Scale="0" />
+          <Property Name="currency" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="Payment_method" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="long_address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="building_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="Display_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="Furnishing" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="publich_date" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="map_link" Type="NVARCHAR2" MaxLength="350" />
+          <Property Name="youtube_video_link" Type="NVARCHAR2" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="V_ALLPROPERTIES">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="id_properties" />
+          </Key>
+          <Property Name="id" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="properties_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="category_name" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="image_path" Type="NVARCHAR2" MaxLength="150" />
+          <Property Name="title" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="city" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="long_address" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="id_properties" Type="decimal" Nullable="false" Scale="0" />
+          <Property Name="year_built" Type="decimal" Scale="0" />
+          <Property Name="Floor" Type="decimal" Scale="0" />
+          <Property Name="Area" Type="decimal" Scale="0" />
+          <Property Name="Bedrooms" Type="decimal" Scale="0" />
+          <Property Name="Bathrooms" Type="decimal" Scale="0" />
+          <Property Name="Parking" Type="decimal" Scale="0" />
+          <Property Name="PARKING_AVAILABLE" Type="VARCHAR2" MaxLength="15" />
+          <Property Name="info_propertie" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="images" Type="NCLOB" />
+          <Property Name="price" Type="decimal" Scale="0" />
+          <Property Name="Payment_method" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="currency" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="building_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="Display_type" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="Furnishing" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="publich_date" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="map_link" Type="NVARCHAR2" MaxLength="350" />
+          <Property Name="youtube_video_link" Type="NVARCHAR2" MaxLength="100" />
+          <Property Name="agent" Type="NVARCHAR2" MaxLength="50" />
+          <Property Name="phone_number" Type="decimal" Scale="0" />
+          <Property Name="whatsapp_ink" Type="NVARCHAR2" MaxLength="50" />
+        </EntityType>
+        <Association Name="SYS_C007816">
+          <End Role="category" Type="REALESTATEModel_ora.Store.category" Multiplicity="0..1" />
+          <End Role="properties" Type="REALESTATEModel_ora.Store.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007817">
+          <End Role="agent_info" Type="REALESTATEModel_ora.Store.agent_info" Multiplicity="0..1" />
+          <End Role="properties" Type="REALESTATEModel_ora.Store.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007818">
+          <End Role="properties" Type="REALESTATEModel_ora.Store.properties" Multiplicity="0..1" />
+          <End Role="properties_info" Type="REALESTATEModel_ora.Store.properties_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="properties">
+              <PropertyRef Name="id_properties" />
+            </Principal>
+            <Dependent Role="properties_info">
+              <PropertyRef Name="id_properties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_SEARCH" devart:ResultSetParameterName="CUR" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REAL_ESTATE" StoreFunctionName="SP_SEARCH">
+          <Parameter Name="P_CURRENCY" Type="NVARCHAR2" Mode="In" />
+          <Parameter Name="P_PROPERTIES_TYPE" Type="NVARCHAR2" Mode="In" />
+          <Parameter Name="P_CATEGORY_NAME" Type="NVARCHAR2" Mode="In" />
+          <Parameter Name="P_CITY" Type="NVARCHAR2" Mode="In" />
+          <Parameter Name="P_BEDROOMS" Type="decimal" Mode="In" />
+          <Parameter Name="P_BATHROOMS" Type="decimal" Mode="In" />
+          <Parameter Name="P_MIN_PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="P_MAX_PRICE" Type="decimal" Mode="In" />
+          <Parameter Name="P_MIN_AREA" Type="decimal" Mode="In" />
+          <Parameter Name="P_MAX_AREA" Type="decimal" Mode="In" />
+          <Parameter Name="P_DISPLAY_TYPE" Type="NVARCHAR2" Mode="In" />
+        </Function>
+        <Function Name="SP_ALLPROPERTIES_BY_CURRENCY" devart:ResultSetParameterName="CUR" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REAL_ESTATE" StoreFunctionName="SP_ALLPROPERTIES_BY_CURRENCY">
+          <Parameter Name="P_CURRENCY" Type="NVARCHAR2" Mode="In" />
+        </Function>
+        <Function Name="SP_TOPONEPROPERTIES_BY_C" devart:ResultSetParameterName="CUR" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REAL_ESTATE" StoreFunctionName="SP_TOPONEPROPERTIES_BY_C">
+          <Parameter Name="P_CURRENCY" Type="NVARCHAR2" Mode="In" />
+        </Function>
+        <Function Name="SP_GET_PROPERTIES_BY_ID" devart:ResultSetParameterName="CUR" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="REAL_ESTATE" StoreFunctionName="SP_GET_PROPERTIES_BY_ID">
+          <Parameter Name="P_CURRENCY" Type="NVARCHAR2" Mode="In" />
+          <Parameter Name="PROPERTIE_ID" Type="decimal" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="REALESTATEModel_ora" Alias="Self" d4p1:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" annotation:UseStrongSpatialTypes="false" xmlns:d4p1="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="REALESTATEEntities_ora" annotation:LazyLoadingEnabled="true" ed:Guid="9b069576-7d67-489f-b0fd-4d684288fb24">
+          <EntitySet Name="AgentInfos" EntityType="REALESTATEModel_ora.AgentInfo" />
+          <EntitySet Name="Categories" EntityType="REALESTATEModel_ora.Category" />
+          <EntitySet Name="CompanyInfos" EntityType="REALESTATEModel_ora.CompanyInfo" />
+          <EntitySet Name="Properties" EntityType="REALESTATEModel_ora.Property" />
+          <EntitySet Name="PropertiesInfos" EntityType="REALESTATEModel_ora.PropertiesInfo" />
+          <EntitySet Name="VALLPROPERTIES" EntityType="REALESTATEModel_ora.VALLPROPERTY" />
+          <AssociationSet Name="SYS_C007816Set" Association="REALESTATEModel_ora.SYS_C007816">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007817Set" Association="REALESTATEModel_ora.SYS_C007817">
+            <End Role="AgentInfo" EntitySet="AgentInfos" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="SYS_C007818Set" Association="REALESTATEModel_ora.SYS_C007818">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="PropertiesInfos" EntitySet="PropertiesInfos" />
+          </AssociationSet>
+          <FunctionImport Name="SPSEARCH" ed:Guid="55e35019-2765-42e4-affe-91d223c678aa">
+            <Parameter Name="P_CURRENCY" Mode="In" Type="String" />
+            <Parameter Name="P_PROPERTIES_TYPE" Mode="In" Type="String" />
+            <Parameter Name="P_CATEGORY_NAME" Mode="In" Type="String" />
+            <Parameter Name="P_CITY" Mode="In" Type="String" />
+            <Parameter Name="P_BEDROOMS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_BATHROOMS" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MIN_PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MAX_PRICE" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MIN_AREA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MAX_AREA" Mode="In" Type="Decimal" />
+            <Parameter Name="P_DISPLAY_TYPE" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPALLPROPERTIESBYCURRENCY" ReturnType="Collection(REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult)" ed:Guid="b72f2a0b-541f-49c4-93a2-8ce886338de1">
+            <Parameter Name="P_CURRENCY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPTOPONEPROPERTIESBYC" ReturnType="Collection(REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult)" ed:Guid="7c83f4c6-860d-4ec0-899b-4dc5e6f3f1b9">
+            <Parameter Name="P_CURRENCY" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPGETPROPERTIESBYID" ReturnType="Collection(REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult)" ed:Guid="f06807ae-997d-41d3-929a-4f45333fb054">
+            <Parameter Name="P_CURRENCY" Mode="In" Type="String" />
+            <Parameter Name="PROPERTIE_ID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AgentInfo" ed:Guid="954e29d5-d467-4f54-b410-34a4cc22724f">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="cb4aba07-9efe-4693-b917-00914ff83a37" />
+          <Property Name="Agent" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="f25db436-07c6-4332-8341-2500ddaf02ec" />
+          <Property Name="NationalNumber" Type="Decimal" Scale="0" ed:ValidateRequired="true" ed:Guid="ab89be85-5de3-4b28-b150-cf92128ad00b" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="19c33229-07c7-458f-a734-fabde111b026" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="f156982b-8582-43e6-9973-c8c7a9bb332a" />
+          <Property Name="PhoneNumber" Type="Decimal" Scale="0" ed:ValidateRequired="true" ed:Guid="1c419889-76d4-48d7-b156-2eb447c0af62" />
+          <Property Name="WhatsappInk" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="e4043726-d4d6-46bc-98ed-74423420c822" />
+          <NavigationProperty Name="Properties" Relationship="REALESTATEModel_ora.SYS_C007817" FromRole="AgentInfo" ToRole="Properties" ed:Guid="49357fde-df23-4976-bd31-941a10eacf72" />
+        </EntityType>
+        <EntityType Name="Category" ed:Guid="0e3804f5-e1a0-4e04-b206-763e51d4e97e">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="68590fbd-c069-4531-bd07-21fbf7e8654e" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="22c9f229-b351-4995-894b-7cc7d60e9ab5" />
+          <NavigationProperty Name="Properties" Relationship="REALESTATEModel_ora.SYS_C007816" FromRole="Category" ToRole="Properties" ed:Guid="ad12339b-76ff-4424-85a6-cf2d8f960369" />
+        </EntityType>
+        <EntityType Name="CompanyInfo" ed:Guid="f0ae3341-7be2-46a9-adca-a10b1509bbb0">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="ae4f4159-517e-46ae-83fe-fe5ae246f7d3" />
+          <Property Name="CeoName" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="7a70bd93-4881-4c74-8276-db06a5f998f4" />
+          <Property Name="CompanyName" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="64d087c7-7758-40dd-bb1f-029d1d0d03ab" />
+          <Property Name="ComapnyLocationLink" Type="String" MaxLength="350" Unicode="true" ed:ValidateMaxLength="350" ed:ValidateRequired="false" ed:Guid="f1726371-884c-48f2-b319-893118c7e17a" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="a8eb37a7-2e13-4bdd-8950-b2846c0fb6b3" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="2b1311b9-dedc-4ffd-985d-6ac23f3baa06" />
+          <Property Name="PhoneNumber" Type="Decimal" Scale="0" ed:ValidateRequired="true" ed:Guid="79c6519e-643e-4cc9-ba16-2060e104c70e" />
+          <Property Name="FacebookLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="76001342-04d6-4bef-91f5-ee39c2c7709f" />
+          <Property Name="InstagramLink" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="651eb988-05dc-45ee-b1a4-d2b156048fad" />
+          <Property Name="TwitterLink" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="1f7fa83f-255c-41f1-919a-72a137d6dca2" />
+          <Property Name="LinkedinLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="d07eb686-f481-4f4c-8fa1-d8dcfba1e468" />
+          <Property Name="YoutubeLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="f5458ea9-292d-411d-b863-356a46544298" />
+          <Property Name="ComapnyVideoLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="43650f89-46a2-43a9-8e5b-861b31e3e630" />
+        </EntityType>
+        <EntityType Name="Property" ed:Guid="614460d9-6be8-46e3-b356-54d0886f28d4">
+          <Key>
+            <PropertyRef Name="IdProperties" />
+          </Key>
+          <Property Name="IdProperties" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="a932ad1c-d8dc-4739-b906-27789e30e618" />
+          <Property Name="CategoryId" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="b799ca46-1d41-43ef-bf26-372b08e2db73" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="226857f7-4f1f-458f-86a4-4687e61d4bc1" />
+          <Property Name="ImagePath" Type="String" MaxLength="150" Unicode="true" ed:ValidateMaxLength="150" ed:ValidateRequired="false" ed:Guid="22ab4bbc-9aec-42e1-9224-dd8cb38f7f8b" />
+          <Property Name="PropertiesType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="bf2356a0-7151-49e4-8fd7-e2dd2d5dc46f" />
+          <Property Name="OrginatorID" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2d871464-74ed-454d-b2f9-5bbe5feed0f0" />
+          <Property Name="AgentId" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="251b9bb2-f73b-4416-89f1-ae0cb65176b6" />
+          <NavigationProperty Name="Category" Relationship="REALESTATEModel_ora.SYS_C007816" FromRole="Properties" ToRole="Category" ed:Guid="1dd80863-cb4c-4436-9ec2-9c6cece0fc89" />
+          <NavigationProperty Name="AgentInfo" Relationship="REALESTATEModel_ora.SYS_C007817" FromRole="Properties" ToRole="AgentInfo" ed:Guid="b4ead0d2-f275-4c70-9307-765aa49a9144" />
+          <NavigationProperty Name="PropertiesInfos" Relationship="REALESTATEModel_ora.SYS_C007818" FromRole="Property" ToRole="PropertiesInfos" ed:Guid="a87f2131-c154-4b52-87b1-c41f1e2e77dc" />
+        </EntityType>
+        <EntityType Name="PropertiesInfo" ed:Guid="e5a3a5fc-e636-4713-9a8e-3ef067106ea4">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="ec507c2b-5820-4b67-8209-1acca8bf7ac3" />
+          <Property Name="IdProperties" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="d6348a5a-0774-4eae-ae1c-4bb9bc00e4be" />
+          <Property Name="Images" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="05d1d73e-ec66-4a28-8228-6c9b6d927371" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="5886281f-2086-440c-aad3-5a76768d7c4b" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="9a391d32-9235-4a67-bf26-26622389164b" />
+          <Property Name="InfoPropertie" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="5878c00f-c2dd-4c02-8082-f49615da8af3" />
+          <Property Name="YearBuilt" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="3b885d00-3462-4f8d-9d9b-be7ccc8e2bc2" />
+          <Property Name="Bedrooms" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="26901446-3ba3-4a21-8ee0-a09092d7d494" />
+          <Property Name="Bathrooms" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="8818467a-1754-45ad-b94f-149364d43f29" />
+          <Property Name="Area" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="c11f2fb5-4e31-43ed-b259-a661cb4da249" />
+          <Property Name="Floor" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="3fb76562-6055-4f34-8a2c-9bc06303755d" />
+          <Property Name="Parking" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="7b7f125d-74db-472e-80ea-4f6d1671817a" />
+          <Property Name="Price" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="79a3159d-ea16-432c-993e-3126203df1b0" />
+          <Property Name="Currency" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="08fb5f88-0ec1-49cb-909b-23fd929f0f31" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="3bf076b6-b6ee-40fe-8ea8-f7a9928ddb48" />
+          <Property Name="LongAddress" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="452362c4-eb9d-407c-bb93-0643e0c82044" />
+          <Property Name="BuildingType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="000bc299-72a0-47d8-adf0-90c865708bb8" />
+          <Property Name="DisplayType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="06f9672e-06b2-4cb3-8153-2990e3b93a5d" />
+          <Property Name="Furnishing" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="e40ae38b-074f-42ab-a41d-d265b28e5f7b" />
+          <Property Name="PublichDate" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="9702e70a-2118-4c22-9560-971bf94c773c" />
+          <Property Name="MapLink" Type="String" MaxLength="350" Unicode="true" ed:ValidateMaxLength="350" ed:ValidateRequired="false" ed:Guid="de5f3a88-0523-4786-894f-e75515a97e37" />
+          <Property Name="YoutubeVideoLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="3997b386-91ee-4a91-9c47-3feebae3d406" />
+          <NavigationProperty Name="Property" Relationship="REALESTATEModel_ora.SYS_C007818" FromRole="PropertiesInfos" ToRole="Property" ed:Guid="4ebc5ac7-3bf7-40e0-a33f-df6960658f20" />
+        </EntityType>
+        <EntityType Name="VALLPROPERTY" ed:Guid="277defc4-158b-44f4-9334-100de61cd589">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="IdProperties" />
+          </Key>
+          <Property Name="Id" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="22bcae3e-49a3-4b7d-bc25-29b77356993b" />
+          <Property Name="PropertiesType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="6cdfb0f4-df4c-40bf-8526-c2b0d76fd859" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="9612a345-178b-4d6b-9849-4233e0aa5018" />
+          <Property Name="ImagePath" Type="String" MaxLength="150" Unicode="true" ed:ValidateMaxLength="150" ed:ValidateRequired="false" ed:Guid="49dab94b-4ca5-47bb-94ba-745cd6dbba7b" />
+          <Property Name="Title" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="1a85ad69-74d8-48af-852d-c3f2bddbe1c7" />
+          <Property Name="City" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="db99c7a9-e3d1-4980-96b9-6e71616dfce8" />
+          <Property Name="Address" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="6d5cb99d-acde-498b-abe0-a3907b743e25" />
+          <Property Name="LongAddress" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="044e60cd-2ba6-403c-99d4-94ba458ded61" />
+          <Property Name="IdProperties" Type="Decimal" Nullable="false" Scale="0" ed:ValidateRequired="true" ed:Guid="176e61a9-533e-48db-9630-cfc0fe91126b" />
+          <Property Name="YearBuilt" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="136875c5-b257-4029-8167-2d6d7ab20d6c" />
+          <Property Name="Floor" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="dea91b06-587f-42d9-9bb9-899024b27d84" />
+          <Property Name="Area" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="3bee0bbf-fd9f-49e0-8d3d-8d70af85a284" />
+          <Property Name="Bedrooms" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="81b434ba-d3dc-4730-9fc2-2808db91d0a2" />
+          <Property Name="Bathrooms" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="8f30c2a3-bcb4-4c28-ae00-dcb09b278b11" />
+          <Property Name="Parking" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="05cdd0be-1f95-4e01-9b6b-a4bb38e5b5a3" />
+          <Property Name="PARKINGAVAILABLE" Type="String" MaxLength="15" ed:ValidateMaxLength="15" ed:ValidateRequired="false" ed:Guid="aeebdaab-34dc-4dfd-a013-b8985f68e718" />
+          <Property Name="InfoPropertie" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="8082de63-3884-4db5-9bfd-e9ca4f931fa2" />
+          <Property Name="Images" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="8244b77d-36fd-4e34-9e3e-a7a07cc734fc" />
+          <Property Name="Price" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="48f5c8e0-98ba-41f6-a855-95272d192356" />
+          <Property Name="PaymentMethod" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="6dde89d3-6154-4eaa-a112-c7136f1cec7d" />
+          <Property Name="Currency" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="bd3f1509-32db-42d6-a806-71cb8d0ee13e" />
+          <Property Name="BuildingType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="e314fce9-bfd6-41f3-99b5-b97d134cb056" />
+          <Property Name="DisplayType" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="3e47495b-1663-42e9-8ca1-a9e3d4839e83" />
+          <Property Name="Furnishing" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="8d5af17b-dbc8-49cf-9532-dee56e9fc30b" />
+          <Property Name="PublichDate" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="c204c33d-7b3f-43f6-849d-a7378e7c3e3c" />
+          <Property Name="MapLink" Type="String" MaxLength="350" Unicode="true" ed:ValidateMaxLength="350" ed:ValidateRequired="false" ed:Guid="f98591fc-c66f-4fed-94f0-c0bcf4a75364" />
+          <Property Name="YoutubeVideoLink" Type="String" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="false" ed:Guid="30fd0551-8b55-4877-9f4c-51fd9c1a23dc" />
+          <Property Name="Agent" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="2ab14a44-147d-4bfd-82e2-86ca51690dae" />
+          <Property Name="PhoneNumber" Type="Decimal" Scale="0" ed:ValidateRequired="false" ed:Guid="5558785f-8f10-4101-997c-8812bc008e1e" />
+          <Property Name="WhatsappInk" Type="String" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="false" ed:Guid="960feabf-2c4b-458e-b625-d6a1f9d57f5b" />
+        </EntityType>
+        <ComplexType Name="SPALLPROPERTIESBYCURRENCYResult" ed:Guid="35ca503c-f8b4-4785-9b5a-4d536624b072">
+          <Property Name="Id" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="c439068a-ce14-4873-aca5-c6e419dc232f" />
+          <Property Name="PropertiesType" Type="String" ed:ValidateRequired="false" ed:Guid="8693c1c3-6890-44b4-8e01-91b9303b7423" />
+          <Property Name="CategoryName" Type="String" ed:ValidateRequired="false" ed:Guid="307741b7-afe6-4be9-bd7a-cefabfc51f13" />
+          <Property Name="ImagePath" Type="String" ed:ValidateRequired="false" ed:Guid="120b71fc-4c49-439d-bdd6-a4beb2b7f55d" />
+          <Property Name="Title" Type="String" ed:ValidateRequired="false" ed:Guid="80157f76-c93b-40ab-a0b0-06ae4dbd1d2c" />
+          <Property Name="City" Type="String" ed:ValidateRequired="false" ed:Guid="9e703823-3420-4704-bb50-34bb9ee6f356" />
+          <Property Name="Address" Type="String" ed:ValidateRequired="false" ed:Guid="fbf6bc16-a79b-4e56-a488-813dadb97214" />
+          <Property Name="LongAddress" Type="String" ed:ValidateRequired="false" ed:Guid="b570e3b2-2e15-4648-b7fc-405c7e230dd2" />
+          <Property Name="IdProperties" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="951631f9-bfbd-46f7-902a-3f425bff8b73" />
+          <Property Name="YearBuilt" Type="Decimal" ed:ValidateRequired="false" ed:Guid="c87553d8-3710-4356-a17a-775c48edef2e" />
+          <Property Name="Floor" Type="Decimal" ed:ValidateRequired="false" ed:Guid="a2c934e0-c424-4834-a409-c86407af8707" />
+          <Property Name="Area" Type="Decimal" ed:ValidateRequired="false" ed:Guid="01bac5f5-ce41-4134-8fdb-bd797fe2bf76" />
+          <Property Name="Bedrooms" Type="Decimal" ed:ValidateRequired="false" ed:Guid="cad5b753-f19a-4dec-9492-72e79c502063" />
+          <Property Name="Bathrooms" Type="Decimal" ed:ValidateRequired="false" ed:Guid="c5aaa12f-4e27-4bd4-8b29-b89365fb502a" />
+          <Property Name="Parking" Type="Decimal" ed:ValidateRequired="false" ed:Guid="34d90c35-0dc0-457b-9766-b1f4270923b8" />
+          <Property Name="PARKINGAVAILABLE" Type="String" ed:ValidateRequired="false" ed:Guid="bf649b59-18a8-47b9-99ad-482275fd10ee" />
+          <Property Name="InfoPropertie" Type="String" ed:ValidateRequired="false" ed:Guid="1a6a0cf6-9400-4398-b618-1aa86516d4c5" />
+          <Property Name="Images" Type="String" ed:ValidateRequired="false" ed:Guid="2453be44-a65e-41b9-b622-1950be9eec10" />
+          <Property Name="Price" Type="Decimal" ed:ValidateRequired="false" ed:Guid="452c68b7-bd7b-48ea-9d30-41e83bddba5e" />
+          <Property Name="PaymentMethod" Type="String" ed:ValidateRequired="false" ed:Guid="3c97422d-713d-4008-8348-3fb872b38dad" />
+          <Property Name="Currency" Type="String" ed:ValidateRequired="false" ed:Guid="fede0ebb-dcad-4ac4-8665-b35bb78e063a" />
+          <Property Name="BuildingType" Type="String" ed:ValidateRequired="false" ed:Guid="bb497ea2-41cf-4812-8eb2-e5e401450772" />
+          <Property Name="DisplayType" Type="String" ed:ValidateRequired="false" ed:Guid="7536380a-df7f-4954-9275-961a461f6e8e" />
+          <Property Name="Furnishing" Type="String" ed:ValidateRequired="false" ed:Guid="4d8f99e0-68d9-4699-bc37-05e38c254b3f" />
+          <Property Name="PublichDate" Type="String" ed:ValidateRequired="false" ed:Guid="c496de92-1096-4720-aaf6-799edcb9e627" />
+          <Property Name="MapLink" Type="String" ed:ValidateRequired="false" ed:Guid="ed94fd71-a5c8-4c78-988e-4e8f2bc5f658" />
+          <Property Name="YoutubeVideoLink" Type="String" ed:ValidateRequired="false" ed:Guid="7ccdd243-67a0-427e-88b5-72b6b5c52ecb" />
+          <Property Name="Agent" Type="String" ed:ValidateRequired="false" ed:Guid="01e40a1f-6e46-4432-a2f5-1831beffdfca" />
+          <Property Name="PhoneNumber" Type="Decimal" ed:ValidateRequired="false" ed:Guid="49084817-4fe7-4d48-a500-1d38ad1a9e63" />
+          <Property Name="WhatsappInk" Type="String" ed:ValidateRequired="false" ed:Guid="73da55e6-0f7a-4f91-9ea2-bdb9797df193" />
+        </ComplexType>
+        <Association Name="SYS_C007816" ed:Guid="1cb3f492-e2dc-446e-a6a7-0f95994927e4">
+          <End Role="Category" Type="REALESTATEModel_ora.Category" Multiplicity="0..1" />
+          <End Role="Properties" Type="REALESTATEModel_ora.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007817" ed:Guid="b98ee0a7-c3ff-4d5f-abf7-2709b243fb8e">
+          <End Role="AgentInfo" Type="REALESTATEModel_ora.AgentInfo" Multiplicity="0..1" />
+          <End Role="Properties" Type="REALESTATEModel_ora.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInfo">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SYS_C007818" ed:Guid="feb96b00-c788-48f6-a312-c0f2ddc7db5c">
+          <End Role="Property" Type="REALESTATEModel_ora.Property" Multiplicity="0..1" />
+          <End Role="PropertiesInfos" Type="REALESTATEModel_ora.PropertiesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="IdProperties" />
+            </Principal>
+            <Dependent Role="PropertiesInfos">
+              <PropertyRef Name="IdProperties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- MSL content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="REALESTATEEntities_oraStoreContainer" CdmEntityContainer="REALESTATEEntities_ora">
+          <EntitySetMapping Name="AgentInfos">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.AgentInfo">
+              <MappingFragment StoreEntitySet="agent_infos">
+                <ScalarProperty Name="AgentId" ColumnName="agent_id" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="NationalNumber" ColumnName="national_number" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.Category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="CategoryId" ColumnName="category_id" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfos">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.CompanyInfo">
+              <MappingFragment StoreEntitySet="company_infos">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CeoName" ColumnName="ceo_name" />
+                <ScalarProperty Name="CompanyName" ColumnName="company_name" />
+                <ScalarProperty Name="ComapnyLocationLink" ColumnName="comapny_location_link" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="FacebookLink" ColumnName="facebook_link" />
+                <ScalarProperty Name="InstagramLink" ColumnName="instagram_link" />
+                <ScalarProperty Name="TwitterLink" ColumnName="twitter_link" />
+                <ScalarProperty Name="LinkedinLink" ColumnName="linkedin_link" />
+                <ScalarProperty Name="YoutubeLink" ColumnName="youtube_link" />
+                <ScalarProperty Name="ComapnyVideoLink" ColumnName="comapny_video_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.Property">
+              <MappingFragment StoreEntitySet="properties">
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="CategoryId" ColumnName="category_id" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="OrginatorID" ColumnName="OrginatorID" />
+                <ScalarProperty Name="AgentId" ColumnName="agent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertiesInfos">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.PropertiesInfo">
+              <MappingFragment StoreEntitySet="properties_infos">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VALLPROPERTIES">
+            <EntityTypeMapping TypeName="REALESTATEModel_ora.VALLPROPERTY">
+              <MappingFragment StoreEntitySet="V_ALLPROPERTIES">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="PARKINGAVAILABLE" ColumnName="PARKING_AVAILABLE" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPSEARCH" FunctionName="REALESTATEModel_ora.Store.SP_SEARCH" />
+          <FunctionImportMapping FunctionImportName="SPALLPROPERTIESBYCURRENCY" FunctionName="REALESTATEModel_ora.Store.SP_ALLPROPERTIES_BY_CURRENCY">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="PARKINGAVAILABLE" ColumnName="PARKING_AVAILABLE" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPTOPONEPROPERTIESBYC" FunctionName="REALESTATEModel_ora.Store.SP_TOPONEPROPERTIES_BY_C">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="PARKINGAVAILABLE" ColumnName="PARKING_AVAILABLE" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPGETPROPERTIESBYID" FunctionName="REALESTATEModel_ora.Store.SP_GET_PROPERTIES_BY_ID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="REALESTATEModel_ora.SPALLPROPERTIESBYCURRENCYResult">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="PARKINGAVAILABLE" ColumnName="PARKING_AVAILABLE" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <edmx:Diagrams>
+      <Diagram Name="Main" />
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

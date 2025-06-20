@@ -1,0 +1,50 @@
+﻿@model admin.Models.portal_users
+@{
+    ViewBag.Title = "Real Estate login";
+}
+
+
+@section login{
+
+
+    <!-- Automatic element centering -->
+    <div class="lockscreen-wrapper">
+        <div class="lockscreen-logo">
+            <b>Real</b>estate<sup><sup style="font-size:10px;font-weight:bold"></sup></sup>
+        </div>
+
+        <!-- START LOCK SCREEN ITEM -->
+        <div class="lockscreen-item">
+            <!-- lockscreen image -->
+            <div class="lockscreen-image">
+                <img src="~/AdminLTE/dist/img/user_l.png" alt="User Image">
+            </div>
+            @using (Html.BeginForm("Auth", "authentications", FormMethod.Post, htmlAttributes: new { enctype = "multipart/form-data", @class = "lockscreen-credentials" }))
+            {
+
+                @Html.AntiForgeryToken()
+
+                <div class="input-group">
+                    @Html.EditorFor(model => model.login, new { htmlAttributes = new { @class = "form-control", type = "email", placeholder = "Email", style = "border-radius:0px;" } })
+                </div>
+
+                <div class="input-group">
+                    @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", type = "password", placeholder = "password", style = "border-radius:0px;" } })
+                    <div class="input-group-append">
+                        <button type="submit" class="btn">
+                            <i class="fas fa-arrow-right text-muted"></i>
+                        </button>
+                    </div>
+                </div>
+            }
+            <!-- /.lockscreen credentials -->
+        </div>
+        <label class="field-validation-error" style="color:red;width: fit-content;display: block;margin-left: auto;margin-right: auto;">@TempData["msg"]</label>
+
+        <div class="lockscreen-footer text-center">
+            <strong>Copyright &copy; @DateTime.Now.Year Real Estate.</strong>
+            All rights reserved.
+        </div>
+    </div>
+
+}

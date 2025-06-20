@@ -1,0 +1,74 @@
+﻿@model admin.Models.agent_info
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>agent_info</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.agent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.agent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.national_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.national_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.whatsapp_ink)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.whatsapp_ink)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.property.type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.property.type)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

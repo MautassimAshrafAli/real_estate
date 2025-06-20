@@ -1,0 +1,229 @@
+﻿@{
+
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/authentications/Login");
+    }
+
+    ViewBag.Title = "Home | Dashboard";
+    ViewBag.page_name = "Home | Dashboard";
+}
+
+@section Preloader{
+    <!-- Preloader -->
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="~/AdminLTE/dist/img/logo1.png" alt="AdminLTELogo" height="54" width="320">
+    </div>
+}
+
+@section menu{
+
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Home")" class="nav-link active">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+                Home
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","authentications")" class="nav-link">
+            <i class="nav-icon fas fa-unlock"></i>
+            <p>
+                Authentications
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Users")" class="nav-link">
+            <i class="nav-icon fas fa-user-plus"></i>
+            <p>
+                Users
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","categories")" class="nav-link">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+                Categorys
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties_info")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","agent_info")" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+                Agent Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","company_info")" class="nav-link">
+            <i class="nav-icon fas fa-city"></i>
+            <p>
+                Company Info
+            </p>
+        </a>
+    </li>
+
+
+}
+
+<!-- Small boxes (Stat box) -->
+<div class="row">
+
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-success">
+            <div class="inner">
+                <h3>@ViewBag.authentications_count</h3>
+
+                <p>Users has authentication</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-ios-unlocked"></i>
+            </div>
+            <a href="@Url.Action("Index", "authentications")" class="small-box-footer">Info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-warning">
+            <div class="inner">
+                <h3>@ViewBag.users_count</h3>
+
+                <p>User Registrations</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-person-add"></i>
+            </div>
+            <a href="@Url.Action("Index", "Users")" class="small-box-footer">Users info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-info">
+            <div class="inner">
+                <h3>@ViewBag.company_count</h3>
+
+                <p>Company</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-location"></i>
+            </div>
+            <a href="@Url.Action("Index","company")" class="small-box-footer">Company info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-6">
+        <!-- small box -->
+        <div class="small-box bg-danger">
+            <div class="inner">
+                <h3>@ViewBag.departments_count</h3>
+
+                <p>User Department</p>
+            </div>
+            <div class="icon">
+                <i class="ion ion-settings"></i>
+            </div>
+            <a href="@Url.Action("Index", "Departments")" class="small-box-footer">User department info <i class="fas fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+
+</div>
+<!-- /.row -->
+<!-- Main row -->
+<div class="row">
+    <!-- Left col -->
+    <section class="col-lg-7 connectedSortable">
+        <!-- /.card -->
+        <!--/.direct-chat -->
+        <!-- TO DO List -->
+        <!-- /.card -->
+    </section>
+    <!-- /.Left col -->
+    <!-- right col (We are only adding the ID to make the widgets sortable)-->
+    <section class="col-lg-5 connectedSortable">
+
+        <!--Not use-->
+        <!-- Map card -->
+        <div class="card bg-gradient-primary" style="display:none">
+            <!-- /.card-body-->
+            <div class="card-footer bg-transparent">
+                <div class="row">
+                    <div class="col-4 text-center">
+                        <div id="sparkline-1"></div>
+                        <div class="text-white">Visitors</div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-4 text-center">
+                        <div id="sparkline-2"></div>
+                        <div class="text-white">Online</div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-4 text-center">
+                        <div id="sparkline-3"></div>
+                        <div class="text-white">Sales</div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+
+
+        <!-- Calendar -->
+        <div class="card bg-gradient-success">
+            <div class="card-header border-0">
+
+                <h3 class="card-title">
+                    <i class="far fa-calendar-alt"></i>
+                    Calendar
+                </h3>
+                <!-- tools card -->
+                <div class="card-tools">
+                    <button type="button" class="btn btn-success btn-sm" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+                <!-- /. tools -->
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body pt-0">
+                <!--The calendar -->
+                <div id="calendar" style="width: 100%"></div>
+            </div>
+            <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+    </section>
+    <!-- right col -->
+</div>

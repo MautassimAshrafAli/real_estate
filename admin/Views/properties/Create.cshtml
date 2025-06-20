@@ -1,0 +1,156 @@
+﻿@model admin.Models.property
+
+@{
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/authentications/Login");
+    }
+
+    ViewBag.Title = "Create | Property";
+    ViewBag.page_name = "Create | Property";
+}
+
+
+
+@section menu{
+
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Home")" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+                Home
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","authentications")" class="nav-link">
+            <i class="nav-icon fas fa-unlock"></i>
+            <p>
+                Authentications
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Users")" class="nav-link active">
+            <i class="nav-icon fas fa-user-plus"></i>
+            <p>
+                Users
+            </p>
+        </a>
+    </li>
+    <li class="nav-item">
+        <a href="@Url.Action("Index","company")" class="nav-link">
+            <i class="nav-icon fas fa-archway"></i>
+            <p>
+                Company
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Departments")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Departments
+            </p>
+        </a>
+    </li>
+
+
+}
+
+
+<h5 class="text-success">@TempData["msg"]</h5>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <section class="content">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card card-primary">
+
+                    <div class="card-header">
+                        <h3 class="card-title">User info</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                       
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.category_id, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.category_id, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.category_id, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.type, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.type, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.type, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.title, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.title, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.title, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.image_path, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.image_path, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.image_path, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.properties_type, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.properties_type, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.properties_type, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                
+
+            </div>
+        </div>
+
+    </section>
+
+    <div class="row" style="display: inline-block;margin-bottom: 11px;">
+        <div class="col-12">
+            <a href="@Url.Action("Index", "properties")" class="btn btn-secondary">Back to List</a>
+            <input type="submit" id="submint" value="Create new Properties" class="btn btn-success" style="margin-left: 18px;">
+        </div>
+    </div>
+
+}

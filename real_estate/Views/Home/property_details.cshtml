@@ -1,0 +1,144 @@
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var data = (Dictionary<string, string>)ViewBag.data;
+}
+
+
+<div class="page-heading header-text">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="breadcrumb">@data["category_name"] / <a href="@Url.Action("Index", "Home")">@ViewBag.home</a> </span>
+                <h3>@data["title"]</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="single-property section">
+    <div class="container">
+        <div class="row" style="flex-direction: row-reverse;">
+            <div class="col-lg-8">
+                <div class="main-image">
+                    <img src="@data["image_path"]" alt="">
+                </div>
+                <div class="main-content">
+                    <div style="display: flex;flex-direction: row-reverse;">
+                        <span class="category">@data["category_name"]</span>
+                    </div>
+                    <h4 style="unicode-bidi: plaintext;margin-bottom: 15px;">@data["price"]  @data["currency"]</h4>
+                    <h6 style=" text-align: right; margin-bottom: 17px;">@data["long_address"]</h6>
+                    <ul style="border-bottom: 1px solid #eaeaea; margin-bottom: 30px; padding-bottom: 30px; direction: rtl; font-size: 15px; color: #4a4a4a; display: flex;">
+                        <li> <i class="fa-solid fa-bed"></i> <span>@data["Bedrooms"]</span></li>
+                        <li style="margin-right: 8px;"><i class="fa-solid fa-sink"></i>  <span> @data["Bathrooms"] </span></li>
+                        <li style="margin-right: 8px;"><i class="fa-solid fa-car"></i> <span> @data["Parking"]</span></li>
+                        <li style="border-left:1px solid #b7b5b5;padding-left:8px;margin-right: 8px;"><i class="fa-solid fa-building"></i> <span>@data["Floor"]</span></li>
+                        <li style="margin-right:8px;">@ViewBag.Area_card: <span> @data["Area"]  @ViewBag.m</span></li>
+                    </ul>
+                    <h5 style=" text-align: right; margin-bottom: 17px;">@data["title"]</h5>
+                    <p style="text-align: right;">
+                        @data["info_propertie"]
+                    </p>
+                </div>
+
+               
+            </div>
+            <div class="col-lg-4">
+                <div class="info-table">
+                    <ul>
+                        <li style="display: flex;gap: 34px;">
+                            <i class="fa-solid fa-building" style="font-size: 34px;color: #ee7550;"></i>
+                            <h4>@data["building_type"]<br><span>@ViewBag.building</span></h4>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <i class="fa-solid fa-couch" style="font-size: 34px;color: #ee7550;"></i>
+                            <h4>@data["Furnishing"]<br><span>@ViewBag.Furnishing</span></h4>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <i class="fa-solid fa-house" style="font-size: 34px;color: #ee7550;"></i>
+                            <h4>@data["category_name"]<br><span>@ViewBag.type</span></h4>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <i class="fa-solid fa-sign-hanging" style="font-size: 34px;color: #ee7550;"></i>
+                            <h4>@data["Display_type"]<br><span>@ViewBag.Display_type</span></h4>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <i class="fa-regular fa-calendar-days" style="font-size: 34px;color: #ee7550;"></i>
+                            <h4 style="unicode-bidi: plaintext;">@data["publich_date"]<br><span>@ViewBag.publich</span></h4>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <p style="margin:auto;"><strong>@data["agent"]</strong>@ViewBag.agent</p>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <h5 style="margin:auto;">#@data["id"] </h5>
+                        </li>
+                        <li style="display: flex;gap: 34px;">
+                            <button class="book" style="margin:auto;" data-bs-toggle="modal" data-bs-target="@ViewBag.model@data["id"]">@ViewBag.book</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="section best-deal">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="tabs-content">
+                    <div class="row">
+                        <div class="nav-wrapper ">
+                            <ul class="nav nav-tabs" role="tablist" style="margin-top: -64px; margin-bottom: 0px; margin-right: 59px;">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="video-tab" data-bs-toggle="tab" data-bs-target="#video" type="button" role="tab" aria-controls="video" aria-selected="true">@ViewBag.video</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="map-tab" data-bs-toggle="tab" data-bs-target="#map" type="button" role="tab" aria-controls="map" aria-selected="false">@ViewBag.map</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="images-tab" data-bs-toggle="tab" data-bs-target="#images" type="button" role="tab" aria-controls="images" aria-selected="false">@ViewBag.image</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="video" role="tabpanel" aria-labelledby="video-tab" style="height: 788px;">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="video-frame">
+                                            <iframe style="border-radius: 10px; height: 499px;" width="100%" height="100%" src="@data["youtube_video_link"]" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            <div class="tab-pane fade" id="map" role="tabpanel" aria-labelledby="map-tab">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div id="map">
+                                            <iframe src="@data["map_link"]"
+                                                    width="100%" height="500px" frameborder="0"
+                                                    style="border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);"
+                                                    allowfullscreen=""></iframe>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="images" role="tabpanel" aria-labelledby="images-tab">
+                                <div class="row">
+                                    <div class="gallery">
+                                        @foreach (var img in ViewBag.images)
+                                        {
+                                            <a href="@img" data-lightbox="mygallery" data-title="" ><img src="@img" /></a>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

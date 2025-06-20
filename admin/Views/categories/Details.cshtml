@@ -1,0 +1,147 @@
+﻿@model admin.Models.category
+
+@{
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/authentications/Login");
+    }
+    ViewBag.Title = "Details | category";
+    ViewBag.page_name = "Details | category";
+}
+
+@section menu{
+
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Home")" class="nav-link">
+            <i class="nav-icon fas fa-home"></i>
+            <p>
+                Home
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","authentications")" class="nav-link">
+            <i class="nav-icon fas fa-unlock"></i>
+            <p>
+                Authentications
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","Users")" class="nav-link">
+            <i class="nav-icon fas fa-user-plus"></i>
+            <p>
+                Users
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","categories")" class="nav-link active">
+            <i class="nav-icon fas fa-tags"></i>
+            <p>
+                Categorys
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","properties_info")" class="nav-link">
+            <i class="nav-icon fas fa-building"></i>
+            <p>
+                Properties Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","agent_info")" class="nav-link">
+            <i class="nav-icon fas fa-user"></i>
+            <p>
+                Agent Info
+            </p>
+        </a>
+    </li>
+
+    <li class="nav-item">
+        <a href="@Url.Action("Index","company_info")" class="nav-link">
+            <i class="nav-icon fas fa-city"></i>
+            <p>
+                Company Info
+            </p>
+        </a>
+    </li>
+
+
+}
+
+
+<div>
+    <section class="content">
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="card card-primary">
+
+                    <div class="card-header">
+                        <h3 class="card-title">category info</h3>
+
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <dl class="dl-horizontal">
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.category_name)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.category_name)
+                            </dd>
+
+                        </dl>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row" style="display: inline-block;margin-bottom: 11px;">
+            <div class="col-12">
+                <a href="@Url.Action("Index", "categories")" class="btn btn-secondary">Back to List</a>
+                <a href="@Url.Action("Edit", "categories",new { id = Model.category_id})" class="btn btn-secondary" style="margin-left: 18px;">Edit</a>
+            </div>
+        </div>
+
+    }
+</div>
+
+

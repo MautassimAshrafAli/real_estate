@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900;1000&display=swap" rel="stylesheet">
+
+    <title>Real Estate</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="~/Content/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- Additional CSS Files -->
+    <link href="~/Content/assets/css/fontawesome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/assets/css/owl.css">
+    <link rel="stylesheet" href="~/Content/assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="~/Content/assets/css/templatemo-villa-agency.css">
+
+
+    <!-- Icons font CSS-->
+    <link href="~/Content/search/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/search/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Vendor CSS-->
+    <link href="~/Content/search/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/search/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    <!-- Main CSS-->
+    <link href="~/Content/search/css/main.css" rel="stylesheet" media="all">
+
+    <!--popup_box-->
+    <link href="~/Content/assets/css/popup_box.css" rel="stylesheet" />
+    <!--gallery-->
+    <link href="~/Content/assets/css/gallery.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/lightbox.min.css" rel="stylesheet" />
+    <script src="~/Content/assets/js/lightbox-plus-jquery.min.js"></script>
+
+    <link href="~/Content/assets/css/pagination.css" rel="stylesheet" />
+
+
+</head>
+
+<body>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="js-preloader" class="js-preloader">
+        <div class="preloader-inner">
+            <span class="dot"></span>
+            <div class="dots">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Preloader End ***** -->
+
+    <div class="sub-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-md-8" id="email_location">
+
+                </div>
+                <div class="col-lg-4 col-md-4" id="social_links">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="sub-header">
+        <div style="width: fit-content;margin: auto;">
+            <a href="/Home/Index">
+                <img src="~/Content/assets/images/real_estate_logo.png" style="width: 33%; height: 33%; display: block; margin: auto;" />
+            </a>
+        </div>
+    </div>
+    <main>
+        @RenderBody()
+
+        <div id="agent_info">
+
+
+        </div>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div>
+                <p>
+                    Copyright © 2023 Real Estate,All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/assets/js/isotope.min.js"></script>
+    <script src="~/Content/assets/js/owl-carousel.js"></script>
+    <script src="~/Content/assets/js/counter.js"></script>
+    <script src="~/Content/assets/js/custom.js"></script>
+    <script src="~/Content/assets/js/jquery-3.5.1.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="~/Content/search/vendor/select2/select2.min.js"></script>
+    <script src="~/Content/search/vendor/jquery-validate/jquery.validate.min.js"></script>
+    <script src="~/Content/search/vendor/bootstrap-wizard/bootstrap.min.js"></script>
+    <script src="~/Content/search/vendor/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
+    <script src="~/Content/search/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Content/search/vendor/datepicker/daterangepicker.js"></script>
+    <script src="~/Content/assets/js/popup_box.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/Content/search/js/global.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $.ajax({
+                url: "/Home/company",
+                dataType: "json",
+                method: "GET",
+                success: function (data) {
+                    //console.log(data);
+                    //console.log(data[0]);
+                    jsonData = JSON.parse(data);
+                    var script_data_email_location = ''
+                    var script_data_social_links = ''
+                    var script_data_map = ''
+                    var script_data_video = ''
+                    script_data_email_location = '<ul class="info">' +
+                        '<li><i class="fa fa-envelope"></i>' + jsonData[0].email + '</li>' +
+                        '<li><i class="fa fa-map"></i>' + jsonData[0].address + '</li>' +
+                        '</ul>';
+                    $("#email_location").html(script_data_email_location);
+                    script_data_social_links = '<ul class="social-links">' +
+                        '<li><a href="' + jsonData[0].facebook_link + '"><i class="fab fa-facebook"></i></a></li>' +
+                        '<li><a href="' + jsonData[0].twitter_link + '" target="_blank"><i class="fab fa-twitter"></i></a></li>' +
+                        '<li><a href="' + jsonData[0].linkedin_link + '"><i class="fab fa-linkedin"></i></a></li>' +
+                        '<li><a href="' + jsonData[0].instagram_link + '"><i class="fab fa-instagram"></i></a></li>' +
+                        '</ul>';
+                    $("#social_links").html(script_data_social_links);
+
+                    script_data_map = ' <iframe src="' + jsonData[0].comapny_location_link + '"' +
+                        'width = "100%" height = "500px" frameborder = "0"' +
+                        'style = "border:0; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.15);"' +
+                        'allowfullscreen = "" ></iframe > ';
+                    $("#map").html(script_data_map);
+
+                    script_data_video = '<iframe width="100%" height="100%" src="' + jsonData[0].comapny_video_link + '" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+                    $("#video").html(script_data_video);
+                    //console.log(script_data_video);
+
+
+                }
+            });
+            $.ajax({
+                url: "/Home/AllProperties",
+                dataType: "json",
+                method: "GET",
+                success: function (data) {
+                    //console.log(data);
+                    //console.log(data[0]);
+                    jsonData = JSON.parse(data);
+                    var script_data = ''
+                    for (var i = 0; i < jsonData.length; i++) {
+                        script_data += '<div class="modal fade" id="myModel' + jsonData[i].id + '" tabindex="-1" aria-labelledby="myModelLabel" aria-hidden="true">' +
+                            '<div class="modal-dialog" >' +
+                            '<div class="modal-content">' +
+                            '<div class="modal-header">' +
+                            '<h5 class="modal-title" id="myModelLabel">حجز موعد زياره</h5>' +
+                            '<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>' +
+                            '</div>' +
+                            '<div class="modal-body">' +
+                            '<p style="text-align: right;">معلومات عن وكيل العقار</p>' +
+                            '<p style="text-align: right; unicode-bidi: plaintext;">الاسم: <strong>' + jsonData[i].agent + '</strong></p>' +
+                            '<p style="text-align: right; unicode-bidi: plaintext;">رقم الهاتف: <strong><a href="tel:' + jsonData[i].phone_number + '">' + jsonData[i].phone_number + '</a></strong></p>' +
+                            '<p style="text-align: right; unicode-bidi: plaintext;">عنوان العقار: <strong>' + jsonData[i].title + '</strong></p>' +
+                            '<p style="text-align: right; unicode-bidi: plaintext;">نوع العقار: <strong>' + jsonData[i].category_name + ' - ' + jsonData[i].display_type + '</strong></p>' +
+                            '<p style="text-align: right; unicode-bidi: plaintext;">رقم المرجعي: <strong>#' + jsonData[i].id + '</strong></p>' +
+                            '<p style="text-align: right;">تواصل عبر</p>' +
+                            '<div class="d-flex align-items-center icons" style="flex-direction: row-reverse;">' +
+                            '<a href="' + jsonData[i].whatsapp_ink + '" class="fs-5 d-flex align-items-center justify-content-center">' +
+                            '    <span class="fab fa-whatsapp"></span>' +
+                            '</a>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div >';
+                    }
+
+                    $("#agent_info").html(script_data);
+
+
+                }
+            });
+
+        });
+    </script>
+    <link href="~/Content/search/css/jquery-ui.css" rel="stylesheet" />
+    <script src="~/Content/search/js/jquery-1.1-.2.js"></script>
+    <script src="~/Content/search/js/jquery-ui.js"></script>
+    @RenderSection("script", required: false)
+
+</body>
+
+</html>

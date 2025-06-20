@@ -1,0 +1,767 @@
+﻿<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RealEstateModel_mysql.Store" Alias="Self" Provider="Devart.Data.MySql" ProviderManifestToken="MySQL, 5.5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:devart="http://devart.com/schemas/edml/StorageSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="RealEstateEntities_mysqlStoreContainer">
+          <EntitySet Name="agent_infos" EntityType="RealEstateModel_mysql.Store.agent_info" store:Type="Tables" Schema="real_estate" Table="agent_info" />
+          <EntitySet Name="categories" EntityType="RealEstateModel_mysql.Store.category" store:Type="Tables" Schema="real_estate" Table="category" />
+          <EntitySet Name="company_infos" EntityType="RealEstateModel_mysql.Store.company_info" store:Type="Tables" Schema="real_estate" Table="company_info" />
+          <EntitySet Name="portal_users" EntityType="RealEstateModel_mysql.Store.portal_users" store:Type="Tables" Schema="real_estate" Table="portal_users" />
+          <EntitySet Name="properties" EntityType="RealEstateModel_mysql.Store.properties" store:Type="Tables" Schema="real_estate" Table="properties" />
+          <EntitySet Name="properties_infos" EntityType="RealEstateModel_mysql.Store.properties_info" store:Type="Tables" Schema="real_estate" Table="properties_info" />
+          <EntitySet Name="users" EntityType="RealEstateModel_mysql.Store.users" store:Type="Tables" Schema="real_estate" Table="users" />
+          <EntitySet Name="v_allproperties" EntityType="RealEstateModel_mysql.Store.v_allproperties" store:Type="Views" Schema="real_estate" Table="v_allproperties" />
+          <AssociationSet Name="FK__propertie__agent__075714DC" Association="RealEstateModel_mysql.Store.FK__propertie__agent__075714DC">
+            <End Role="agent_info" EntitySet="agent_infos" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__categ__55F4C372" Association="RealEstateModel_mysql.Store.FK__propertie__categ__55F4C372">
+            <End Role="category" EntitySet="categories" />
+            <End Role="properties" EntitySet="properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8" Association="RealEstateModel_mysql.Store.FK__propertie__id_pr__5BAD9CC8">
+            <End Role="properties" EntitySet="properties" />
+            <End Role="properties_info" EntitySet="properties_infos" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="agent_info">
+          <Key>
+            <PropertyRef Name="agent_id" />
+          </Key>
+          <Property Name="agent_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="agent" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="national_number" Type="int" Nullable="false" />
+          <Property Name="address" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="phone_number" Type="varchar" Nullable="false" MaxLength="25" Collation="utf8mb4_general_ci" />
+          <Property Name="whatsapp_ink" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="category_id" />
+          </Key>
+          <Property Name="category_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="category_name" Type="char" Nullable="false" MaxLength="30" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <EntityType Name="company_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ceo_name" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="company_name" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="comapny_location_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="address" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="email" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="phone_number" Type="varchar" Nullable="false" MaxLength="25" Collation="utf8mb4_general_ci" />
+          <Property Name="facebook_link" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="instagram_link" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="twitter_link" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="linkedin_link" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="youtube_link" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="comapny_video_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <EntityType Name="portal_users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="login" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <EntityType Name="properties">
+          <Key>
+            <PropertyRef Name="id_properties" />
+          </Key>
+          <Property Name="id_properties" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="category_id" Type="int" Nullable="false" />
+          <Property Name="title" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="image_path" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="properties_type" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="OrginatorID" Type="varchar" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="agent_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="properties_info">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="images" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="address" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="info_propertie" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="currency" Type="char" Nullable="false" MaxLength="5" Collation="utf8mb4_general_ci" />
+          <Property Name="Payment_method" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="long_address" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="building_type" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="Display_type" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="Furnishing" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="publich_date" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="map_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="youtube_video_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="user_name" Type="varchar" MaxLength="150" Collation="utf8mb4_general_ci" />
+          <Property Name="login" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="password" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="isHRAdmin" Type="boolean" />
+        </EntityType>
+        <EntityType Name="v_allproperties">
+          <Documentation>
+            <Summary>VIEW</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="properties_type" />
+            <PropertyRef Name="category_name" />
+            <PropertyRef Name="image_path" />
+            <PropertyRef Name="title" />
+            <PropertyRef Name="city" />
+            <PropertyRef Name="address" />
+            <PropertyRef Name="long_address" />
+            <PropertyRef Name="id_properties" />
+            <PropertyRef Name="year_built" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="Parking_Available" />
+            <PropertyRef Name="info_propertie" />
+            <PropertyRef Name="price" />
+            <PropertyRef Name="Payment_method" />
+            <PropertyRef Name="currency" />
+            <PropertyRef Name="building_type" />
+            <PropertyRef Name="Display_type" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="publich_date" />
+            <PropertyRef Name="map_link" />
+            <PropertyRef Name="youtube_video_link" />
+            <PropertyRef Name="agent" />
+            <PropertyRef Name="phone_number" />
+            <PropertyRef Name="whatsapp_ink" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="properties_type" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="category_name" Type="char" Nullable="false" MaxLength="30" Collation="utf8mb4_general_ci" />
+          <Property Name="image_path" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="title" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="city" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="address" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="long_address" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="id_properties" Type="int" Nullable="false" />
+          <Property Name="year_built" Type="int" Nullable="false" />
+          <Property Name="Floor" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="Bedrooms" Type="int" Nullable="false" />
+          <Property Name="Bathrooms" Type="int" Nullable="false" />
+          <Property Name="Parking" Type="int" Nullable="false" />
+          <Property Name="Parking_Available" Type="varchar" Nullable="false" MaxLength="8" Collation="utf8_general_ci" />
+          <Property Name="info_propertie" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="images" Type="longtext" Collation="utf8mb4_general_ci" />
+          <Property Name="price" Type="decimal" Nullable="false" Precision="10" Scale="2" />
+          <Property Name="Payment_method" Type="varchar" Nullable="false" MaxLength="100" Collation="utf8mb4_general_ci" />
+          <Property Name="currency" Type="char" Nullable="false" MaxLength="5" Collation="utf8mb4_general_ci" />
+          <Property Name="building_type" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="Display_type" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="Furnishing" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="publich_date" Type="varchar" Nullable="false" MaxLength="50" Collation="utf8mb4_general_ci" />
+          <Property Name="map_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="youtube_video_link" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+          <Property Name="agent" Type="varchar" Nullable="false" MaxLength="200" Collation="utf8mb4_general_ci" />
+          <Property Name="phone_number" Type="varchar" Nullable="false" MaxLength="25" Collation="utf8mb4_general_ci" />
+          <Property Name="whatsapp_ink" Type="longtext" Nullable="false" Collation="utf8mb4_general_ci" />
+        </EntityType>
+        <Association Name="FK__propertie__agent__075714DC">
+          <End Role="agent_info" Type="RealEstateModel_mysql.Store.agent_info" Multiplicity="1" />
+          <End Role="properties" Type="RealEstateModel_mysql.Store.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="agent_info">
+              <PropertyRef Name="agent_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="agent_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__categ__55F4C372">
+          <End Role="category" Type="RealEstateModel_mysql.Store.category" Multiplicity="1" />
+          <End Role="properties" Type="RealEstateModel_mysql.Store.properties" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="category_id" />
+            </Principal>
+            <Dependent Role="properties">
+              <PropertyRef Name="category_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__id_pr__5BAD9CC8">
+          <End Role="properties" Type="RealEstateModel_mysql.Store.properties" Multiplicity="1" />
+          <End Role="properties_info" Type="RealEstateModel_mysql.Store.properties_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="properties">
+              <PropertyRef Name="id_properties" />
+            </Principal>
+            <Dependent Role="properties_info">
+              <PropertyRef Name="id_properties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="SP_AllProperties_by_currency" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate" StoreFunctionName="SP_AllProperties_by_currency">
+          <Parameter Name="currency" Type="varchar" Mode="In" MaxLength="5" />
+        </Function>
+        <Function Name="SP_Get_Properties_by_id" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate" StoreFunctionName="SP_Get_Properties_by_id">
+          <Parameter Name="Propertie_id" Type="int" Mode="In" />
+          <Parameter Name="currency" Type="varchar" Mode="In" MaxLength="5" />
+        </Function>
+        <Function Name="SP_search" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate" StoreFunctionName="SP_search">
+          <Parameter Name="p_currency" Type="varchar" Mode="In" MaxLength="5" />
+          <Parameter Name="p_properties_type" Type="varchar" Mode="In" MaxLength="200" />
+          <Parameter Name="p_category_name" Type="varchar" Mode="In" MaxLength="30" />
+          <Parameter Name="p_city" Type="varchar" Mode="In" MaxLength="100" />
+          <Parameter Name="p_Bedrooms" Type="int" Mode="In" />
+          <Parameter Name="p_Bathrooms" Type="int" Mode="In" />
+          <Parameter Name="p_min_price" Type="decimal" Mode="In" Precision="18" Scale="0" />
+          <Parameter Name="p_max_price" Type="decimal" Mode="In" Precision="18" Scale="0" />
+          <Parameter Name="p_min_area" Type="int" Mode="In" />
+          <Parameter Name="p_max_area" Type="int" Mode="In" />
+          <Parameter Name="p_Display_type" Type="varchar" Mode="In" MaxLength="50" />
+        </Function>
+        <Function Name="SP_TopOneProperties_by_currency" IsComposable="false" BuiltIn="false" Aggregate="false" NiladicFunction="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="real_estate" StoreFunctionName="SP_TopOneProperties_by_currency">
+          <Parameter Name="_currency" Type="varchar" Mode="In" MaxLength="5" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RealEstateModel_mysql" Alias="Self" d4p1:ViewGeneration="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:devart="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns:ed="http://devart.com/schemas/EntityDeveloper/1.0" annotation:UseStrongSpatialTypes="false" xmlns:d4p1="http://devart.com/schemas/edml/ConceptualSchemaExtensions/1.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RealEstateEntities_mysql" annotation:LazyLoadingEnabled="true" ed:Guid="f415f3aa-f147-4716-9c0a-050a9f8671a0">
+          <EntitySet Name="AgentInfos" EntityType="RealEstateModel_mysql.AgentInfo" />
+          <EntitySet Name="Categories" EntityType="RealEstateModel_mysql.Category" />
+          <EntitySet Name="CompanyInfos" EntityType="RealEstateModel_mysql.CompanyInfo" />
+          <EntitySet Name="PortalUsers" EntityType="RealEstateModel_mysql.PortalUser" />
+          <EntitySet Name="Properties" EntityType="RealEstateModel_mysql.Property" />
+          <EntitySet Name="PropertiesInfos" EntityType="RealEstateModel_mysql.PropertiesInfo" />
+          <EntitySet Name="Users" EntityType="RealEstateModel_mysql.User" />
+          <EntitySet Name="VAllproperties" EntityType="RealEstateModel_mysql.VAllproperty" />
+          <AssociationSet Name="FK__propertie__agent__075714DCSet" Association="RealEstateModel_mysql.FK__propertie__agent__075714DC">
+            <End Role="AgentInfo" EntitySet="AgentInfos" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__categ__55F4C372Set" Association="RealEstateModel_mysql.FK__propertie__categ__55F4C372">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Properties" EntitySet="Properties" />
+          </AssociationSet>
+          <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8Set" Association="RealEstateModel_mysql.FK__propertie__id_pr__5BAD9CC8">
+            <End Role="Property" EntitySet="Properties" />
+            <End Role="PropertiesInfos" EntitySet="PropertiesInfos" />
+          </AssociationSet>
+          <FunctionImport Name="SPAllPropertiesByCurrency" ReturnType="Collection(RealEstateModel_mysql.SPAllPropertiesByCurrencyResult)" ed:Guid="d82251a5-4ea0-4f4c-9b25-0d913cdf4922">
+            <Parameter Name="currency" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPGetPropertiesById" ReturnType="Collection(RealEstateModel_mysql.SPAllPropertiesByCurrencyResult)" ed:Guid="442bf855-0cfa-4db4-8551-eafc4fc7490a">
+            <Parameter Name="Propertie_id" Mode="In" Type="Int32" />
+            <Parameter Name="currency" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SPSearch" ed:Guid="7b04a9f5-0509-44cf-9522-6ca23b92db60">
+            <Parameter Name="p_currency" Mode="In" Type="String" />
+            <Parameter Name="p_properties_type" Mode="In" Type="String" />
+            <Parameter Name="p_category_name" Mode="In" Type="String" />
+            <Parameter Name="p_city" Mode="In" Type="String" />
+            <Parameter Name="p_Bedrooms" Mode="In" Type="Int32" />
+            <Parameter Name="p_Bathrooms" Mode="In" Type="Int32" />
+            <Parameter Name="p_min_price" Mode="In" Type="Decimal" />
+            <Parameter Name="p_max_price" Mode="In" Type="Decimal" />
+            <Parameter Name="p_min_area" Mode="In" Type="Int32" />
+            <Parameter Name="p_max_area" Mode="In" Type="Int32" />
+            <Parameter Name="p_Display_type" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="AgentInfo" ed:Guid="6bb15c92-4aac-4a5c-bc88-d91ea1c7634b">
+          <Key>
+            <PropertyRef Name="AgentId" />
+          </Key>
+          <Property Name="AgentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="3c60a48a-0bd0-4490-8c4d-3c7db9ce514b" />
+          <Property Name="Agent" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="2c1f2189-a350-40fa-9e90-f24a29c48bab" />
+          <Property Name="NationalNumber" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="e9ca5b0e-7fec-465c-8787-75b4a857a151" />
+          <Property Name="Address" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="8d83a38e-8d40-4879-ae78-c9bfb9a4eb51" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="aa0c5ee6-fd6d-464a-94b6-ba2c26988661" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" Unicode="true" ed:ValidateMaxLength="25" ed:ValidateRequired="true" ed:Guid="c5d7b2ea-2d55-454e-a1df-6118aa33034c" />
+          <Property Name="WhatsappInk" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="632a9b5c-f830-40b0-a162-f007bbcb4c9e" />
+          <NavigationProperty Name="Properties" Relationship="RealEstateModel_mysql.FK__propertie__agent__075714DC" FromRole="AgentInfo" ToRole="Properties" ed:Guid="557cc726-cff8-46e0-b9a3-d0098cfda461" />
+        </EntityType>
+        <EntityType Name="Category" ed:Guid="46a14aac-8271-4a6f-9c55-212b3e56185b">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="40a4fa9d-b29b-497b-bfde-2ff1afdf224f" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" ed:ValidateMaxLength="30" ed:ValidateRequired="true" ed:Guid="5657ccfb-4913-424d-90d7-c45dbd7c6485" />
+          <NavigationProperty Name="Properties" Relationship="RealEstateModel_mysql.FK__propertie__categ__55F4C372" FromRole="Category" ToRole="Properties" ed:Guid="8f268cfe-feeb-473c-8907-f669d96b9cd6" />
+        </EntityType>
+        <EntityType Name="CompanyInfo" ed:Guid="76b4fdbb-c321-4fa3-8c89-43ffcae60748">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="203a7072-acc0-465a-9664-f5c4ece3c69b" />
+          <Property Name="CeoName" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="9d79545b-46ed-4096-afa8-896178aa6cd6" />
+          <Property Name="CompanyName" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="c20ac36a-0c2a-4da9-a87a-ba71e7723842" />
+          <Property Name="ComapnyLocationLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="b08c8071-5027-46ba-b5cb-3ca1d4e1f6b2" />
+          <Property Name="Address" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="e9d2dd84-04d1-485b-a89b-b851b932d27c" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="76266ac7-9e4b-4974-952f-129ddedc3ef1" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" Unicode="true" ed:ValidateMaxLength="25" ed:ValidateRequired="true" ed:Guid="e58d73b0-3312-47cd-a930-13805ceddd4e" />
+          <Property Name="FacebookLink" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="7598a608-a2e1-4f4b-8f0b-850703b355f3" />
+          <Property Name="InstagramLink" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="0a73b7b9-11a8-4336-ae85-986c049d73d2" />
+          <Property Name="TwitterLink" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="4b220730-b372-4563-8aa4-0d016fc176c3" />
+          <Property Name="LinkedinLink" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="6a95f3c4-44bb-4872-828c-a1f03ce5a8c0" />
+          <Property Name="YoutubeLink" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="18d73916-42c7-4896-b70f-ec6584f30e77" />
+          <Property Name="ComapnyVideoLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="89e3311d-2c9a-4ab6-8a88-0732b8573713" />
+        </EntityType>
+        <EntityType Name="PortalUser" ed:Guid="33e85412-6631-4714-b6b2-e3d3d0776751">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="e4965c8f-69e6-48a3-81cd-ec195107c04c" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="2ff40d42-8d72-4495-a666-81351288123d" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="1f99ff07-4c97-4ed7-94db-22a9fdace71f" />
+        </EntityType>
+        <EntityType Name="Property" ed:Guid="c0589ff3-f572-43df-9c65-c72f09432f34">
+          <Key>
+            <PropertyRef Name="IdProperties" />
+          </Key>
+          <Property Name="IdProperties" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="f2b3faaf-f2df-4e21-b4a7-81d9920ef3bd" />
+          <Property Name="CategoryId" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="9903ed30-5ac5-4ce1-97d3-11c318d94ff5" />
+          <Property Name="Title" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="e8afcdf9-ac30-4781-8bde-170fc3e54803" />
+          <Property Name="ImagePath" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="b74365c8-5494-4c44-8d18-72d585d4963e" />
+          <Property Name="PropertiesType" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="2935b3f8-ec21-450e-85ca-4db3ed76cd03" />
+          <Property Name="OrginatorID" Type="String" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="false" ed:Guid="c8c3bcb1-fbe3-4c55-b01d-33f2c879c401" />
+          <Property Name="AgentId" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="39d9315b-3d04-4ea7-ba9e-ad0eddab65ae" />
+          <NavigationProperty Name="AgentInfo" Relationship="RealEstateModel_mysql.FK__propertie__agent__075714DC" FromRole="Properties" ToRole="AgentInfo" ed:Guid="403d311a-4bfb-4c74-895d-1c1306c67629" />
+          <NavigationProperty Name="Category" Relationship="RealEstateModel_mysql.FK__propertie__categ__55F4C372" FromRole="Properties" ToRole="Category" ed:Guid="32790283-2d5a-416a-abde-4003c90f457c" />
+          <NavigationProperty Name="PropertiesInfos" Relationship="RealEstateModel_mysql.FK__propertie__id_pr__5BAD9CC8" FromRole="Property" ToRole="PropertiesInfos" ed:Guid="da5d9f21-a0a4-4fd1-bddd-bdb413550e4b" />
+        </EntityType>
+        <EntityType Name="PropertiesInfo" ed:Guid="ec056c31-33a3-4f04-a867-edb29dcd5db1">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="f1030d50-4c92-49aa-8472-1ca626f75659" />
+          <Property Name="IdProperties" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="a1a349e6-0968-49e8-9b0a-91736efb4228" />
+          <Property Name="Images" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="1ab716f5-eb00-490f-94f1-e7e823606471" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="c5e3d781-45b2-4542-8633-7e51435fec09" />
+          <Property Name="Address" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="97a4ad72-88b6-4d59-b2ff-84f7e6a8a4c7" />
+          <Property Name="InfoPropertie" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="457a7cde-9b54-4d06-85b1-ef03d59bcfb7" />
+          <Property Name="YearBuilt" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="3b660dc2-a751-4682-9d0a-002ca6f5541e" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="06c6447f-a016-410f-ac8c-3d9163810d9e" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="9dd28d19-05c6-426f-b367-f5080e63b953" />
+          <Property Name="Area" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="3e70dddb-0eff-4ec8-a7d3-0f1e782f1ec5" />
+          <Property Name="Floor" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="6d648fa3-2049-4bbf-a0fc-8b70b3738e22" />
+          <Property Name="Parking" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="a613d181-a54d-4b38-8383-081de6caf05b" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" ed:ValidateRequired="true" ed:Guid="edecb785-57cc-4939-8769-e557b77180ef" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="true" ed:ValidateMaxLength="5" ed:ValidateRequired="true" ed:Guid="6076d0c2-9654-40ba-841d-fb59818ec7ad" />
+          <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="78c73ce9-15b3-41c0-9feb-172665d69b05" />
+          <Property Name="LongAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="a1b30f77-8ce1-4b50-be37-735c63c10d0d" />
+          <Property Name="BuildingType" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="e7a91708-bda2-42f9-88c3-8532648cc7ba" />
+          <Property Name="DisplayType" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="9602246f-f0e4-4028-bdc3-c30d1cdb2afe" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="d60586b9-3dd8-422d-88b6-8d0c8942082d" />
+          <Property Name="PublichDate" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="3d62d81c-f2f4-43d9-82fa-55baaf4e8429" />
+          <Property Name="MapLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="682491dc-54c5-498e-9840-3db25380feb5" />
+          <Property Name="YoutubeVideoLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="00566269-d162-47f2-9169-aee9e1c39dc9" />
+          <NavigationProperty Name="Property" Relationship="RealEstateModel_mysql.FK__propertie__id_pr__5BAD9CC8" FromRole="PropertiesInfos" ToRole="Property" ed:Guid="0306c024-4e3c-4a59-a38f-bc7e216626dd" />
+        </EntityType>
+        <EntityType Name="User" ed:Guid="e7ebb771-9151-4753-ad97-411afa725fbf">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" ed:ValidateRequired="true" ed:Guid="edb65736-9b62-48fc-a887-ab3fcda350e8" />
+          <Property Name="UserName" Type="String" MaxLength="150" Unicode="true" ed:ValidateMaxLength="150" ed:ValidateRequired="false" ed:Guid="f7ad681b-d1ae-4d04-b2be-ef2310d1c44b" />
+          <Property Name="Login" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="66954abe-d634-4f6b-a887-953c6b263d7b" />
+          <Property Name="Password" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="42e1a62d-80e8-48db-8470-74e78e1ca815" />
+          <Property Name="IsHRAdmin" Type="Boolean" ed:ValidateRequired="false" ed:Guid="2d34557a-2f01-4e15-abbc-fe0c25d698a9" />
+        </EntityType>
+        <EntityType Name="VAllproperty" ed:Guid="fc586da0-8e80-4299-b05a-e9c7295ef1cd">
+          <Documentation>
+            <Summary>VIEW</Summary>
+          </Documentation>
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="PropertiesType" />
+            <PropertyRef Name="CategoryName" />
+            <PropertyRef Name="ImagePath" />
+            <PropertyRef Name="Title" />
+            <PropertyRef Name="City" />
+            <PropertyRef Name="Address" />
+            <PropertyRef Name="LongAddress" />
+            <PropertyRef Name="IdProperties" />
+            <PropertyRef Name="YearBuilt" />
+            <PropertyRef Name="Floor" />
+            <PropertyRef Name="Area" />
+            <PropertyRef Name="Bedrooms" />
+            <PropertyRef Name="Bathrooms" />
+            <PropertyRef Name="Parking" />
+            <PropertyRef Name="ParkingAvailable" />
+            <PropertyRef Name="InfoPropertie" />
+            <PropertyRef Name="Price" />
+            <PropertyRef Name="PaymentMethod" />
+            <PropertyRef Name="Currency" />
+            <PropertyRef Name="BuildingType" />
+            <PropertyRef Name="DisplayType" />
+            <PropertyRef Name="Furnishing" />
+            <PropertyRef Name="PublichDate" />
+            <PropertyRef Name="MapLink" />
+            <PropertyRef Name="YoutubeVideoLink" />
+            <PropertyRef Name="Agent" />
+            <PropertyRef Name="PhoneNumber" />
+            <PropertyRef Name="WhatsappInk" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="931218a7-27ad-44fd-9d9b-77d25b0931f0" />
+          <Property Name="PropertiesType" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="79360ac4-3112-4599-8894-45ed914b65e4" />
+          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="true" ed:ValidateMaxLength="30" ed:ValidateRequired="true" ed:Guid="ffcf58c4-56f2-49ce-a709-72d73e0451e3" />
+          <Property Name="ImagePath" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="199ca355-249f-4192-bfd6-d5406e4d1c6c" />
+          <Property Name="Title" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="571d0ef1-12bb-44f4-9334-e02b000ebf6a" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="a939ac6f-96b8-480b-a037-ccddf2708b45" />
+          <Property Name="Address" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="fab94f00-2ff8-417c-b255-d04fdb562ea1" />
+          <Property Name="LongAddress" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="3dffd6a9-7312-4986-bfce-c08b131a273e" />
+          <Property Name="IdProperties" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="ef438016-c1ec-4af2-8c94-b43b354079f5" />
+          <Property Name="YearBuilt" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="ea35ae56-10ab-460d-b856-6127750061d5" />
+          <Property Name="Floor" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="fb59d926-c7c9-492b-8cbe-64858bf55a93" />
+          <Property Name="Area" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="29ce8903-96d4-4348-bdf0-cba227bc4621" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="b64d61c9-5e3c-41fb-b455-3adcbd512907" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="191d1c98-0ba1-4ab2-b5e8-d057d381f772" />
+          <Property Name="Parking" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="b2e61d69-5c21-4e38-bc04-2e9b0fbe58fd" />
+          <Property Name="ParkingAvailable" Type="String" Nullable="false" MaxLength="8" Unicode="true" ed:ValidateMaxLength="8" ed:ValidateRequired="true" ed:Guid="63707cf5-d2d5-400c-bb7f-fc99d1a2c978" />
+          <Property Name="InfoPropertie" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="2c8c48b1-f3cd-4855-bbaf-8e4e5f5d9b77" />
+          <Property Name="Images" Type="String" Unicode="true" ed:ValidateRequired="false" ed:Guid="f23366e7-d68d-4588-878d-eed1f2ad1347" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="10" Scale="2" ed:ValidateRequired="true" ed:Guid="53d84b06-54a4-44f4-ba7e-1cf226d2eee7" />
+          <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="100" Unicode="true" ed:ValidateMaxLength="100" ed:ValidateRequired="true" ed:Guid="1a490fd6-018a-462a-8690-2d7873e5cf20" />
+          <Property Name="Currency" Type="String" Nullable="false" MaxLength="5" Unicode="true" FixedLength="true" ed:ValidateMaxLength="5" ed:ValidateRequired="true" ed:Guid="635c7e9f-fec4-4917-9b17-0fdc3a3b0eef" />
+          <Property Name="BuildingType" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="4d5bed12-0210-4ca5-9721-b27f9d980595" />
+          <Property Name="DisplayType" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="95b29170-b2c7-4f19-b35c-a63d165e840e" />
+          <Property Name="Furnishing" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="bc1e07a9-3767-4a5b-8464-1948257c61bd" />
+          <Property Name="PublichDate" Type="String" Nullable="false" MaxLength="50" Unicode="true" ed:ValidateMaxLength="50" ed:ValidateRequired="true" ed:Guid="5a1ee238-a6c8-417a-975b-686c8a535d33" />
+          <Property Name="MapLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="b446376f-c4ca-4675-b934-3ddb48b745d2" />
+          <Property Name="YoutubeVideoLink" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="da2d9217-60eb-4f67-82aa-08e51192a480" />
+          <Property Name="Agent" Type="String" Nullable="false" MaxLength="200" Unicode="true" ed:ValidateMaxLength="200" ed:ValidateRequired="true" ed:Guid="f26b0d6b-5b63-4073-abb7-9cee6f761b7c" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="25" Unicode="true" ed:ValidateMaxLength="25" ed:ValidateRequired="true" ed:Guid="18820b03-97b7-4da4-a9a1-0a180dfa72d7" />
+          <Property Name="WhatsappInk" Type="String" Nullable="false" Unicode="true" ed:ValidateRequired="true" ed:Guid="326d2590-1cd8-4f31-9e4a-2785f136696d" />
+        </EntityType>
+        <ComplexType Name="SPAllPropertiesByCurrencyResult" ed:Guid="279e2b44-7765-41b5-a8db-dcea3a1636c1">
+          <Property Name="Id" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="c9b7d2ef-a5c0-4e8d-92d2-142d434771d9" />
+          <Property Name="PropertiesType" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="ffcf5d7f-3857-41e9-80a4-4b8a4ee28ef4" />
+          <Property Name="CategoryName" Type="String" Nullable="false" FixedLength="true" ed:ValidateRequired="true" ed:Guid="e4234d0d-1c97-4906-981a-ffe7683480ed" />
+          <Property Name="ImagePath" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="8cad1537-03b5-42a0-a461-3b65c5477066" />
+          <Property Name="Title" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="7aaeede2-e5b6-4197-a69b-3f07bc8fab1f" />
+          <Property Name="City" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="402cff84-844a-439a-b3a9-86cd45a7a199" />
+          <Property Name="Address" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="0f227ab1-cdbb-477e-a0a1-9c828f73a88f" />
+          <Property Name="LongAddress" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="2e505249-2176-435c-b8a7-be41349f094e" />
+          <Property Name="IdProperties" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="7087e754-f5e9-4cc1-a24d-ff4355139953" />
+          <Property Name="YearBuilt" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="51769a29-75ac-4f04-9e2e-0c1c0c897c7b" />
+          <Property Name="Floor" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="86f07596-0da5-4766-86d7-a8772c909ca4" />
+          <Property Name="Area" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="04336a6b-bbe7-4d64-8e6e-a95228a2b514" />
+          <Property Name="Bedrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="7a201ff4-f6a7-4fc4-8f07-270b8bbdc67e" />
+          <Property Name="Bathrooms" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="558fefe9-544a-4347-8618-ba3e85a8972e" />
+          <Property Name="Parking" Type="Int32" Nullable="false" ed:ValidateRequired="true" ed:Guid="af402dda-e90b-48fd-8319-4c12913a747c" />
+          <Property Name="ParkingAvailable" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="d015fd45-1f91-41e0-a6d6-01334a0de398" />
+          <Property Name="InfoPropertie" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="8cd4b695-80bc-43c4-9255-54c41762f733" />
+          <Property Name="Images" Type="String" ed:ValidateRequired="false" ed:Guid="2594ef92-6acd-422c-a129-b84e7ad5c0d9" />
+          <Property Name="Price" Type="Decimal" Nullable="false" ed:ValidateRequired="true" ed:Guid="0e38bbae-1193-4ac8-af3e-3943ba70c6aa" />
+          <Property Name="PaymentMethod" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="187e437f-dd7b-4acf-84b1-1f6ab0e7690b" />
+          <Property Name="Currency" Type="String" Nullable="false" FixedLength="true" ed:ValidateRequired="true" ed:Guid="1d7d2fb4-d05f-4230-b36b-d3f36223125e" />
+          <Property Name="BuildingType" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="3b50b797-f8c3-4e62-be7d-bf64d4c356f2" />
+          <Property Name="DisplayType" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="fa3329ee-7ccc-4531-8ce5-1289d1485fb4" />
+          <Property Name="Furnishing" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="971c383e-5efa-4758-8a67-ce21cf05a324" />
+          <Property Name="PublichDate" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="54ab0a23-02ad-43e8-bfa1-f3dcc3625e63" />
+          <Property Name="MapLink" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="8abe22ed-ac0c-41e8-b8f8-4d2dd13005e4" />
+          <Property Name="YoutubeVideoLink" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="9c847769-ed1b-4a81-975c-4b81e4bebee4" />
+          <Property Name="Agent" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="84488c67-1d6d-4fb9-bc90-1ad0e538308d" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="a3a93881-d8f1-4ec4-b10f-1b78bde3776e" />
+          <Property Name="WhatsappInk" Type="String" Nullable="false" ed:ValidateRequired="true" ed:Guid="0e77749f-1668-4961-a501-8fae4bc3c7f0" />
+        </ComplexType>
+        <Association Name="FK__propertie__agent__075714DC" ed:Guid="2851ec68-bb0e-4e69-8424-4266925774c4">
+          <End Role="AgentInfo" Type="RealEstateModel_mysql.AgentInfo" Multiplicity="1" />
+          <End Role="Properties" Type="RealEstateModel_mysql.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AgentInfo">
+              <PropertyRef Name="AgentId" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="AgentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__categ__55F4C372" ed:Guid="0bf652fd-f93f-4ce3-98be-cd684209fef6">
+          <End Role="Category" Type="RealEstateModel_mysql.Category" Multiplicity="1" />
+          <End Role="Properties" Type="RealEstateModel_mysql.Property" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Properties">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__propertie__id_pr__5BAD9CC8" ed:Guid="9e92c3cd-d390-4f1f-a217-84cee87ae920">
+          <End Role="Property" Type="RealEstateModel_mysql.Property" Multiplicity="1" />
+          <End Role="PropertiesInfos" Type="RealEstateModel_mysql.PropertiesInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="IdProperties" />
+            </Principal>
+            <Dependent Role="PropertiesInfos">
+              <PropertyRef Name="IdProperties" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- MSL content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RealEstateEntities_mysqlStoreContainer" CdmEntityContainer="RealEstateEntities_mysql">
+          <EntitySetMapping Name="AgentInfos">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.AgentInfo">
+              <MappingFragment StoreEntitySet="agent_infos">
+                <ScalarProperty Name="AgentId" ColumnName="agent_id" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="NationalNumber" ColumnName="national_number" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.Category">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="CategoryId" ColumnName="category_id" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfos">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.CompanyInfo">
+              <MappingFragment StoreEntitySet="company_infos">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="CeoName" ColumnName="ceo_name" />
+                <ScalarProperty Name="CompanyName" ColumnName="company_name" />
+                <ScalarProperty Name="ComapnyLocationLink" ColumnName="comapny_location_link" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="Email" ColumnName="email" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="FacebookLink" ColumnName="facebook_link" />
+                <ScalarProperty Name="InstagramLink" ColumnName="instagram_link" />
+                <ScalarProperty Name="TwitterLink" ColumnName="twitter_link" />
+                <ScalarProperty Name="LinkedinLink" ColumnName="linkedin_link" />
+                <ScalarProperty Name="YoutubeLink" ColumnName="youtube_link" />
+                <ScalarProperty Name="ComapnyVideoLink" ColumnName="comapny_video_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PortalUsers">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.PortalUser">
+              <MappingFragment StoreEntitySet="portal_users">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="Login" ColumnName="login" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Properties">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.Property">
+              <MappingFragment StoreEntitySet="properties">
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="CategoryId" ColumnName="category_id" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="OrginatorID" ColumnName="OrginatorID" />
+                <ScalarProperty Name="AgentId" ColumnName="agent_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PropertiesInfos">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.PropertiesInfo">
+              <MappingFragment StoreEntitySet="properties_infos">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.User">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="UserName" ColumnName="user_name" />
+                <ScalarProperty Name="Login" ColumnName="login" />
+                <ScalarProperty Name="Password" ColumnName="password" />
+                <ScalarProperty Name="IsHRAdmin" ColumnName="isHRAdmin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VAllproperties">
+            <EntityTypeMapping TypeName="RealEstateModel_mysql.VAllproperty">
+              <MappingFragment StoreEntitySet="v_allproperties">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="ParkingAvailable" ColumnName="Parking_Available" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SPAllPropertiesByCurrency" FunctionName="RealEstateModel_mysql.Store.SP_AllProperties_by_currency">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealEstateModel_mysql.SPAllPropertiesByCurrencyResult">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="ParkingAvailable" ColumnName="Parking_Available" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPGetPropertiesById" FunctionName="RealEstateModel_mysql.Store.SP_Get_Properties_by_id">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RealEstateModel_mysql.SPAllPropertiesByCurrencyResult">
+                <ScalarProperty Name="Id" ColumnName="id" />
+                <ScalarProperty Name="PropertiesType" ColumnName="properties_type" />
+                <ScalarProperty Name="CategoryName" ColumnName="category_name" />
+                <ScalarProperty Name="ImagePath" ColumnName="image_path" />
+                <ScalarProperty Name="Title" ColumnName="title" />
+                <ScalarProperty Name="City" ColumnName="city" />
+                <ScalarProperty Name="Address" ColumnName="address" />
+                <ScalarProperty Name="LongAddress" ColumnName="long_address" />
+                <ScalarProperty Name="IdProperties" ColumnName="id_properties" />
+                <ScalarProperty Name="YearBuilt" ColumnName="year_built" />
+                <ScalarProperty Name="Floor" ColumnName="Floor" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="Bedrooms" ColumnName="Bedrooms" />
+                <ScalarProperty Name="Bathrooms" ColumnName="Bathrooms" />
+                <ScalarProperty Name="Parking" ColumnName="Parking" />
+                <ScalarProperty Name="ParkingAvailable" ColumnName="Parking_Available" />
+                <ScalarProperty Name="InfoPropertie" ColumnName="info_propertie" />
+                <ScalarProperty Name="Images" ColumnName="images" />
+                <ScalarProperty Name="Price" ColumnName="price" />
+                <ScalarProperty Name="PaymentMethod" ColumnName="Payment_method" />
+                <ScalarProperty Name="Currency" ColumnName="currency" />
+                <ScalarProperty Name="BuildingType" ColumnName="building_type" />
+                <ScalarProperty Name="DisplayType" ColumnName="Display_type" />
+                <ScalarProperty Name="Furnishing" ColumnName="Furnishing" />
+                <ScalarProperty Name="PublichDate" ColumnName="publich_date" />
+                <ScalarProperty Name="MapLink" ColumnName="map_link" />
+                <ScalarProperty Name="YoutubeVideoLink" ColumnName="youtube_video_link" />
+                <ScalarProperty Name="Agent" ColumnName="agent" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="phone_number" />
+                <ScalarProperty Name="WhatsappInk" ColumnName="whatsapp_ink" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="SPSearch" FunctionName="RealEstateModel_mysql.Store.SP_search" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <edmx:Diagrams>
+      <Diagram Name="Main" />
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

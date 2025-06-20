@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75bdad9f8258405da5d681e182cad09d" Name="Diagram1">
+        <EntityTypeShape EntityType="real_estateModel.agent_info" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="real_estateModel.category" Width="1.5" PointX="0.75" PointY="4.25" />
+        <EntityTypeShape EntityType="real_estateModel.company_info" Width="1.5" PointX="0.75" PointY="8" />
+        <EntityTypeShape EntityType="real_estateModel.portal_users" Width="1.5" PointX="7.75" PointY="2" />
+        <EntityTypeShape EntityType="real_estateModel.property" Width="1.5" PointX="3" PointY="3.5" />
+        <EntityTypeShape EntityType="real_estateModel.properties_info" Width="1.5" PointX="5.25" PointY="2.25" />
+        <EntityTypeShape EntityType="real_estateModel.user" Width="1.5" PointX="2.75" PointY="9" />
+        <EntityTypeShape EntityType="real_estateModel.V_AllProperties" Width="1.5" PointX="7.75" PointY="5" />
+        <EntityTypeShape EntityType="real_estateModel.V_TopOneProperties" Width="1.5" PointX="4.75" PointY="9" />
+        <EntityTypeShape EntityType="real_estateModel.VT_agent_info" Width="1.5" PointX="9.75" PointY="2" />
+        <EntityTypeShape EntityType="real_estateModel.VT_Properties" Width="1.5" PointX="9.75" PointY="6" />
+        <EntityTypeShape EntityType="real_estateModel.VT_properties_info" Width="1.5" PointX="9.75" PointY="10" />
+        <AssociationConnector Association="real_estateModel.FK__propertie__agent__075714DC" />
+        <AssociationConnector Association="real_estateModel.FK__propertie__categ__55F4C372" />
+        <AssociationConnector Association="real_estateModel.FK__propertie__id_pr__5BAD9CC8" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

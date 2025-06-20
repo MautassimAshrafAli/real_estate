@@ -1,0 +1,326 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="real_estateModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="category">
+    <Key>
+      <PropertyRef Name="category_id" />
+    </Key>
+    <Property Name="category_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="company_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ceo_name" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="company_name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="comapny_location_link" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="facebook_link" Type="text" />
+    <Property Name="instagram_link" Type="text" />
+    <Property Name="twitter_link" Type="text" />
+    <Property Name="linkedin_link" Type="text" />
+    <Property Name="youtube_link" Type="text" />
+  </EntityType>
+  <EntityType Name="get_touch_user_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="fname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="sname" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar" MaxLength="25" Nullable="false" />
+    <Property Name="supject" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="message" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="properties">
+    <Key>
+      <PropertyRef Name="id_properties" />
+    </Key>
+    <Property Name="id_properties" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="category_id" Type="int" Nullable="false" />
+    <Property Name="type" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="image_path" Type="text" Nullable="false" />
+    <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="properties_info">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_properties" Type="int" Nullable="false" />
+    <Property Name="images" Type="text" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="info_propertie" Type="ntext" Nullable="false" />
+    <Property Name="year_built" Type="int" Nullable="false" />
+    <Property Name="Bedrooms" Type="int" Nullable="false" />
+    <Property Name="Bathrooms" Type="int" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="price" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="map_link" Type="text" Nullable="false" />
+    <Property Name="youtube_video_link" Type="text" Nullable="false" />
+  </EntityType>
+  <EntityType Name="top_properties">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.V_AllProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_AllProperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="category_name" />
+      <PropertyRef Name="image_path" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="city" />
+      <PropertyRef Name="address" />
+      <PropertyRef Name="long_address" />
+      <PropertyRef Name="id_properties" />
+      <PropertyRef Name="year_built" />
+      <PropertyRef Name="Floor" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="Bedrooms" />
+      <PropertyRef Name="Bathrooms" />
+      <PropertyRef Name="Parking" />
+      <PropertyRef Name="Parking_Available" />
+      <PropertyRef Name="info_propertie" />
+      <PropertyRef Name="Payment_method" />
+      <PropertyRef Name="currency" />
+      <PropertyRef Name="building_type" />
+      <PropertyRef Name="Display_type" />
+      <PropertyRef Name="Furnishing" />
+      <PropertyRef Name="publich_date" />
+      <PropertyRef Name="map_link" />
+      <PropertyRef Name="youtube_video_link" />
+      <PropertyRef Name="agent" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="image_path" Type="text" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="id_properties" Type="int" Nullable="false" />
+    <Property Name="year_built" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Bedrooms" Type="int" Nullable="false" />
+    <Property Name="Bathrooms" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="Parking_Available" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="info_propertie" Type="ntext" Nullable="false" />
+    <Property Name="images" Type="text" />
+    <Property Name="price" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="map_link" Type="text" Nullable="false" />
+    <Property Name="youtube_video_link" Type="text" Nullable="false" />
+    <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'real_estate.dbo.V_TopOneProperties' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_TopOneProperties">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="category_name" />
+      <PropertyRef Name="image_path" />
+      <PropertyRef Name="title" />
+      <PropertyRef Name="city" />
+      <PropertyRef Name="address" />
+      <PropertyRef Name="long_address" />
+      <PropertyRef Name="id_properties" />
+      <PropertyRef Name="year_built" />
+      <PropertyRef Name="Floor" />
+      <PropertyRef Name="Area" />
+      <PropertyRef Name="Bedrooms" />
+      <PropertyRef Name="Bathrooms" />
+      <PropertyRef Name="Parking" />
+      <PropertyRef Name="Parking_Available" />
+      <PropertyRef Name="info_propertie" />
+      <PropertyRef Name="Payment_method" />
+      <PropertyRef Name="currency" />
+      <PropertyRef Name="building_type" />
+      <PropertyRef Name="Display_type" />
+      <PropertyRef Name="Furnishing" />
+      <PropertyRef Name="publich_date" />
+      <PropertyRef Name="map_link" />
+      <PropertyRef Name="youtube_video_link" />
+      <PropertyRef Name="agent" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="category_name" Type="nchar" MaxLength="30" Nullable="false" />
+    <Property Name="image_path" Type="text" Nullable="false" />
+    <Property Name="title" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="address" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="long_address" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="id_properties" Type="int" Nullable="false" />
+    <Property Name="year_built" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" Nullable="false" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Bedrooms" Type="int" Nullable="false" />
+    <Property Name="Bathrooms" Type="int" Nullable="false" />
+    <Property Name="Parking" Type="int" Nullable="false" />
+    <Property Name="Parking_Available" Type="nvarchar" MaxLength="8" Nullable="false" />
+    <Property Name="info_propertie" Type="ntext" Nullable="false" />
+    <Property Name="images" Type="text" />
+    <Property Name="price" Type="nvarchar" MaxLength="4000" />
+    <Property Name="Payment_method" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="currency" Type="nchar" MaxLength="5" Nullable="false" />
+    <Property Name="building_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Display_type" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Furnishing" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="publich_date" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="map_link" Type="text" Nullable="false" />
+    <Property Name="youtube_video_link" Type="text" Nullable="false" />
+    <Property Name="agent" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__propertie__categ__55F4C372">
+    <End Role="category" Type="Self.category" Multiplicity="1" />
+    <End Role="properties" Type="Self.properties" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="category">
+        <PropertyRef Name="category_id" />
+      </Principal>
+      <Dependent Role="properties">
+        <PropertyRef Name="category_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__propertie__id_pr__5BAD9CC8">
+    <End Role="properties" Type="Self.properties" Multiplicity="1" />
+    <End Role="properties_info" Type="Self.properties_info" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="properties">
+        <PropertyRef Name="id_properties" />
+      </Principal>
+      <Dependent Role="properties_info">
+        <PropertyRef Name="id_properties" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SP_AllProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_Get_Properties_by_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+    <Parameter Name="Propertie_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="SP_search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+    <Parameter Name="category_name" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="Bedrooms" Type="int" Mode="In" />
+    <Parameter Name="Bathrooms" Type="int" Mode="In" />
+    <Parameter Name="min_price" Type="decimal" Mode="In" />
+    <Parameter Name="max_price" Type="decimal" Mode="In" />
+  </Function>
+  <Function Name="SP_search_by_category_name" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+    <Parameter Name="category_name" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="SP_TopOneProperties_by_currency" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="currency" Type="nvarchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="real_estateModelStoreContainer">
+    <EntitySet Name="category" EntityType="Self.category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="company_info" EntityType="Self.company_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="get_touch_user_info" EntityType="Self.get_touch_user_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="properties" EntityType="Self.properties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="properties_info" EntityType="Self.properties_info" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="top_properties" EntityType="Self.top_properties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="V_AllProperties" EntityType="Self.V_AllProperties" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_AllProperties].[id] AS [id], 
+    [V_AllProperties].[category_name] AS [category_name], 
+    [V_AllProperties].[image_path] AS [image_path], 
+    [V_AllProperties].[title] AS [title], 
+    [V_AllProperties].[city] AS [city], 
+    [V_AllProperties].[address] AS [address], 
+    [V_AllProperties].[long_address] AS [long_address], 
+    [V_AllProperties].[id_properties] AS [id_properties], 
+    [V_AllProperties].[year_built] AS [year_built], 
+    [V_AllProperties].[Floor] AS [Floor], 
+    [V_AllProperties].[Area] AS [Area], 
+    [V_AllProperties].[Bedrooms] AS [Bedrooms], 
+    [V_AllProperties].[Bathrooms] AS [Bathrooms], 
+    [V_AllProperties].[Parking] AS [Parking], 
+    [V_AllProperties].[Parking_Available] AS [Parking_Available], 
+    [V_AllProperties].[info_propertie] AS [info_propertie], 
+    [V_AllProperties].[images] AS [images], 
+    [V_AllProperties].[price] AS [price], 
+    [V_AllProperties].[Payment_method] AS [Payment_method], 
+    [V_AllProperties].[currency] AS [currency], 
+    [V_AllProperties].[building_type] AS [building_type], 
+    [V_AllProperties].[Display_type] AS [Display_type], 
+    [V_AllProperties].[Furnishing] AS [Furnishing], 
+    [V_AllProperties].[publich_date] AS [publich_date], 
+    [V_AllProperties].[map_link] AS [map_link], 
+    [V_AllProperties].[youtube_video_link] AS [youtube_video_link], 
+    [V_AllProperties].[agent] AS [agent]
+    FROM [dbo].[V_AllProperties] AS [V_AllProperties]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_TopOneProperties" EntityType="Self.V_TopOneProperties" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [V_TopOneProperties].[id] AS [id], 
+    [V_TopOneProperties].[category_name] AS [category_name], 
+    [V_TopOneProperties].[image_path] AS [image_path], 
+    [V_TopOneProperties].[title] AS [title], 
+    [V_TopOneProperties].[city] AS [city], 
+    [V_TopOneProperties].[address] AS [address], 
+    [V_TopOneProperties].[long_address] AS [long_address], 
+    [V_TopOneProperties].[id_properties] AS [id_properties], 
+    [V_TopOneProperties].[year_built] AS [year_built], 
+    [V_TopOneProperties].[Floor] AS [Floor], 
+    [V_TopOneProperties].[Area] AS [Area], 
+    [V_TopOneProperties].[Bedrooms] AS [Bedrooms], 
+    [V_TopOneProperties].[Bathrooms] AS [Bathrooms], 
+    [V_TopOneProperties].[Parking] AS [Parking], 
+    [V_TopOneProperties].[Parking_Available] AS [Parking_Available], 
+    [V_TopOneProperties].[info_propertie] AS [info_propertie], 
+    [V_TopOneProperties].[images] AS [images], 
+    [V_TopOneProperties].[price] AS [price], 
+    [V_TopOneProperties].[Payment_method] AS [Payment_method], 
+    [V_TopOneProperties].[currency] AS [currency], 
+    [V_TopOneProperties].[building_type] AS [building_type], 
+    [V_TopOneProperties].[Display_type] AS [Display_type], 
+    [V_TopOneProperties].[Furnishing] AS [Furnishing], 
+    [V_TopOneProperties].[publich_date] AS [publich_date], 
+    [V_TopOneProperties].[map_link] AS [map_link], 
+    [V_TopOneProperties].[youtube_video_link] AS [youtube_video_link], 
+    [V_TopOneProperties].[agent] AS [agent]
+    FROM [dbo].[V_TopOneProperties] AS [V_TopOneProperties]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK__propertie__categ__55F4C372" Association="Self.FK__propertie__categ__55F4C372">
+      <End Role="category" EntitySet="category" />
+      <End Role="properties" EntitySet="properties" />
+    </AssociationSet>
+    <AssociationSet Name="FK__propertie__id_pr__5BAD9CC8" Association="Self.FK__propertie__id_pr__5BAD9CC8">
+      <End Role="properties" EntitySet="properties" />
+      <End Role="properties_info" EntitySet="properties_info" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

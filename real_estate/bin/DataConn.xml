@@ -1,0 +1,1006 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DataConn</name>
+    </assembly>
+    <members>
+        <member name="T:mysql.DataBase">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:mysql.DataBase.ReplaceLastLetter(System.String,System.String)" -->
+        <member name="M:mysql.DataBase.GetRowCount(System.String,System.String)">
+            <summary>
+            count rows in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to cout</param>
+            <returns>number of rows in table</returns>
+        </member>
+        <member name="M:mysql.DataBase.GetLastRecord(System.String,System.String,System.String)">
+            <summary>
+            get last record id in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to get record from</param>
+            <param name="column_name">column name</param>
+            <returns>number of record id in table</returns>
+        </member>
+        <member name="M:mysql.DataBase.DeleteRecord(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            delete record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to delete record from</param>
+            <param name="where">column name</param>
+            <param name="id">id record you want to delete</param>
+        </member>
+        <member name="M:mysql.DataBase.InsertRecord(System.String,System.String,System.String[],System.String[])">
+            <summary>
+            insert record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="column">columns name to insert on it</param>
+            <param name="valuse">valuse of new data</param>
+        </member>
+        <member name="M:mysql.DataBase.InsertBlukRecords``1(System.String,System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Insert bluk of records in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="records">list of records you want to insert in table</param>
+        </member>
+        <member name="M:mysql.DataBase.ExecuteQuery(System.String,System.String)">
+            <summary>
+            ExecuteQuery(insert,delete,alter,drop,update,truncate,...) no return data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Mysql Query</param>
+        </member>
+        <member name="T:mysql.help">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="P:mysql.help._InitDbContext_Core">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Core.
+            <para></para>
+            ** package **
+            <para></para>
+            - microsoft.entityframeworkcore 7.0.13
+            <para></para>
+            - microsoft.entityframeworkcore.tools 7.0.13
+            <para></para>
+            - mysql.data 8.2.0
+            <para></para>
+            - mysqlconnector 2.2.7
+            <para></para>
+            - pomelo.entityframeworkcore.mysql 7.0.0
+            <para></para>
+            1- create folder on your project and named it (DataDB) for example ..... to store on it data context config class and models.
+            <para></para>
+            <para></para>
+            2- open package manager console and type this commant {Scaffold-DbContext "Server=IP_SERVER;Database=DATABASE_NAME;User=myUsername;Password=myPassword;" Pomelo.EntityFrameworkCore.MySql -OutputDir DataDB}.
+            <para></para>
+            3- override funcation OnConfiguring body by this code to get conntion string from appsetting
+            <para></para>
+            code:
+            <para></para>
+            Snippet: mysqlcon
+            <para></para>
+            <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+            var conn = configurationRoot.GetConnectionString("real_estate");
+            optionsBuilder.UseMySql(conn, ServerVersion.AutoDetect(conn));
+             }
+             </code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:mysql.help._InitDbContext_Framework">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Framework.
+            <para></para>
+            ** package **
+            <para></para>
+            - EntityFramework 6.4.4
+            <para></para>
+            - MySql.Data 8.2.0
+            <para></para>
+            - MySql.Data.EntityFramework 8.0.11
+            <para></para>
+            0- intall mysql provider -->> mysql-for-visualstudio-1.2.10 from link <see href="https://downloads.mysql.com/archives/visualstudio/">mysql for visual studio</see>
+            <para></para>
+            and install mysql-connector-net-8.0.16 from link <see href="https://downloads.mysql.com/archives/c-net/">mysql connector</see>
+            <para></para>
+            1- On the View menu, click Server Explorer.
+            <para></para>
+            2- Click the Connect to Database icon. change Data Source to mysql.
+            <para></para>
+            3- insert your server name and user name and password.
+            <para></para>
+            4- go to Models file and add new item Data -->> ADO.NET Entity Data Model -->> chose EF Designer from database -->> chose you database conntion from drop doun list -->> select your tables,view,SPs.
+            <para></para>
+            *** or install mysql devart providet ***
+            </example>
+            </summary>
+        </member>
+        <member name="P:mysql.help._DevartMysql">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize mysql devart.
+            <para></para>
+            0- download dcmysql.exe.
+            <para></para>
+            1- go to on models file and create new devart ef model.
+            <para></para>
+            2- select database first then click next.
+            <para></para>
+            3- select mysql provider from drop down provider list.
+            <para></para>
+            4- insert host,port,user id,password and chose database name from drop down then click next.
+            <para></para>
+            5- insert your server name and user name and password.
+            <para></para>
+            6- select generate from database (make reverse engineering for your database to make model and funcation of it).
+            </example>
+            </summary>
+        </member>
+        <member name="P:mysql.help._Devart_Core_Mysql">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize mysql devart.
+            <para></para>
+            0- download dcmysql.exe.
+            <para></para>
+            1- go to on models file and create new devart ef core model.
+            <para></para>
+            2- select database first then click next.
+            <para></para>
+            3- select mysql provider from drop down provider list.
+            <para></para>
+            4- insert host,port,user id,password and chose database name from drop down then click next.
+            <para></para>
+            5- insert your server name and user name and password.
+            <para></para>
+            6- select generate from database (make reverse engineering for your database to make model and funcation of it).
+            <para></para>
+            7- open DataModel your_database_baseModel class and go to OnConfiguring funcation and put your conntion string from appsetting conntion string.
+            <para></para>
+            code:
+            <para></para>
+            Snippet: mysqlcon
+            <para></para>
+            <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+            .......
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+            var conn = configurationRoot.GetConnectionString("real_estate");
+            optionsBuilder.UseMySql(conn, ServerVersion.AutoDetect(conn));
+            ....
+             }
+             </code>
+            </example>
+            </summary>
+        </member>
+        <member name="T:mysql.Convert.SP">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:mysql.Convert.SP.ToJson(System.String,System.String,System.String[],MySqlConnector.MySqlDbType[],System.Object[],Case_char)">
+            <summary>
+            convert data store procedure to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="mysqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:mysql.Convert.SP.ToDictionary(System.String,System.String,System.String[],MySqlConnector.MySqlDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="mysqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:mysql.Convert.SP.ToList``1(System.String,System.String,System.String[],MySqlConnector.MySqlDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="mysqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:mysql.Convert.Table">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:mysql.Convert.Table.ToJson(System.String,System.String,Case_char)">
+            <summary>
+            convert data table to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">MySql Query</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:mysql.Convert.Table.ToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">MySql Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:mysql.Convert.Table.ToList``1(System.String,System.String)">
+            <summary>
+            convert data table to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">MySql Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="M:mysql.Convert.Table.DataTableToJsonDataToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">MySql Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:mysql.Convert.Table.DataTableToJsonDataToList``1(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">MySql Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:ora.DataBase">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:ora.DataBase.ReplaceLastLetter(System.String,System.String)">
+            <summary>
+            replace last letter on your text
+            </summary>
+            <param name="text">your text</param>
+            <param name="newLetter">the new letter you want to put it in last of your text</param>
+            <returns>new text with yor new lest leter</returns>
+        </member>
+        <member name="M:ora.DataBase.GetRowCount(System.String,System.String)">
+            <summary>
+            count rows in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to cout</param>
+            <returns>number of rows in table</returns>
+        </member>
+        <member name="M:ora.DataBase.GetLastRecord(System.String,System.String,System.String)">
+            <summary>
+            get last record id in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to get record from</param>
+            <param name="column_name">column name</param>
+            <returns>number of record id in table</returns>
+        </member>
+        <member name="M:ora.DataBase.DeleteRecord(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            delete record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to delete record from</param>
+            <param name="where">column name</param>
+            <param name="id">id record you want to delete</param>
+        </member>
+        <member name="M:ora.DataBase.InsertRecord(System.String,System.String,System.String[],System.String[])">
+            <summary>
+            insert record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="column">columns name to insert on it</param>
+            <param name="valuse">valuse of new data</param>
+        </member>
+        <member name="M:ora.DataBase.InsertBlukRecords``1(System.String,System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Insert bluk of records in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="records">list of records you want to insert in table</param>
+        </member>
+        <member name="M:ora.DataBase.ExecuteQuery(System.String,System.String)">
+            <summary>
+            ExecuteQuery(insert,delete,alter,drop,update,truncate,...) no return data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+        </member>
+        <member name="T:ora.help">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="P:ora.help._InitDbContext_Core">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Core.
+            <para></para>
+            ** package **
+            <para></para>
+            - microsoft.entityframeworkcore 7.0.13
+            <para></para>
+            - microsoft.entityframeworkcore.tools 7.0.13
+            <para></para>
+            - oracle.entityframeworkcore 7.21.12
+            <para></para>
+            1- create folder on your project and named it (DataDB) for example ..... to store on it data context config class and models.
+            <para></para>
+            2- open package manager console and type this commant {Scaffold-DbContext "Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1523)))(CONNECT_DATA=(SERVER=ex)));User Id=real_estate;Password=admin;" Oracle.EntityFrameworkCore -OutputDir DataDB}.
+            <para></para>
+            3- override funcation OnConfiguring body by this code to get conntion string from appsetting
+            <para></para>
+            code:
+            <para></para>
+            Snippet: oracon
+            <para></para>
+            <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+             IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+             optionsBuilder.UseOracle(configurationRoot.GetConnectionString("ConnetionString"));
+             }
+             </code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:ora.help._InitDbContext_Framework">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Framework.
+            <para></para>
+            ** package **
+            <para></para>
+            - oracle.manageddataaccess 21.12.0
+            <para></para>
+            - oracle.manageddataaccess.entityframework 21.9.0
+            <para></para>
+            0- intall oracle provider -->> ODT for VS 2019 19.3.3.0.0 from link <see href="https://www.oracle.com/database/technologies/dotnet-odtvsix-vs2019-downloads.html">ODT for VS 2019</see>
+            <para></para>
+            and install ODT Visual Studio Help 19.3 from link <see href="https://www.oracle.com/database/technologies/dotnet-odtvsix-vs2019-downloads.html">ODT Visual Studio Help</see>
+            <para></para>
+            1- open Visual Studio then click CTRL+Q and insert in serch box (help viewer) and install it.
+            <para></para>
+            2- On the View menu, click Server Explorer.
+            <para></para>
+            3- Click the Connect to Database icon. change Data Source to oracle -->> ODP.NET, Managed Driver.
+            <para></para>
+            4- select your conntion type and TNS admin location that have your data source then select your data source name.
+            <para></para>
+            5- insert user name and password.
+            <para></para>
+            6- go to Models file and add new item Data -->> ADO.NET Entity Data Model -->> chose EF Designer from database -->> chose you database conntion from drop doun list -->> select your tables,view,SPs.
+            <para></para>
+            *** or install oracle devart providet ***
+            </example>
+            </summary>
+        </member>
+        <member name="P:ora.help._DevartOracle">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize oracle devart.
+            <para></para>
+            0- download dcoracle.exe.
+            <para></para>
+            1- go to on models file and create new devart ef model.
+            <para></para>
+            2- select database first then click next.
+            <para></para>
+            3- select oracle provider from drop down provider list.
+            <para></para>
+            4- insert server,sid,port,user id,password then click next.
+            <para></para>
+            5- insert your server name and user name and password.
+            <para></para>
+            6- select generate from database (make reverse engineering for your database to make model and funcation of it).
+            </example>
+            </summary>
+        </member>
+        <member name="P:ora.help._Devart_Core_Oracle">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize oracle devart.
+            <para></para>
+            0- download dcoracle.exe.
+            <para></para>
+            1- go to on models file and create new devart ef core model.
+            <para></para>
+            2- select database first then click next.
+            <para></para>
+            3- select oracle provider from drop down provider list.
+            <para></para>
+            4- insert server,sid,port,user id,password then click next.
+            <para></para>
+            5- insert your server name and user name and password.
+            <para></para>
+            6- select generate from database (make reverse engineering for your database to make model and funcation of it).
+            <para></para>
+            7- open DataModel your_database_baseModel class and go to OnConfiguring funcation and put your conntion string from appsetting conntion string.
+            <para></para>
+            code:
+            <para></para>
+            Snippet: oracon
+            <para></para>
+            <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+            .......
+            IConfigurationRoot configuration = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+            optionsBuilder.UseOracle(configurationRoot.GetConnectionString("ConnetionString"));
+            ....
+             }
+             </code>
+            </example>
+            </summary>
+        </member>
+        <member name="T:ora.Convert.SP">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:ora.Convert.SP.ToJson(System.String,System.String,System.String[],Oracle.ManagedDataAccess.Client.OracleDbType[],System.Object[],Case_char)">
+            <summary>
+            convert data store procedure to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="oracleDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:ora.Convert.SP.ToDictionary(System.String,System.String,System.String[],Oracle.ManagedDataAccess.Client.OracleDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="oracleDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:ora.Convert.SP.ToList``1(System.String,System.String,System.String[],Oracle.ManagedDataAccess.Client.OracleDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="oracleDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:ora.Convert.Table">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:ora.Convert.Table.ToJson(System.String,System.String,Case_char)">
+            <summary>
+            convert data table to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:ora.Convert.Table.ToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:ora.Convert.Table.ToList``1(System.String,System.String)">
+            <summary>
+            convert data table to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="M:ora.Convert.Table.DataTableToJsonDataToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:ora.Convert.Table.DataTableToJsonDataToList``1(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Oracle Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:sql.DataBase">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:sql.DataBase.ReplaceLastLetter(System.String,System.String)">
+            <summary>
+            replace last letter on your text
+            </summary>
+            <param name="text">your text</param>
+            <param name="newLetter">the new letter you want to put it in last of your text</param>
+            <returns>new text with yor new lest leter</returns>
+        </member>
+        <member name="M:sql.DataBase.GetRowCount(System.String,System.String)">
+            <summary>
+            count rows in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to cout</param>
+            <returns>number of rows in table</returns>
+        </member>
+        <member name="M:sql.DataBase.GetLastRecord(System.String,System.String,System.String)">
+            <summary>
+            get last record id in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you wont to get record from</param>
+            <param name="column_name">column name</param>
+            <returns>number of record id in table</returns>
+        </member>
+        <member name="M:sql.DataBase.DeleteRecord(System.String,System.String,System.String,System.Int32)">
+            <summary>
+            delete record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to delete record from</param>
+            <param name="where">column name</param>
+            <param name="id">id record you want to delete</param>
+        </member>
+        <member name="M:sql.DataBase.InsertRecord(System.String,System.String,System.String[],System.String[])">
+            <summary>
+            insert record in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="column">columns name to insert on it</param>
+            <param name="valuse">valuse of new data</param>
+        </member>
+        <member name="M:sql.DataBase.InsertBlukRecords``1(System.String,System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Insert bluk of records in your data base table
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="table">table name you want to insert record in to it</param>
+            <param name="records">list of records you want to insert in table</param>
+        </member>
+        <member name="M:sql.DataBase.ExecuteQuery(System.String,System.String)">
+            <summary>
+            ExecuteQuery(insert,delete,alter,drop,update,truncate,...) no return data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">SQL Query</param>
+        </member>
+        <member name="T:sql.help">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="P:sql.help._InitDbContext_Core">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Core.
+            <para></para>
+            ** package **
+            <para></para>
+            - Microsoft.EntityFrameworkCore 7.0.13
+            <para></para>
+            - Microsoft.EntityFrameworkCore.SqlServer 7.0.13
+            <para></para>
+            - Microsoft.EntityFrameworkCore.Tools 7.0.13
+            <para></para>
+            1- create folder on your project and named it (DataDB) for example ..... to store on it data context config class and models.
+            <para></para>
+            <para></para>
+            2- open package manager console and type this commant {Scaffold-DbContext "Server=IP_SERVER;Database=DATABASE_NAME;&lt;Trusted_Connection=True;|User Id=myUsername;Password=myPassword;&gt;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir DataDB}.
+            <para></para>
+            3- override funcation OnConfiguring body by this code to get conntion string from appsetting
+            <para></para>
+            code:
+            <para></para>
+            Snippet: sqlcon
+            <para></para>
+            <code>
+            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+            {
+             IConfigurationRoot configurationRoot = new ConfigurationBuilder()
+            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+            .AddJsonFile("appsettings.json")
+            .Build();
+             optionsBuilder.UseSqlServer(configurationRoot.GetConnectionString("ConnetionString"));
+             }
+             </code>
+            </example>
+            </summary>
+        </member>
+        <member name="P:sql.help._InitDbContext_Framework">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to Initialize DbContext Framework.
+            <para></para>
+            go to Models file and add new item Data -->> ADO.NET Entity Data Model -->> chose EF Designer from database -->> chose you database conntion from drop doun list -->> select your tables,view,SPs.
+            </example>
+            </summary>
+        </member>
+        <member name="T:sql.Convert.SP">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:sql.Convert.SP.ToJson(System.String,System.String,System.String[],System.Data.SqlDbType[],System.Object[],Case_char)">
+            <summary>
+            convert data store procedure to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="sqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:sql.Convert.SP.ToDictionary(System.String,System.String,System.String[],System.Data.SqlDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="sqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:sql.Convert.SP.ToList``1(System.String,System.String,System.String[],System.Data.SqlDbType[],System.Object[])">
+            <summary>
+            convert store procedure to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="SP">store procedure name</param>
+            <param name="p_valuse">store procedure parameter name</param>
+            <param name="sqlDbTypes">store procedure parameter type</param>
+            <param name="valuse">store procedure parameter value</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:sql.Convert.Table">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:sql.Convert.Table.ToJson(System.String,System.String,Case_char)">
+            <summary>
+            convert data table to json data
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Sql Query</param>
+            <param name="case_char">chose case of json data output lower case or normal case</param>
+            <returns>json data format</returns>
+        </member>
+        <member name="M:sql.Convert.Table.ToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Sql Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:sql.Convert.Table.ToList``1(System.String,System.String)">
+            <summary>
+            convert data table to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Sql Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="M:sql.Convert.Table.DataTableToJsonDataToDictionary(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a dictionary
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Sql Query</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:sql.Convert.Table.DataTableToJsonDataToList``1(System.String,System.String)">
+            <summary>
+            convert data table to json data then to a list
+            </summary>
+            <param name="constring">connection string of data base</param>
+            <param name="q">Sql Query</param>
+            <returns>List</returns>
+        </member>
+        <member name="T:help">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="P:help._Help_auto_search">
+             <summary>
+             <returns>No data to return</returns>
+             <example>
+             this prop is not for call it for help you to see how to write autocomplete search in controller and view
+             <para></para>
+             Controller Code:
+             <para></para>
+             Snippet: cauto
+             <code>
+                 public JsonResult auto_search(string search)
+                 {
+                     var search_list = Table.ConvertToList&lt;class_name&gt;(string_connetion,q);
+                     List&lt;string&gt; data_search = new List&lt;string&gt;();
+                     foreach(var data in search_list.Result.Item1)
+                     {
+                         data_search.Add(data.any);
+                     }
+                     HashSet&lt;string&gt; search_set = new HashSet&lt;string&gt;(data_search);
+                     System.Diagnostics.Debug.WriteLine(data_search_no_duplicates);
+            
+                     return Json(data_search_no_duplicates, JsonRequestBehavior.AllowGet);
+                 }
+             </code>
+             </example>
+             <para></para>
+             <example>
+             View input script:
+             <para></para>
+             Snippet:vauto
+             <code>
+              &lt;input class="form-control" id="search_fild" name="" placeholder="search" required="required"&gt;
+             </code>
+             </example>
+             <para></para>
+             <example>
+             AJAX script:
+             <para></para>
+             Snippet:jauto
+             <code>
+             @section script{
+            &lt;link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/start/jquery-ui.css"&gt;
+            &lt;script src = "//code.jquery.com/jquery-1.10.2.js"&gt;&lt;/script&gt;
+            &lt;script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"&gt;&lt;/script&gt;
+            &lt;script&gt;
+             $(document).ready(function () {
+                 $('#search_fild').autocomplete({
+                         source: function(request, response)
+                         {
+                             $.ajax({
+                                 url: "/Home/auto_search",
+                                 type: "POST",
+                                 dataType: "json",
+                                 data: { search: $('#search_fild').val() },
+                                 success: function(data)
+                                 {
+                                     var data_search = [];
+                                     data_search = data;
+                                     response($.map(data, function(item) {
+                                             return { value: data_search };
+                                     }));
+                                }
+                            });
+                         }
+                 });
+            });
+            &lt;/script&gt;
+            }
+             </code>
+             </example>
+             </summary>
+        </member>
+        <member name="P:help._Help_soap">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to create SOAP API.
+            <para></para>
+            1- create new WCF Service project.
+            <para></para>
+            2- go to your project and add new web servic item.
+            <para></para>
+            3- go to your project and add new ADO.NET Entity Data Model.for create context to add db entity connaction an models to your api project.
+            <para></para>
+            4- for mysql and oracle use devar to create context.
+            <para></para>
+            5- open your web service file add start code your SOAP API. ** ora.Help._DevartOracle ** || ** mysql.Help._DevartMysql **
+            <para></para>
+            *** Snippet: soap ***
+            </example>
+            </summary>
+        </member>
+        <member name="P:help._Help_rest">
+             <summary>
+             <returns>No data to return</returns>
+             <example>
+             this prop is not for call it for help you to see how to create REST API.
+             <para></para>
+             1- create ASP.NET web application (.NET Freamwork).
+             <para></para>
+             2- go to your project and create new web api controller class in controller folder.
+             <para></para>
+             3- add your context object on top of your code EX:
+             <para></para>
+             <code>
+             .....
+             private realestateEntities1 db = new realestateEntities1();
+             GET: api/properties
+            public IQueryable&lt;VT_Properties&gt; Getproperties()
+            {
+                return db.VT_Properties;
+            }
+             .....
+             </code>
+             <para></para>
+             4- generate REST API CRUD.
+            <para></para>
+             *** Snippet: rest ***
+             </example>
+             </summary>
+        </member>
+        <member name="P:help._Help_pagination">
+            <summary>
+            <returns>No data to return</returns>
+            <example>
+            this prop is not for call it for help you to see how to create div item pagination.
+            <para></para>
+            1- on your container add div that holde your items and add this class on it {card-content} class
+            <example>
+            HTML Code EX:
+            <code>
+            &lt;div class="section"&gt;
+            &lt;div class="container"&gt;
+            &lt;div class="row card-content" id="search" style="position: relative; height: fit-content !important; flex-direction: row-reverse; display: none;"&gt;
+            &lt;/div&gt;
+            <para></para>
+            2- add pagination div
+            <para></para>
+            Snippet: vpage
+            &lt;div class="pagination">&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;/div&gt;
+            </code>
+            </example>
+            <para></para>
+            3- add pagination Script 
+            <para></para>
+            Snippet: jpage
+            <para></para>
+            4- add css file
+            <para></para>
+            Snippet: csspage
+            </example>
+            </summary>
+        </member>
+        <member name="T:JsonData.Convert.Json">
+            <summary>
+            Author: NEAR TECH
+            User Name: Mautassim Ashraf Ali
+            Company Email: near@near-tech.tech
+            Web Site: <see href="https://near-tech.tech/">NEAR TECH</see>
+            </summary>
+        </member>
+        <member name="M:JsonData.Convert.Json.ToDictionary(System.String,System.Int32)">
+            <summary>
+            convert json data to a dictionary
+            </summary>
+            <param name="json">json data</param>
+            <param name="ElementAt">Retrun the element at a spacified index in a sequenc</param>
+            <returns>Dictionary KeyValuePairs</returns>
+        </member>
+        <member name="M:JsonData.Convert.Json.ToList``1(System.String)">
+            <summary>
+            convert json data to a list
+            </summary>
+            <param name="json">json data</param>
+            <returns>List</returns>
+        </member>
+        <member name="M:JsonData.Get.Json.Url(System.String)">
+            <summary>
+            Get json data from url
+            </summary>
+            <param name="json_url">json uel</param>
+            <returns>json data format</returns>
+        </member>
+    </members>
+</doc>
