@@ -19,6 +19,7 @@ namespace real_estate.Controllers
         //mysql
         //string string_connetion = ConfigurationManager.ConnectionStrings["real_estate_mysql"].ConnectionString;
         //ora
+        //test
         string string_connetion = ConfigurationManager.ConnectionStrings["real_estate_ora"].ConnectionString;
         public JsonResult AllProperties()
         {
