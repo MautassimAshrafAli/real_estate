@@ -28,6 +28,14 @@ namespace real_estate.Controllers
             //System.Diagnostics.Debug.WriteLine(jsonData);
             return Json(jsonData, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult AllProperties2()
+        {
+
+            string jsonData = sql.Convert.Table.ToJson(string_connetion,
+                "select * from V_AllProperties", Case_char.lower);
+            //System.Diagnostics.Debug.WriteLine(jsonData);
+            return Json(jsonData, JsonRequestBehavior.AllowGet);
+        }
         public JsonResult TopOneroperties()
         {
             //sql
