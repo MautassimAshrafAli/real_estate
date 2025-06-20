@@ -89,6 +89,11 @@ namespace real_estate.Controllers
            // System.Diagnostics.Debug.WriteLine(company_data);
             return Json(company_data, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult company2()
+        {
+            // System.Diagnostics.Debug.WriteLine(company_data);
+            return Json(company_data, JsonRequestBehavior.AllowGet);
+        }
         List<string> search_list = new List<string>();
         public ActionResult Index()
         {
